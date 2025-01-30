@@ -1,0 +1,6 @@
+/**
+ * Learn React they say, it'll be fun and useful they say...
+ * 
+ * Well I say "nuh uh", cuz this thing going to be made of pure chaos(no frameworks!!).
+ * ...Definitely  not because I'm too lazy to learn them...
+ */
