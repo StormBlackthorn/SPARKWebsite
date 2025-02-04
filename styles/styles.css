@@ -64,8 +64,7 @@ body {
             }
             
             &:hover .title::after {
-                transform: rotate(90deg); /* does this not cause title to rotate when hover over any
-                                            dropdown element? */
+                transform: rotate(90deg);
             }
 
             .dropdown-content {
