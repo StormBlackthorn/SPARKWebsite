@@ -3,6 +3,10 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f9f9f9;
+    max-width: 2040px;
+    margin-left: auto;
+    min-width: 980px;
+    margin-right: auto;
 }
 
 .nav-bar {
@@ -12,7 +16,9 @@ body {
     justify-content: space-between;
     align-items: center;
     position: sticky;
-    
+    top: 0;
+    z-index: 9999;
+
     .logo {
         height: 50px;
         border-radius: 100px;
@@ -82,59 +88,181 @@ body {
     }
 }
 
+
 .container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
+
+    .header-description {
+        margin-left: 55px;
+        border-left: green 7px solid;
+        padding-left: 15px;
+        flex: 1;
+    }
+
+    .header {
+        font-style: italic;
+    }
+    
+    & > :not(.club-info) {
+        margin: 20px;
+    }
+    
+    .club-info {
+        display: flex;
+
+        .club-details {
+            padding: 20px;
+            background-color: #ffebcd;
+            min-width: 200px;
+            width:30vw;
+        }
+
+        .carousel {
+            flex:2;
+            display: flex;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            padding: 0;
+            position: relative;
+            user-select: none;
+    
+            .images {
+                flex:1;
+                img {
+                    height: 95vh;
+                    min-height: 95vh;
+                    max-height: 125vh;
+                    width: 100%;
+                    object-fit: cover;
+                    display: none;
+                }
+    
+                .current {
+                    display: block;
+                }
+            }
+    
+    
+            &:hover {
+                .arrows {
+                    display: block;
+                }
+
+                .dots {
+                    display: block;
+                    cursor:pointer;
+                }
+            }
+    
+            .arrows {
+                position: absolute;
+                top: 50%; 
+                transform: translateY(-50%); 
+                color:rgb(207, 206, 206);
+                font-size: 40px;
+                cursor: pointer;
+                display: none;
+            }
+
+            .dots {
+                bottom: 10%;
+                position: absolute;
+                gap: 10px;
+                width:100%;
+                height: 5px;
+                justify-content: center;
+                display: flex;
+                display: none;
+                font-size: 50px;
+                color: rgb(207, 206, 206);
+
+                .dot:before {
+                    content: "▫";
+                }
+
+                .current:before {
+                    content: "▪";
+                }
+            }
+
+    
+        }
+
+    }
+
+    .stats-section {
+
+        margin-top: 120px;
+
+        button {
+            flex-direction: row;
+            flex: 0.1 1 150px;
+            height: 100%;
+        }
+
+        .stat-box {
+            flex: 1;
+            background-color: #fff3cd;
+            text-align: center;
+            padding: 10px;
+        }
+    }
+
+    
+    .ratings-section {
+        margin-top: 120px;
+
+        .ratings-container {
+            position: relative;
+
+            .arrows {
+                position: absolute;
+                top: 45%; /*how tf do I find true center?? transform: transalateY does not work...*/
+                color:rgb(0, 0, 0);
+                font-size: 40px;
+                cursor: pointer;
+            }
+
+            .ratings {
+                justify-content: space-around;
+                display: flex;
+                gap: 20px;
+                padding: 50px;
+                border-radius: 10px;
+        
+                .rating {
+                    background-color: #f8d7da;
+                    flex: 1;
+                    padding: 10px;
+                    border-radius: 10px;
+                    display: none;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    
+                    span {
+                        margin-left: auto;
+                    }
+    
+                }
+    
+                .current {
+                    display: flex;
+                }
+    
+            }
+        }
+
+    }
+    
+
 }
 
-.club-info {
-    display: flex;
-    gap: 20px;
-    align-items: stretch;
-}
 
 
-.club-details {
-    flex: 1;
-    background-color: #ffebcd;
-    padding: 20px;
-    border-radius: 10px;
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.carousel {
-    flex: 2;
-    background-color: #add8e6;
-    padding: 20px;
-    text-align: center;
-    border-radius: 10px;
-}
-.stats {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-    background-color: #fff3cd;
-    padding: 20px;
-    border-radius: 10px;
-}
-.stat-box {
-    text-align: center;
-    padding: 10px;
-}
-.testimonials {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-    background-color: #f8d7da;
-    padding: 20px;
-    border-radius: 10px;
-}
 .footer {
     text-align: center;
     padding: 10px;
     background-color: #f4a460;
-    margin-top: 20px;
+    margin-top: 70px;
+    min-height: 200px;
 }
