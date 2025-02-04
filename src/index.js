@@ -44,12 +44,22 @@ function rotate(wrapper, rotation, setTo=false) {
         }
 
         //Didn't know how ot manipulate DOM. Asked ChatGPT. It gave me the complete opposite code. 
-        //I Spent too long on these simple lines.
-        for(let i = 0, l = Math.abs(rotation); i < l; i++) 
-            rotation < 0 ? children.unshift(children.pop()) : children.push(children.shift());
+        //I Spent too long on these simple lines
+        //Reason for DOM manipulation([] == showing):
+        // 1 2 [3] [4] [5] -> rotate(1) SHOULD BECOME [4] [5] [1] 2 3 but in reality is [1] 2 3 [4] [5] 
+        //as the DOM order of the children is not changed
 
-        parent.innerHTML = ''; // Clear the container(to update DOM)
-        children.forEach(child => parent.appendChild(child)); // Add the children back
+        //FIX: only do this if there are more than 1 elements with class "current", which is the thing
+        //that causes looping issues to begin with. If it only has one element, doing DOM manipulation will
+        //in some case break it instead.
+        if(currentElements.length > 1) {
+            for(let i = 0, l = Math.abs(rotation); i < l; i++) 
+                rotation > 0 ? children.push(children.shift()) : children.unshift(children.pop());
+    
+            parent.innerHTML = ''; // Clear the container(to update DOM)
+            children.forEach(child => parent.appendChild(child)); // Add the children back
+        }
+        
 
     })
 
