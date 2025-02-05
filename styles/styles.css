@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: Inter, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f9f9f9;
@@ -12,11 +12,13 @@ body {
 .nav-bar {
     background-color: #ffcccb;
     padding: 10px;
+    height: 7vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: sticky;
     top: 0;
+    border-bottom: 4px solid black;
     z-index: 9999;
 
     .logo {
@@ -28,15 +30,20 @@ body {
         display: flex;
         gap: 10px;
         align-items: center;
+        font-size: 24px;
 
         a {
             text-decoration: none;
             color: black;
-            padding: 10px;
+            padding: 20px;
             &:hover {
                 font-style:italic;
                 border-bottom: 2px solid black;
+                padding-top: 15px;
             }
+            transition: padding-top 0.3s ease;
+
+
 
         }
 
@@ -111,9 +118,62 @@ body {
 
         .club-details {
             padding: 20px;
-            background-color: #ffebcd;
+            background-color: #fddfb2;
             min-width: 200px;
             width:30vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            h2 {
+                font-size: 3em;
+                text-decoration: underline;
+                margin-bottom: 0;
+            };
+
+            h3 {
+                font-size: 2em;
+                color: rgb(48, 116, 211);
+                text-align: center;
+                width: 75%;
+                margin-bottom: 0;
+            };
+
+            p {
+                font-size: 1.5em;
+                width: 90%;
+                text-align: center;
+            }
+
+            .mission-members-buttons {
+                height: 5%;
+                width: 80%;
+                display: flex;
+                justify-content: space-evenly;
+                margin: 20px;
+                a {
+                    width: 40%;
+                    button {
+                        background-color: rgb(190, 53, 53);
+                        height: 100%;
+                        width: 100%;
+                        border: 4px solid black;
+    
+                        font-size: 1.2em;
+                        font-family: Inter;
+                        font-weight: bold;
+    
+                        &:hover {
+                            background-color: orange;
+                            cursor: pointer;
+                        }
+    
+                        transition: background-color 200ms linear;
+    
+                    }
+                }
+            }
+            
         }
 
         .carousel {
@@ -129,7 +189,7 @@ body {
             .images {
                 flex:1;
                 img {
-                    height: 95vh;
+                    height: 95%;
                     min-height: 95vh;
                     max-height: 125vh;
                     width: 100%;
@@ -193,6 +253,7 @@ body {
     .stats-section {
 
         margin-top: 120px;
+        height: 20vw;
 
         button {
             flex-direction: row;
@@ -202,9 +263,27 @@ body {
 
         .stat-box {
             flex: 1;
-            background-color: #fff3cd;
+            background-color: #d2f5b1;
             text-align: center;
             padding: 10px;
+
+            /* display: flex; */
+            /* flex-direction: column;
+            justify-content: center; */
+            
+            img {
+                border: 4px solid black;
+                border-radius: 25%;
+                height: 70%;
+                margin: 5%;
+                margin-bottom: 3%;
+            }
+
+            p {
+                font-size: 1.5em;
+                margin: 0;
+                /* margin: 5%; */
+            }
         }
     }
 
