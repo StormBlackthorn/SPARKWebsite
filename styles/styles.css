@@ -147,16 +147,18 @@ body {
 
             .mission-members-buttons {
                 height: 20%;
+                min-height: 150px;
+                min-width: 250px;
                 width: 60%;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-evenly;
                 margin: 20px;
+
                 a {
                     width: 100%;
                     min-width: 100%;
                     height: 40%;
-                    min-height: 30%;
 
                     text-decoration: none;
                     
@@ -266,15 +268,16 @@ body {
 
         margin-top: 120px;
         
-
         a {
             text-decoration: none;
+            max-height: 100px;
+            height: 100px; /* Ensure the 'a' tag itself is 100px tall */
+            align-self: center; /* This will now center the 100px tall 'a' element */
 
             button {
                 flex-direction: row;
                 flex: 0.1 1 150px;
-                height: 100%;
-    
+
                 background-color: rgb(190, 53, 53);
                 height: 100%;
                 width: 100%;
@@ -289,20 +292,10 @@ body {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-
-                /* opacity: 0; */
-
-                
     
                 &:hover {
                     background-color: orange;
                     cursor: pointer;
-/* 
-                    content: "\00A0\00bb";
-
-                    p {
-                        content: "\00A0\00bb";
-                    } */
         
                 }
                 
@@ -310,22 +303,20 @@ body {
             }
         }
 
-        
-
         .stat-box {
             flex: 1;
             background-color: #d2f5b1;
             text-align: center;
             padding: 10px;
-
-            /* display: flex; */
-            /* flex-direction: column;
-            justify-content: center; */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             
             img {
                 border: 4px solid black;
                 border-radius: 25%;
                 height: 70%;
+                max-width: 200px;
                 margin: 5%;
                 margin-bottom: 3%;
             }
