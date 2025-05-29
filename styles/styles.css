@@ -43,8 +43,6 @@ body {
             }
             transition: padding-top 0.3s ease;
 
-
-
         }
 
         .dropdown {
@@ -377,18 +375,6 @@ body {
     
 
 }
-
-
-
-.footer {
-    text-align: center;
-    padding: 10px;
-    background-color: #f4a460;
-    margin-top: 70px;
-    min-height: 200px;
-    border-top: 4px solid black;
-}
-
 
 
 /* Should there be a seperate file for these styles? */
