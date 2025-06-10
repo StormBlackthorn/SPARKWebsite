@@ -1,0 +1,284 @@
+.container {
+
+    /* everything thats not the hero section, have side margin */
+    & > :not(.club-info) { 
+        margin: 20px;
+    }
+    
+    .club-info {
+        display: flex;
+
+        .club-details {
+            padding: 20px;
+            background-color: #fddfb2;
+            min-width: 200px;
+            width:30%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            h2 {
+                font-size: 3em;
+                text-decoration: underline;
+                margin-bottom: 0;
+            };
+
+            h3 {
+                font-size: 2em;
+                color: rgb(48, 116, 211);
+                text-align: center;
+                width: 75%;
+                margin-bottom: 0;
+            };
+
+            p {
+                font-size: 1.5em;
+                width: 90%;
+                text-align: center;
+            }
+
+            .mission-members-buttons {
+                height: 20%;
+                min-height: 150px;
+                min-width: 250px;
+                width: 60%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                margin: 20px;
+
+                a {
+                    width: 100%;
+                    min-width: 100%;
+                    height: 40%;
+
+                    text-decoration: none;
+                    
+                    button {
+                        background-color: rgb(190, 53, 53);
+                        height: 100%;
+                        width: 100%;
+                        border: 3px solid black;
+    
+                        font-size: 100%;
+
+                        font-family: Alata;
+                        font-weight: bold;
+
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+    
+                        &:hover {
+                            background-color: orange;
+                            cursor: pointer;
+                        }
+    
+                        transition: background-color 200ms linear;
+    
+                    }
+                }
+            }
+            
+        }
+
+        .carousel {
+            flex:2;
+            display: flex;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            padding: 0;
+            position: relative;
+            user-select: none;
+    
+            .images {
+                flex:1;
+                img {
+                    height: 100%;
+                    min-height: 95%;
+                    max-height: 125%;
+                    width: 100%;
+                    object-fit: cover;
+                    display: none;
+                }
+    
+                .current {
+                    display: block;
+                }
+            }
+    
+    
+            &:hover {
+                .arrows {
+                    display: block;
+                }
+
+                .dots {
+                    display: block;
+                    cursor:pointer;
+                }
+            }
+    
+            .arrows {
+                position: absolute;
+                top: 50%; 
+                transform: translateY(-50%); 
+                color:rgb(207, 206, 206);
+                font-size: 40px;
+                cursor: pointer;
+                display: none;
+            }
+
+            .dots {
+                bottom: 10%;
+                position: absolute;
+                gap: 10px;
+                width:100%;
+                height: 5px;
+                justify-content: center;
+                display: flex;
+                display: none;
+                font-size: 50px;
+                color: rgb(207, 206, 206);
+
+                .dot:before {
+                    content: "▫";
+                }
+
+                .current:before {
+                    content: "▪";
+                }
+            }
+
+    
+        }
+
+    }
+
+    .stats-section {
+
+        margin-top: 120px;
+
+        .header-description {
+            margin-left: 55px;
+            border-left: green 7px solid;
+            padding-left: 15px;
+            flex: 1;
+        }
+
+        .header {
+            font-style: italic;
+        }
+    
+        
+        a {
+            text-decoration: none;
+            max-height: 100px;
+            height: 100px; /* Ensure the 'a' tag itself is 100px tall */
+            align-self: center; /* This will now center the 100px tall 'a' element */
+
+            button {
+                flex-direction: row;
+                flex: 0.1 1 150px;
+
+                background-color: rgb(190, 53, 53);
+                height: 100%;
+                width: 100%;
+                border: 3px solid black;
+    
+                font-size: 100%;
+
+                font-family: Alata;
+                font-weight: bold;
+                
+    
+                display: flex;
+                justify-content: center;
+                align-items: center;
+    
+                &:hover {
+                    background-color: orange;
+                    cursor: pointer;
+        
+                }
+                
+                transition: background-color 200ms linear;
+            }
+        }
+
+        .stat-box {
+            flex: 1;
+            background-color: #d2f5b1;
+            text-align: center;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+            img {
+                border: 4px solid black;
+                border-radius: 25%;
+                height: 70%;
+                max-width: 200px;
+                margin: 5%;
+                margin-bottom: 3%;
+            }
+
+            p {
+                font-size: 1.5em;
+                margin: 0;
+                /* margin: 5%; */
+            }
+        }
+    }
+
+    
+    .ratings-section {
+        margin-top: 120px;
+
+        .ratings-container {
+            position: relative;
+
+            .arrows {
+                position: absolute;
+                top: 45%; /*how tf do I find true center?? transform: transalateY does not work...*/
+                color:rgb(0, 0, 0);
+                font-size: 40px;
+                cursor: pointer;
+                user-select: none;
+            }
+
+            .ratings {
+                justify-content: space-around;
+                display: flex;
+                gap: 20px;
+                padding: 50px;
+                border-radius: 10px;
+        
+                .rating {
+                    background-color: #f8d7da;
+                    flex: 1;
+                    padding: 10px;
+                    border-radius: 10px;
+                    display: none;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    
+                    span {
+                        margin-left: auto;
+                    }
+    
+                }
+    
+                .current {
+                    display: flex;
+                }
+    
+            }
+        }
+
+    }
+    
+
+}

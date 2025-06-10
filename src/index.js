@@ -10,8 +10,8 @@
 
     //load all components/scripts
     const scripts = [
-        "../src/components/Footer.js",
-        "../src/components/Navbar.js"
+        "/src/components/Footer.js",
+        "/src/components/Navbar.js"
     ];
 
     //no clue wth this is. All hail chatGPT
@@ -47,7 +47,6 @@
             document.head.appendChild(
                 Object.assign(document.createElement("script"), {
                     src,
-                    type: "module",
                     onload: resolve
                 })
             );

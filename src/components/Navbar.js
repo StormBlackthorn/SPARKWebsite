@@ -92,19 +92,19 @@ class Navbar extends HTMLElement {
       </style>
 
       <div class="nav-bar">
-        <a href="home.html"><img src="../../styles/assets/sparkText.png" class="logo" alt="Logo"></a>
+        <a href="/pages/home.html"><img src="/styles/assets/sparkText.png" class="logo" alt="Logo"></a>
         <div class="nav-links">
           <div class="dropdown">
             <span class="title">About Us</span>
             <div class="dropdown-content">
-              <a href="about/mission.html">Mission</a>
-              <a href="about/members.html">Members</a>
-              <a href="about/statistics.html">Statistics</a>
+              <a href="/pages/about/mission.html">Mission</a>
+              <a href="/pages/about/members.html">Members</a>
+              <a href="/pages/about/statistics.html">Statistics</a>
             </div>
           </div>
-          <a href="./Xcratch/index.html">Xcratch</a>
-          <a href="volunteer.html">Volunteer</a>
-          <a href="contactUs.html">Contact Us</a>
+          <a href="/pages/Xcratch/index.html">Xcratch</a>
+          <a href="/pages/volunteer.html">Volunteer</a>
+          <a href="/pages/contactUs.html">Contact Us</a>
         </div>
       </div>
     `;
