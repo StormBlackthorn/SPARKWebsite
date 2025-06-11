@@ -1,3 +1,9 @@
+@property --progress {
+    syntax: "<number>";
+    inherits: false;
+    initial-value: 0;
+}
+
 .container {
 
     /* everything thats not the hero section, have side margin */
@@ -91,7 +97,48 @@
             padding: 0;
             position: relative;
             user-select: none;
-    
+
+            #pauseButton {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                z-index: 4;
+                color:rgb(207, 206, 206);
+                font-size: 40px;
+                cursor: pointer;
+                display: none;
+            }
+
+            /* Nah cuz what the actual hell is going on down there. Lowkey stole this code off of codepen :skull:*/
+            .circular-progress {
+
+                z-index: 3;
+                position: absolute;
+                top: 17px;
+                left: 4px;
+                --size: 250px;
+                --half-size: calc(var(--size) / 2);
+                --stroke-width: 20px;
+                --radius: calc((var(--size) - var(--stroke-width)) / 2);
+                --circumference: calc(var(--radius) * pi * 2);
+                --dash: calc((var(--progress) * var(--circumference)) / 100);
+                display: none;
+                circle {
+                    cx: var(--half-size);
+                    cy: var(--half-size);
+                    r: var(--radius);
+                    stroke-width: var(--stroke-width);
+                    fill: none;
+                    stroke-linecap: round;
+                    transform: rotate(-90deg);
+                    transform-origin: var(--half-size) var(--half-size);
+                    stroke-dasharray: var(--dash) calc(var(--circumference) - var(--dash));
+                    stroke: rgb(207, 206, 206);
+                }
+                
+            }
+        
+
             .images {
                 flex:1;
                 img {
@@ -110,13 +157,20 @@
     
     
             &:hover {
+                #pauseButton {
+                    display: block;
+                }
+                
                 .arrows {
                     display: block;
                 }
 
                 .dots {
                     display: block;
-                    cursor:pointer;
+                }
+
+                .circular-progress {
+                    display: block;
                 }
             }
     
@@ -141,6 +195,7 @@
                 display: none;
                 font-size: 50px;
                 color: rgb(207, 206, 206);
+                cursor:pointer;
 
                 .dot:before {
                     content: "▫";

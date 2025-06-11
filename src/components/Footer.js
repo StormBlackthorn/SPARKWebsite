@@ -7,7 +7,7 @@ class Footer extends HTMLElement {
   connectedCallback() {
     this.shadowRoot.innerHTML = `
         <style>
-            .footer {
+            #footer {
                 text-align: center;
                 padding: 10px;
                 background-color: #f4a460;
@@ -17,7 +17,7 @@ class Footer extends HTMLElement {
             }
         </style>
 
-        <div class="footer">Footer Section</div>
+        <div id="footer">Footer Section</div>
     `;
   }
 }
