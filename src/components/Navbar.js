@@ -38,7 +38,6 @@ class Navbar extends HTMLElement {
                     transition: padding-top 0.3s ease;
 
                     &:hover {
-                        font-style: italic;
                         border-bottom: 2px solid black;
                     }
                 }
@@ -53,25 +52,37 @@ class Navbar extends HTMLElement {
                         display: block;
                     }
 
+                    .arrow {
+
+                      transform: rotate(90deg);
+                      color: rgb(74, 28, 214);
+
+                    }
+
+                    
+
                     .dropdown-title::after {
                         transform: rotate(90deg);
                     }
                 }
 
                 .dropdown-title {
-                    cursor: pointer;
-                    display: block;
-                    padding: 10px;
+                    display: flex;
 
-                    &:hover {
-                        font-style: italic;
+                    .title {
+                      cursor: pointer;
+                      display: block;
+                      padding: 10px;
+                      text-align: center;
+                      padding-right: 0px;
                     }
 
-                    &::after {
-                        content: ">";
-                        display: inline-block;
-                        transition: transform 0.3s ease;
+                    .arrow {
+                      padding: 10px;
+                      transition: all 0.3s ease;
+                      
                     }
+
                 }
 
                 .dropdown-content {
@@ -79,6 +90,7 @@ class Navbar extends HTMLElement {
                     position: absolute;
                     background-color: #f9f9f9;
                     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                    
 
                     a {
                         padding: 12px 16px;
@@ -86,7 +98,8 @@ class Navbar extends HTMLElement {
 
                           &:hover{
                             background-color: #f1f1f1;
-                            border-bottom: none;
+                            border-bottom: 0px !important;
+                                                        
                          }
                      }
                 }    
@@ -101,12 +114,16 @@ class Navbar extends HTMLElement {
         <a href="/pages/home.html"><img src="/styles/assets/sparkText.png" id="logo" alt="Logo"></a>
         <div id="nav-links">
           <div class="dropdown">
-            <span class="dropdown-title">About Us</span>
+            <div class="dropdown-title">
+              <p class="title">About Us</p>
+              <p class="arrow"> > </p>
+            </div>
             <div class="dropdown-content">
               <a href="/pages/about/mission.html">Mission</a>
               <a href="/pages/about/members.html">Members</a>
               <a href="/pages/about/statistics.html">Statistics</a>
             </div>
+            
           </div>
           <a href="/pages/Xcratch/index.html">Xcratch</a>
           <a href="/pages/volunteer.html">Volunteer</a>
