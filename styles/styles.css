@@ -4,7 +4,7 @@ body {
     padding: 0;
     background-color: #f9f9f9;
     max-width: 2040px;
+    min-width: 980px; /*TODO: Add mobile support!*/
     margin-left: auto;
-    min-width: 980px;
     margin-right: auto;
 }

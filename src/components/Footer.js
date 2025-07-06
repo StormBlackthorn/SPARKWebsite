@@ -11,8 +11,8 @@ class Footer extends HTMLElement {
                 text-align: center;
                 padding: 10px;
                 background-color: #f4a460;
-                margin-top: 70px;
-                min-height: 200px;
+                margin-top: 75px;
+                padding-bottom: 75px;
                 border-top: 4px solid black;
             }
         </style>

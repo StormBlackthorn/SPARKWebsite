@@ -68,7 +68,6 @@
     
                         font-size: 100%;
 
-                        font-family: Alata;
                         font-weight: bold;
 
                         display: flex;
@@ -99,19 +98,19 @@
             user-select: none;
 
             #pauseButton {
-                position: absolute;
-                top: 10px;
-                left: 10px;
                 z-index: 4;
                 color:rgb(207, 206, 206);
                 font-size: 40px;
                 cursor: pointer;
+                position: absolute;
                 display: none;
+                top: 50%;
+                left: 50%;
+                transform: translate(-40%, -45%);
             }
 
             /* Nah cuz what the actual hell is going on down there. Lowkey stole this code off of codepen :skull:*/
             .circular-progress {
-
                 z-index: 3;
                 position: absolute;
                 top: 17px;
@@ -158,7 +157,7 @@
     
             &:hover {
                 #pauseButton {
-                    display: block;
+                    display: inline;
                 }
                 
                 .arrows {
@@ -244,7 +243,6 @@
     
                 font-size: 100%;
 
-                font-family: Alata;
                 font-weight: bold;
                 
     
@@ -272,18 +270,14 @@
             align-items: center;
             
             img {
-                border: 4px solid black;
-                border-radius: 25%;
                 height: 70%;
                 max-width: 200px;
-                margin: 5%;
-                margin-bottom: 3%;
+                margin-bottom: 20px;
             }
 
             p {
                 font-size: 1.5em;
                 margin: 0;
-                /* margin: 5%; */
             }
         }
     }

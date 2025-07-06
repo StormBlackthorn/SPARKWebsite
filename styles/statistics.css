@@ -1,0 +1,103 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 30px;
+    margin-top: 20px;
+    
+    .header {
+        .title {
+            font-size: 5em;
+            margin: 0;
+            max-width: 600px;
+            line-height: 1.3;
+        }
+
+        .description {
+            max-width: 600px;
+            font-size: 1.2em;
+        }
+
+        a {
+            align-self: center;
+            margin-left: auto;
+            height: 80px;
+            button {
+            
+
+                background-color: rgb(190, 53, 53);
+                height: 100%;
+                width: 100%;
+                border: 3px solid black;
+    
+                font-size: 100%;
+
+                font-weight: bold;
+                
+    
+                justify-content: center;
+                align-items: center;
+    
+                &:hover {
+                    background-color: orange;
+                    cursor: pointer;
+        
+                }
+                
+                transition: background-color 200ms linear;
+            }
+        }
+
+    }
+
+    .statistics {
+
+        margin-top: 85px;
+
+
+        .description {
+            font-size: 2em;
+            border-left: green 7px solid;
+            padding-left: 15px;
+            font-style: italic
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+
+            .statistic {
+                flex: 1;
+                max-width: 300px;
+                min-width: 200px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+
+                .icon {
+                    width: 175px;
+                    height: 175px;
+                }
+
+                .title {
+                    font-size: 2.4em;
+                    margin-top: 10px;
+                    font-weight: bold;
+                    margin-bottom: 0;
+                }
+
+                .label {
+                    font-size: 1.5em;
+                    color: #666;
+                    margin-top: 0;
+                }
+
+                
+            }
+
+        }
+    }
+
+}
