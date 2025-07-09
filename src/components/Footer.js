@@ -8,16 +8,17 @@ class Footer extends HTMLElement {
     this.shadowRoot.innerHTML = `
         <style>
             #footer {
-                text-align: center;
-                padding: 10px;
+                padding-top: 45px;
                 background-color: #f4a460;
-                margin-top: 75px;
-                padding-bottom: 75px;
+                padding-bottom: 25px;
                 border-top: 4px solid black;
+                left: 0;
+                bottom: 0;
+                width: 100%;
             }
         </style>
 
-        <div id="footer">Footer Section</div>
+        <div id="footer"></div>
     `;
   }
 }
