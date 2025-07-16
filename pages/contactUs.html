@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="../styles/styles.css">
     <link rel="stylesheet" href="../styles/contactUs.css">
     <script src="../src/index.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="../src/sendEmail.js" defer></script>
 </head>
 <body>
 
@@ -19,17 +21,41 @@
 
     <div class="container">
 
-        <img src="/styles/assets/sparkText.png" class="logo" alt="Logo" width="30%">
+        <div class="header">
+            <h1 class="title">Contact Us</h1>
+            <p class="description">Want to reach out to us? Fill out the form below, contact the SPARK President(2025238@apps.nsd.org), or your specific district vice president!</p>
+            <p class="description">We try our best to reply to emails as soon as possible... But we're all students with our own workloads to balance. Please be patient!</p>
+        </div>
 
-        <h2>Club Contact Information</h2>
-        <h3>For general inquiries, please contact SPARK's president, Yo-Cheng Liao, at 2025238@apps.nsd.org.</h3>
-        <p>Trying to contact a specific chapter? Look through this list to find your district.</p>
+       <div class="email banner">
+        <h2 class="header">We're here to help!</h2>
 
-        <ul>
-            <li><span style="font-weight: bold;"> North Shore School District: </span>Yo-Cheng Liao at 2025238@apps.nsd.org</li>
-            <li><span style="font-weight: bold;">Lake Washington School District: </span>Ishita Agrawal at 2002469@apps.nsd.org</li>
+        <form id="contactForm">
 
-        </ul>
+            <label for="email">Email<span class="required">*</span>
+                <input type="email" id="email" name="email" placeholder="yourEmail@example.com" required>
+            </label>
+
+            <label for="subject">Subject<span class="required">*</span>
+                <input type="text" id="subject" name="subject" placeholder="Email Subject" required>
+            </label>
+
+            <label for="school">School<span class="required">*</span>
+                <select id="school" name="school" required>
+                    <option value="General Inquiry (Not School Specific)" selected>General Inquiry (Not School Specific)</option>
+                    <option value="Canyon Creek Elementary School">Canyon Creek Elementary School</option>
+                    <option value="Fernwood Elementary School">Fernwood Elementary School</option>
+                </select>
+            </label>
+
+            <label for="message">Message<span class="required">*</span>
+                <textarea id="message" name="message" rows="10" placeholder="Type your message here..." required></textarea>
+            </label>
+
+            <button type="submit">Submit</button>
+
+        </form>
+       </div>
         
     </div>
     
