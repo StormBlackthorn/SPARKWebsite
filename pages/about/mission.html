@@ -9,6 +9,14 @@
     <link 
         href="https://fonts.googleapis.com/css2?family=Alata&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" 
         rel="stylesheet">
+    <script>
+         //fix github relative path issue
+        if (location.hostname === "stormblackthorn.github.io") {
+            const base = document.createElement('base');
+            base.href = "/SPARKWebsite/";
+            document.head.appendChild(base);
+        }
+    </script>
     <script src="../../src/index.js"></script>
     <link rel="stylesheet" href="../../styles/styles.css">
     <link rel="stylesheet" href="../../styles/mission.css">

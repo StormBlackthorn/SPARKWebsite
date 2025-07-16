@@ -8,13 +8,6 @@
 //load all components/scripts for all pages
 (async function() {
 
-  //fix github relative path issue
-  if (location.hostname === "stormblackthorn.github.io") {
-    const base = document.createElement('base');
-    base.href = "/SPARKWebsite/";
-    document.head.appendChild(base);
-  }
-
     //load all components/scripts
     const scripts = [
         "/src/components/Footer.js",
