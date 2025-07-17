@@ -111,7 +111,7 @@ class Navbar extends HTMLElement {
       </style>
 
       <div id="nav-bar">
-        <a href="/pages/home.html"><img src="/styles/assets/logo.png" id="logo" alt="Logo"></a>
+        <a href="pages/home.html"><img src="styles/assets/logo.png" id="logo" alt="Logo"></a>
         <div id="nav-links">
           <div class="dropdown">
             <div class="dropdown-title">
@@ -119,15 +119,15 @@ class Navbar extends HTMLElement {
               <p class="arrow"> > </p>
             </div>
             <div class="dropdown-content">
-              <a href="/pages/about/mission.html">Mission</a>
-              <a href="/pages/about/members.html">Members</a>
-              <a href="/pages/about/statistics.html">Statistics</a>
+              <a href="pages/about/mission.html">Mission</a>
+              <a href="pages/about/members.html">Members</a>
+              <a href="pages/about/statistics.html">Statistics</a>
             </div>
             
           </div>
-          <a href="/pages/Xcratch/index.html">Xcratch</a>
-          <a href="/pages/volunteer.html">Volunteer</a>
-          <a href="/pages/contactUs.html">Contact Us</a>
+          <a href="pages/Xcratch/index.html">Xcratch</a>
+          <a href="pages/volunteer.html">Volunteer</a>
+          <a href="pages/contactUs.html">Contact Us</a>
         </div>
       </div>
     `;
