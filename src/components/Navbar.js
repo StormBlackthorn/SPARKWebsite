@@ -120,6 +120,7 @@ class Navbar extends HTMLElement {
             </div>
             <div class="dropdown-content">
               <a href="pages/about/mission.html">Mission</a>
+              <a href="pages/about/chapters.html">Chapters</a>
               <a href="pages/about/members.html">Members</a>
               <a href="pages/about/statistics.html">Statistics</a>
             </div>
