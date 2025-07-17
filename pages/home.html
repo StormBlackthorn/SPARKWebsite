@@ -11,16 +11,14 @@
         rel="stylesheet">
     <script>
          //fix github relative path issue
-        if (location.hostname === "stormblackthorn.github.io") {
-            const base = document.createElement('base');
-            base.href = "/SPARKWebsite/";
-            document.head.appendChild(base);
-        }
+        const base = document.createElement('base');
+        base.href = location.hostname === "stormblackthorn.github.io" ? "/SPARKWebsite/" : "/";
+        document.head.appendChild(base);
     </script>
-    <script src="/src/index.js"></script>
-    <link rel="stylesheet" href="/styles/styles.css">
-    <link rel="stylesheet" href="/styles/home.css">
-    <script src="/src/carousel.js" defer></script>
+    <script src="src/index.js"></script>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/home.css">
+    <script src="src/carousel.js" defer></script>
 </head>
 
 <body>
@@ -78,10 +76,10 @@
                 <a href="pages/about/statistics.html"><button >Explore Our Impact &rarr;</button></a>
             </div>
             <div style="display: flex; gap: 20px;">
-                <div class="stat-box"> <img src="/styles/assets/icons/dedicatedVolunteerTeachers.png"> <p>27 Members</p> </div>
-                <div class="stat-box"> <img src="/styles/assets/icons/studentsTaught.png"> <p>186+ Kids Taught</p> </div>
-                <div class="stat-box"> <img src="/styles/assets/icons/schools.png"> <p>Trusted By 3 schools</p> </div>
-                <div class="stat-box"> <img src="/styles/assets/icons/hoursContributed.png"> <p>578+ Hours Spent</p> </div>
+                <div class="stat-box"> <img src="styles/assets/icons/dedicatedVolunteerTeachers.png"> <p>27 Members</p> </div>
+                <div class="stat-box"> <img src="styles/assets/icons/studentsTaught.png"> <p>186+ Kids Taught</p> </div>
+                <div class="stat-box"> <img src="styles/assets/icons/schools.png"> <p>Trusted By 3 schools</p> </div>
+                <div class="stat-box"> <img src="styles/assets/icons/hoursContributed.png"> <p>578+ Hours Spent</p> </div>
             </div>
         </div>
 

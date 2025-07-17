@@ -11,15 +11,13 @@
         rel="stylesheet">
     <script>
          //fix github relative path issue
-        if (location.hostname === "stormblackthorn.github.io") {
-            const base = document.createElement('base');
-            base.href = "/SPARKWebsite/";
-            document.head.appendChild(base);
-        }
+        const base = document.createElement('base');
+        base.href = location.hostname === "stormblackthorn.github.io" ? "/SPARKWebsite/" : "/";
+        document.head.appendChild(base);
     </script>
-    <script src="/src/index.js"></script>
-    <link rel="stylesheet" href="/styles/styles.css">
-    <link rel="stylesheet" href="/styles/statistics.css">
+    <script src=src/index.js"></script>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/statistics.css">
 </head>
 <body>
 
@@ -39,17 +37,17 @@
 
             <div class="row">
                 <div class="statistic">
-                    <img src="/styles/assets/icons/studentsTaught.png" class="icon">
+                    <img src="styles/assets/icons/studentsTaught.png" class="icon">
                     <h2 class="title">256</h2>
                     <p class="label">Students Taught</p>
                 </div>
                 <div class="statistic">
-                    <img src="/styles/assets/icons/fundsRaised.png" class="icon">
+                    <img src="styles/assets/icons/fundsRaised.png" class="icon">
                     <h2 class="title">$21,000</h2>
                     <p class="label">Funds Raised for PTSA</p>
                 </div>
                 <div class="statistic">
-                    <img src="/styles/assets/icons/yearsOfService.png" class="icon">
+                    <img src="styles/assets/icons/yearsOfService.png" class="icon">
                     <h2 class="title">2</h2>
                     <p class="label">Years of Service</p>
                 </div>
@@ -58,12 +56,12 @@
             <h2 class="description">Made Possible By...</h2>
             <div class="row">
                 <div class="statistic">
-                    <img src="/styles/assets/icons/dedicatedVolunteerTeachers.png" class="icon">
+                    <img src="styles/assets/icons/dedicatedVolunteerTeachers.png" class="icon">
                     <h2 class="title">32</h2>
                     <p class="label">Dedicated Volunteer Teachers</p>
                 </div>
                 <div class="statistic">
-                    <img src="/styles/assets/icons/hoursContributed.png" class="icon">
+                    <img src="styles/assets/icons/hoursContributed.png" class="icon">
                     <h2 class="title">512</h2>
                     <p class="label">Hours Contributed</p>
                 </div>
@@ -72,12 +70,12 @@
             <h2 class="description">Across...</h2>
             <div class="row">
                 <div class="statistic">
-                    <img src="/styles/assets/icons/schools.png" class="icon">
+                    <img src="styles/assets/icons/schools.png" class="icon">
                     <h2 class="title">6</h2>
                     <p class="label">Schools</p>
                 </div>
                 <div class="statistic">
-                    <img src="/styles/assets/icons/schoolDistricts.png" class="icon">
+                    <img src="styles/assets/icons/schoolDistricts.png" class="icon">
                     <h2 class="title">2</h2>
                     <p class="label">School Districts</p>
                 </div>
@@ -87,17 +85,17 @@
             <span style="margin-top: 0; margin-left: 17px; font-style: italic; font-size: 1.3em;">*The ratings are given on a ten point scale, given by the kids and the kids only.</span>
             <div class="row" style="margin-top: 20px;">
                 <div class="statistic">
-                    <img src="/styles/assets/icons/enjoyment.png" class="icon">
+                    <img src="styles/assets/icons/enjoyment.png" class="icon">
                     <h2 class="title">8.8</h2>
                     <p class="label">Enjoyment</p>
                 </div>
                 <div class="statistic">
-                    <img src="/styles/assets/icons/educationalValue.png" class="icon">
+                    <img src="styles/assets/icons/educationalValue.png" class="icon">
                     <h2 class="title">8.4</h2>
                     <p class="label">Educational Value</p>
                 </div>
                 <div class="statistic">
-                    <img src="/styles/assets/icons/teacherHelpfulness.png" class="icon">
+                    <img src="styles/assets/icons/teacherHelpfulness.png" class="icon">
                     <h2 class="title">9.2</h2>
                     <p class="label">Teacher Helpfulness</p>
                 </div>
