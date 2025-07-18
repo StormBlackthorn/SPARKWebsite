@@ -30,10 +30,83 @@
             <p class="description">Through countless hours of hard work put together by both student and parent volunteers, we have been able to make a real difference in our community. Join us and help us expand our impact and brighten our future!</p>
         </div>
 
+          
+        <div class="subsection">
+            <h2 class="subsectionHeading">We want you to join us! </h2>
+            <p class="subsectionContent">
+                Everyone can make a difference, and we need all the help that we can get. Check out the section below and see what you can do!
+            </p>
+            <p class="subsectionContent" style="font-style: italic; margin-top: 0; font-size: 0.95em;">
+                *Disclaimer: You must be a high school student to volunteer with SPARK. 
+            </p>
+        </div>
 
+        <div class="tabsContainer">
+            
+            <div class="tabs">
+                <button class="tab active" onclick="showTab(0)">Join an Existing Chapter</button>
+                <button class="tab" onclick="showTab(1)">Start a New Chapter</button>
+                <button class="tab" onclick="showTab(2)">Parents? We need you too!</button>
+            </div>
+
+            <div class="background">
+                <div class="content" style="display: block;">
+                    <div class="steps">
+                        <h3>Step 1: Find the chapter you want to join</h3>
+                        <p>Visit the <a href="/pages/about/chapters.html">Chapters</a> page to see the list of existing chapters. Find a location that works for you with lesson subjects that fits your interest.</p>
+                        <h3>Step 2: Reach out</h3>
+                        <p><a href="/pages/contactUs.html">Contact us</a> and express your interest in joining the chapter.</p>
+                    </div>
+                    
+                    <p style="font-size: 1.2em;">And you're done!! We will be in touch with you shortly.</p>
+                    <p style="font-style: italic;">*Disclaimer: Our volunteer policy is that you can only miss up to <strong>two</strong> sessions per season, unless it is for some unforeseen circumstance. Moreover, if you need to skip a session, <strong>please tell your local club leader.</strong></p>
+                </div>
+                <div class="content" style="display: none;">
+                    <div class="steps">
+                        <h3>Step 1: Contact us</h3>
+                        <p><a href="/pages/contactUs.html">Contact us</a> and express your interest in starting a chapter. We can provide help and our experiences along the way to ensure your success.</p>
+                        <h3>Step 2: Gather some friends</h3>
+                        <p>Find other people who are also interested and willing to help you start the chapter. We recommend at least having 4-5 founding members.</p>
+                        <h3>Step 3: Come up with a plan</h3>
+                        <p>Brainstorm what you guys will teach and how you will teach it. Come up with a basic curriculum.</p>
+                        <h3>Step 4: Reach out to your local schools</h3>
+                        <p>Email your local school and ask for their interests in starting a chapter. Do be warned that this part could be tricky and time consuming as school administrators are often busy.</p>
+                        <h3>Step 5: Start the club!</h3>
+                        <p>Once you have the necessary approvals and support, you can officially start teaching afterschool clubs at your selected elementary! Have fun, learn, gain experience, and repeat!</p>
+                    </div>
+                </div>
+                <div class="content" style="display: none;">
+                    <div class="steps">
+                        <h3>We are always in need of chaperons!</h3>
+                        <p>Often, we have to cut down on the sizes of our clubs or even cancel them altogether due to a lack of adult supervision. If you are a parent or guardian interested in helping out, please sign up to be a chaperon.</p>
+                        <p>The process is different for every school, so please consult your local school's website for more information how to become a chaperon.</p>
+                        <p>Most of the times, chaperons are only responsible for taking attendance. During lessons, chaperons are free to do whatever as long as they stay in the class.</p>
+                        <p style="font-style: italic;">*Note: Most school require adult volunteers to be ran through a background check, which may require additional charges.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
 
     </div>
 
     <footer-component></footer-component>
+
+    <script>
+
+        // force the content section to be the same width as the less wide tabs header
+        document.querySelector(".background").style.width = `${document.querySelector(".tabs").offsetWidth}px`;
+
+        function showTab(idx) {
+            const tabs = document.querySelectorAll('.tab');
+            document.querySelectorAll(".content").forEach((content, i) => {
+                content.style.display = i === idx ? 'block' : 'none';
+                tabs[i].classList.toggle('active', i === idx);
+            });
+        }
+
+
+
+    </script>
 </body>
 </html>
