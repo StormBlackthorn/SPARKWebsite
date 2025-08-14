@@ -18,6 +18,14 @@ function search(parentEl, { title, searchedText="", filteredTags=[] }) {
             }
         }
 
-        child.style.display = matchesTitle && matchesTags ? "block" : 'none';
+      if (matchesTitle && matchesTags) {
+            child.style.display = "block";
+            child.classList.remove("fade-out");
+            child.classList.add("fade-in");
+        } else {
+            child.classList.remove("fade-in");
+            child.classList.add("fade-out");
+            setTimeout(() => child.style.display = "none", 300); // Match the CSS animation duration
+        }
     });
 }
