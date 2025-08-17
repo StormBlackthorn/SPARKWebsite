@@ -37,17 +37,17 @@
 
             <div class="row">
                 <div class="statistic">
-                    <img src="styles/assets/icons/studentsTaught.png" class="icon">
+                    <img src="styles/assets/icons/studentsTaught.png" class="icon" loading="lazy">
                     <h2 class="title">256</h2>
                     <p class="label">Students Taught</p>
                 </div>
                 <div class="statistic">
-                    <img src="styles/assets/icons/fundsRaised.png" class="icon">
+                    <img src="styles/assets/icons/fundsRaised.png" class="icon" loading="lazy">
                     <h2 class="title">$21,000</h2>
                     <p class="label">Funds Raised for PTSA</p>
                 </div>
                 <div class="statistic">
-                    <img src="styles/assets/icons/yearsOfService.png" class="icon">
+                    <img src="styles/assets/icons/yearsOfService.png" class="icon" loading="lazy">
                     <h2 class="title">2</h2>
                     <p class="label">Years of Service</p>
                 </div>
@@ -56,12 +56,12 @@
             <h2 class="description">Made Possible By...</h2>
             <div class="row">
                 <div class="statistic">
-                    <img src="styles/assets/icons/dedicatedVolunteerTeachers.png" class="icon">
+                    <img src="styles/assets/icons/dedicatedVolunteerTeachers.png" class="icon" loading="lazy">
                     <h2 class="title">32</h2>
                     <p class="label">Dedicated Volunteer Teachers</p>
                 </div>
                 <div class="statistic">
-                    <img src="styles/assets/icons/hoursContributed.png" class="icon">
+                    <img src="styles/assets/icons/hoursContributed.png" class="icon" loading="lazy">
                     <h2 class="title">512</h2>
                     <p class="label">Hours Contributed</p>
                 </div>
@@ -70,12 +70,12 @@
             <h2 class="description">Across...</h2>
             <div class="row">
                 <div class="statistic">
-                    <img src="styles/assets/icons/schools.png" class="icon">
+                    <img src="styles/assets/icons/schools.png" class="icon" loading="lazy">
                     <h2 class="title">6</h2>
                     <p class="label">Schools</p>
                 </div>
                 <div class="statistic">
-                    <img src="styles/assets/icons/schoolDistricts.png" class="icon">
+                    <img src="styles/assets/icons/schoolDistricts.png" class="icon" loading="lazy">
                     <h2 class="title">2</h2>
                     <p class="label">School Districts</p>
                 </div>
@@ -85,17 +85,17 @@
             <span style="margin-top: 0; margin-left: 17px; font-style: italic; font-size: 1.3em;">*The ratings are given on a ten point scale, given by the kids and the kids only.</span>
             <div class="row" style="margin-top: 20px;">
                 <div class="statistic">
-                    <img src="styles/assets/icons/enjoyment.png" class="icon">
+                    <img src="styles/assets/icons/enjoyment.png" class="icon" loading="lazy">
                     <h2 class="title">8.8</h2>
                     <p class="label">Enjoyment</p>
                 </div>
                 <div class="statistic">
-                    <img src="styles/assets/icons/educationalValue.png" class="icon">
+                    <img src="styles/assets/icons/educationalValue.png" class="icon" loading="lazy">
                     <h2 class="title">8.4</h2>
                     <p class="label">Educational Value</p>
                 </div>
                 <div class="statistic">
-                    <img src="styles/assets/icons/teacherHelpfulness.png" class="icon">
+                    <img src="styles/assets/icons/teacherHelpfulness.png" class="icon" loading="lazy">
                     <h2 class="title">9.2</h2>
                     <p class="label">Teacher Helpfulness</p>
                 </div>
@@ -108,6 +108,75 @@
     
     
     <footer-component></footer-component>
-    
+    <script>
+
+// The numbers going up animations
+document.addEventListener("DOMContentLoaded", function() {
+    const duration = 1200; // ms
+
+    function animateValue(el, start, end, duration) {
+        let startTimestamp = null;
+        // Using cubic ease-out function for a smooth ease-out effect
+        function easeOutCubic(t) {
+            return 1 - Math.pow(0.5 - t*0.5, 3);
+        }
+
+        // Time ticking
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            let rawProgress = Math.min((timestamp - startTimestamp) / duration, 1);
+            let progress = easeOutCubic(rawProgress);
+            let value = start + (end - start) * progress;
+
+            // dealing with decimals
+            if (String(end).includes('.')) {
+                value = value.toFixed(1);
+            } 
+            // dealing with dollars
+            else if (String(end).includes('$')) {
+                const num = parseInt(end.replace(/\D/g, ''));
+                value = Math.floor(start + (num - start) * progress);
+                value = '$' + value.toLocaleString();
+            } 
+            // normal numbers
+            else {
+                value = Math.floor(value);
+            }
+            el.textContent = value;
+            if (rawProgress < 1) {
+                window.requestAnimationFrame(step);
+            } else {
+                el.textContent = end;
+            }
+        };
+        window.requestAnimationFrame(step);
+    }
+
+    // Observe each .row individually to only make them animate when user goes past them
+    document.querySelectorAll('.row').forEach(row => {
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    row.querySelectorAll('.statistic .title').forEach(el => {
+                        if (!el.dataset.animated) {
+                            let endValue = el.textContent.trim();
+                            let startValue = 0;
+                            if (endValue.startsWith('$')) {
+                                endValue = '$' + parseInt(endValue.replace(/\D/g, ''));
+                            } else if (!isNaN(parseFloat(endValue))) {
+                                endValue = endValue.includes('.') ? parseFloat(endValue) : parseInt(endValue, 10);
+                            }
+                            animateValue(el, startValue, endValue, duration);
+                            el.dataset.animated = "true";
+                        }
+                    });
+                    observer.disconnect();
+                }
+            });
+        }, { threshold: 0.3 });
+        observer.observe(row);
+    });
+});
+</script>
 </body>
 </html>

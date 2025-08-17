@@ -40,20 +40,25 @@
             </div>
 
             <div class="carousel">
-                <div>
-                    <svg width="50" height="50" viewBox="0 0 250 250" class="circular-progress">
-                        <circle class="fg"></circle>
-                        <div style="position: absolute; top: 14.5px; left: 2px; width: 50px; height: 50px;">
-                            <span id="pauseButton" onclick="pause()">⏸︎</span>
-                        </div>  
-                    </svg>
+                <div style="width: 50px; height: 50px">
+                    
+                    <!-- its centered now via the power of margin 9px 9=((50-32)/2) -->
+                    <div style="position: absolute; top: 17px; left: 4px;">
+                        <svg width="50" height="50" viewBox="0 0 250 250" class="circular-progress">
+                            <circle class="fg"></circle>
+                        </svg>
+                        <span id="pauseButton" onclick="pause()">
+                            <img id="pauseIcon" src="styles/assets/pause.svg" alt="Pause" style="width:32px;height:32px;margin:9px;" loading="lazy">
+                        </span>
+                    </div>  
+
                 </div>
                 <span class="arrows" style="transform: translateX(50%);" onclick="rotate(['.images', '.dots'], -1);"><</span>
                 <div class="images">
-                    <img src="https://picsum.photos/1280/960?random=1" alt="Carousel Image" class="current">
-                    <img src="https://picsum.photos/1280/960?random=2" alt="Carousel Image">
-                    <img src="https://picsum.photos/1280/960?random=3" alt="Carousel Image">
-                    <img src="https://picsum.photos/1280/960?random=4" alt="Carousel Image">
+                    <img src="https://picsum.photos/1280/960?random=1" alt="Carousel Image" class="current" loading="lazy">
+                    <img src="https://picsum.photos/1280/960?random=2" alt="Carousel Image" loading="lazy">
+                    <img src="https://picsum.photos/1280/960?random=3" alt="Carousel Image" loading="lazy">
+                    <img src="https://picsum.photos/1280/960?random=4" alt="Carousel Image" loading="lazy">
                 </div>
                 <span class="arrows" style="right: 0;transform: translateX(-50%);" onclick="rotate(['.images', '.dots'], 1);">></span>
                 <div class="dots">
@@ -76,10 +81,10 @@
                 <a href="pages/about/statistics.html"><button >Explore Our Impact &rarr;</button></a>
             </div>
             <div style="display: flex; gap: 20px;">
-                <div class="stat-box"> <img src="styles/assets/icons/dedicatedVolunteerTeachers.png"> <p>27 Members</p> </div>
-                <div class="stat-box"> <img src="styles/assets/icons/studentsTaught.png"> <p>186+ Kids Taught</p> </div>
-                <div class="stat-box"> <img src="styles/assets/icons/schools.png"> <p>Trusted By 3 schools</p> </div>
-                <div class="stat-box"> <img src="styles/assets/icons/hoursContributed.png"> <p>578+ Hours Spent</p> </div>
+                <div class="stat-box"> <img src="styles/assets/icons/dedicatedVolunteerTeachers.png" loading="lazy"> <p>27 Members</p> </div>
+                <div class="stat-box"> <img src="styles/assets/icons/studentsTaught.png" loading="lazy"> <p>186+ Kids Taught</p> </div>
+                <div class="stat-box"> <img src="styles/assets/icons/schools.png" loading="lazy"> <p>Trusted By 3 schools</p> </div>
+                <div class="stat-box"> <img src="styles/assets/icons/hoursContributed.png" loading="lazy"> <p>578+ Hours Spent</p> </div>
             </div>
         </div>
 
@@ -155,7 +160,10 @@
 
         function pause() {
             paused = !paused;
-            pauseButton.textContent = paused ? '⏵︎' : '⏸︎';
+            // Swap icon image instead of text
+            const pauseIcon = document.getElementById('pauseIcon');
+            pauseIcon.src = paused ? 'styles/assets/play.svg' : 'styles/assets/pause.svg';
+            pauseIcon.alt = paused ? 'Play' : 'Pause';
 
             //some magical math and time manipulation
             if (paused) pausedTime = performance.now() - startTime;
