@@ -53,50 +53,62 @@
             <div class="card">
                  <!-- https://imageresizer.com/bulk-resize -->
                 <!-- image should be 400x300. Crop to 800x600 and then scale down  -->
-                <img src="styles/assets/chapterThumbnails/Canyon-Creek-Elementary.jpg" alt="Canyon Creek Elementary" loading="lazy">
+                <img src="styles/assets/chapterThumbnails/Canyon-Creek-Elementary.jpg" alt="Canyon Creek Elementary">
                     <h3 class="title">
                         <a href="https://canyoncreek.nsd.org/" target="_blank">Canyon Creek Elementary</a>
                     </h3>
                 <span class="description">Chapter established in 2024(1 school year ago)</span>
-                <div class="tag northshore">
-                    <span class="name">Northshore School District</span>
+                <div class="tags">
+                    <div class="tag northshore">
+                        <span class="label">Northshore School District</span>
+                    </div>
                 </div>
+
+        
             </div>
               
 
             <div class="card">
-                <img src="styles/assets/chapterThumbnails/fernwood-elementary.jpg" alt="Fernwood Elementary" loading="lazy">
+                <img src="styles/assets/chapterThumbnails/fernwood-elementary.jpg" alt="Fernwood Elementary">
                 <h3 class="title">
                     <a href="https://fernwood.nsd.org/" target="_blank">Fernwood Elementary</a>
                 </h3>
                 <span class="description">Chapter established in 2025(1 school year ago)</span>
-                <div class="tag northshore">
-                    <span class="name">Northshore School District</span>
+                <div class="tags">
+                    <div class="tag northshore">
+                        <span class="label">Northshore School District</span>
+                    </div>
                 </div>
             </div>
 
 
             <div class="card">
-                <img src="styles/assets/chapterThumbnails/cottage-lake-elementary.webp" alt="Cottage Lake Elementary" loading="lazy">
+                <img src="styles/assets/chapterThumbnails/cottage-lake-elementary.webp" alt="Cottage Lake Elementary">
                 <h3 class="title">
                     <a href="https://cottagelake.nsd.org/" target="_blank">Cottage Lake Elementary</a>
                 </h3>
                 <span class="description">Chapter established in 2025(This school year)</span>
-                <div class="tag northshore">
-                    <span class="name">Northshore School District</span>
+                <div class="tags">
+                    <div class="tag northshore">
+                        <span class="label">Northshore School District</span>
+                    </div>
                 </div>
+                
             </div>
 
 
             <div class="card">
-                <img src="styles/assets/chapterThumbnails/woodin-elementary.webp" alt="Woodin Elementary" loading="lazy">
+                <img src="styles/assets/chapterThumbnails/woodin-elementary.webp" alt="Woodin Elementary">
                 <h3 class="title">
                     <a href="https://woodin.nsd.org/" target="_blank">Woodin Elementary</a>
                 </h3>
                 <span class="description">Chapter established in 2025(This school year)</span>
-                <div class="tag northshore">
-                    <span class="name">Northshore School District</span>
+                <div class="tags">
+                    <div class="tag northshore">
+                        <span class="label">Northshore School District</span>
+                    </div>
                 </div>
+
             </div>
 
 
@@ -106,32 +118,5 @@
 
     <footer-component></footer-component>
 
-    <script>
-        const tooltip = document.querySelector('.tooltip');
-
-        document.getElementById('filterIcon').addEventListener('click', (e) => {
-            e.stopPropagation();
-            tooltip.classList.toggle('show');
-        });
-        document.addEventListener('click', (e) => {
-            if (!tooltip.contains(e.target)) tooltip.classList.remove('show');
-        });
-
-        const searchInput = document.getElementById('searchInput');
-        const cardsParent = document.querySelector('.cards');
-        const filterCheckboxes = Array.from(document.querySelectorAll('input[type=checkbox]'));
-
-        function runSearch() {
-            search(cardsParent, {
-                title: 'title',
-                searchedText: searchInput.value,
-                filteredTags: filterCheckboxes.filter(cb => cb.checked).map(cb => cb.value)
-            });
-        }
-
-        searchInput.addEventListener('input', runSearch);
-        filterCheckboxes.forEach(cb => cb.addEventListener('change', runSearch));
-
-    </script>
 </body>
 </html>

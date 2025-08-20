@@ -43,13 +43,14 @@ function search(parentEl, { title, searchedText="", filteredTags=[] }) {
         let matchesTags = true;
 
         // Tag filter
-        const tagList = Array.from(child.querySelector('.tag').classList).filter(cls => cls !== 'tag');
+        const tagList = Array.from(child.querySelector(".tags").children).flatMap(tag => [...tag.classList]).filter(cls => cls !== "tag");
         for(let i = 0, l = filteredTags.length; i < l; i++) {
             if(!tagList.includes(filteredTags[i])){
                 matchesTags = false;
                 break;
             }
         }
+    console.log(searchedText, matchesTitle, matchesTags)
 
       if (matchesTitle && matchesTags) {
             child.style.display = "block";
@@ -58,7 +59,11 @@ function search(parentEl, { title, searchedText="", filteredTags=[] }) {
         } else {
             child.classList.remove("fade-in");
             child.classList.add("fade-out");
-            setTimeout(() => child.style.display = "none", 300); // Match the CSS animation duration
+
+            child.addEventListener("animationend", () => {
+                if (child.classList.contains("fade-out")) child.style.display = "none";
+                child.removeEventListener("animationend", onAnimationEnd);
+            });        
         }
     });
 }

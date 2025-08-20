@@ -164,16 +164,12 @@
                 font-size: 1.1em;
             }
 
-            .northshore {
-                --tag-color: #005f95; 
-            }
-
-            .test {
-                --tag-color: red;
-            }
-
             .tags {
                 margin-top: 7px;
+
+                .northshore {
+                    --tag-color: #005f95; 
+                }
                     
                 .tag {
                     cursor: default;

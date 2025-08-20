@@ -16,6 +16,7 @@
         document.head.appendChild(base);
     </script>
     <script src="src/index.js"></script>
+    <script src="src/search.js"></script>
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/chapters.css">
     <link rel="stylesheet" href="styles/members.css">
@@ -25,21 +26,30 @@
     <navbar-component></navbar-component>
  <div class="container">
         <div class="header">
-            <h1 class="title">Our Chapters</h1>
-            <p class="description">These are all of the local schools in which we teach at</p>
+            <h1 class="title">Our Members</h1>
+            <p class="description">These are all of our dedicated volunteers and teachers</p>
         </div>
 
         <div class="search">
-            <input type="text" id="searchInput" placeholder="Search for a chapter...">
+            <input type="text" id="searchInput" placeholder="Search for a member...">
             <div class="filter">
                 <img src="styles/assets/icons/filter.png" alt="Filter Icon" id="filterIcon">
 
                 <div class="tooltip">
-                    <h2>Filter by District</h2>
-                    <label>                          
-                        <input type="checkbox" name="district" value="northshore">
-                        Northshore School District
-                    </label>
+                    <h2>Filter by Gender</h2>
+                    <label><input type="checkbox" name="gender" value="male">Male</label>
+                    <label><input type="checkbox" name="gender" value="female">Female</label>
+
+                    <h2>Filter by Role</h2>
+                    <label><input type="checkbox" name="role" value="executive">Executive</input></label>
+                    <label><input type="checkbox" name="role" value="programmer">Software Developer</label>
+                    <label><input type="checkbox" name="role" value="artist">Graphic Designer</label>
+
+                    <h2>Filter by Chapter</h2>
+                    <label><input type="checkbox" name="chapter" value="canyonCreek">Canyon Creek</label>
+                    <label><input type="checkbox" name="chapter" value="fernwood">Fernwood</label>
+                    <label><input type="checkbox" name="chapter" value="cottageLake">Cottage Lake</label>
+                    <label><input type="checkbox" name="chapter" value="woodin">Woodin</label>
                 </div>
 
             </div>
@@ -49,56 +59,45 @@
         <div class="cards">
 
             <div class="card">
-                 <!-- https://imageresizer.com/bulk-resize -->
-                <!-- image should be 400x300. Crop to 800x600 and then scale down  -->
-                <img src="styles/assets/chapterThumbnails/Canyon-Creek-Elementary.jpg" alt="Canyon Creek Elementary">
-                    <h3 class="title">
-                        <a href="https://canyoncreek.nsd.org/" target="_blank">Canyon Creek Elementary</a>
-                    </h3>
-                <span class="description">Chapter established in 2024(1 school year ago)</span>
-                <div class="tag northshore">
-                    <span class="label">Northshore School District</span>
-                </div>
-            </div>
-              
-
-            <div class="card">
-                <img src="styles/assets/chapterThumbnails/fernwood-elementary.jpg" alt="Fernwood Elementary">
-                <h3 class="title">
-                    <a href="https://fernwood.nsd.org/" target="_blank">Fernwood Elementary</a>
-                </h3>
-                <span class="description">Chapter established in 2025(1 school year ago)</span>
-                <div class="tag northshore">
-                    <span class="label">Northshore School District</span>
+                <img src="styles/assets/memberThumbnails/defaultMalePicture.jpg">
+                <h3 class="title">Yo-cheng Liao</h3>
+                <span class="description">Club President, Lead Programmer | 2024</span>
+                <div class="tags">
+                    <div class="tag male"><span class="label">He/Him</span></div>
+                    <div class="tag executive"><span class="label">Executive</span></div>
+                    <div class="tag programmer"><span class="label">Software Developer</span></div>
+                    <div class="tag canyonCreek"><span class="label">Canyon Creek</span></div>
+                    <div class="tag fernwood"><span class="label">Fernwood</span></div>
                 </div>
             </div>
 
-
-            <div class="card">
-                <img src="styles/assets/chapterThumbnails/cottage-lake-elementary.webp" alt="Cottage Lake Elementary">
-                <h3 class="title">
-                    <a href="https://cottagelake.nsd.org/" target="_blank">Cottage Lake Elementary</a>
-                </h3>
-                <span class="description">Chapter established in 2025(This school year)</span>
-                <div class="tag northshore">
-                    <span class="label">Northshore School District</span>
+             <div class="card">
+                <img src="styles/assets/memberThumbnails/defaultMalePicture.jpg">
+                <h3 class="title">Videep Mannava</h3>
+                <span class="description">[Insert Role] | 2024</span>
+                <div class="tags">
+                    <div class="tag male"><span class="label">He/Him</span></div>
+                    <div class="tag executive"><span class="label">Executive</span></div>
+                    <div class="tag programmer"><span class="label">Software Developer</span></div>
+                    <div class="tag canyonCreek"><span class="label">Canyon Creek</span></div>
+                    <div class="tag fernwood"><span class="label">Fernwood</span></div>
                 </div>
             </div>
 
-
             <div class="card">
-                <img src="styles/assets/chapterThumbnails/woodin-elementary.webp" alt="Woodin Elementary">
-                <h3 class="title">
-                    <a href="https://woodin.nsd.org/" target="_blank">Woodin Elementary</a>
-                </h3>
-                <span class="description">Chapter established in 2025(This school year)</span>
-                <div class="tag northshore">
-                    <span class="label">Northshore School District</span>
+                <img src="styles/assets/memberThumbnails/defaultFemalePicture.jpg">
+                <h3 class="title">Ishita Agrawal</h3>
+                <span class="description">[Insert Role] | 2025</span>
+                <div class="tags">
+                    <div class="tag female"><span class="label">She/Her</span></div>
+                    <div class="tag executive"><span class="label">Executive</span></div>
                 </div>
             </div>
 
 
         </div>
+
+        
 
     </div>
 
