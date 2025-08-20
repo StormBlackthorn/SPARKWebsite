@@ -109,74 +109,53 @@
     
     <footer-component></footer-component>
     <script>
+        // code to make statistic numbers go up
+        // all hail chat gpt?
+        document.addEventListener("DOMContentLoaded", () => {
+            const duration = 1200;
 
-// The numbers going up animations
-document.addEventListener("DOMContentLoaded", function() {
-    const duration = 1200; // ms
+            const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
 
-    function animateValue(el, start, end, duration) {
-        let startTimestamp = null;
-        // Using cubic ease-out function for a smooth ease-out effect
-        function easeOutCubic(t) {
-            return 1 - Math.pow(0.5 - t*0.5, 3);
-        }
+            function animate(el, end, format) {
+                let start = null;
 
-        // Time ticking
-        const step = (timestamp) => {
-            if (!startTimestamp) startTimestamp = timestamp;
-            let rawProgress = Math.min((timestamp - startTimestamp) / duration, 1);
-            let progress = easeOutCubic(rawProgress);
-            let value = start + (end - start) * progress;
+                const step = ts => {
+                if (!start) start = ts;
+                let progress = Math.min((ts - start) / duration, 1);
+                let eased = easeOutCubic(progress);
+                let value = end * eased;
 
-            // dealing with decimals
-            if (String(end).includes('.')) {
-                value = value.toFixed(1);
-            } 
-            // dealing with dollars
-            else if (String(end).includes('$')) {
-                const num = parseInt(end.replace(/\D/g, ''));
-                value = Math.floor(start + (num - start) * progress);
-                value = '$' + value.toLocaleString();
-            } 
-            // normal numbers
-            else {
-                value = Math.floor(value);
+                if (format === "$") el.textContent = "$" + Math.floor(value).toLocaleString();
+                else if (format === "decimal") el.textContent = value.toFixed(1);
+                else el.textContent = Math.floor(value);
+
+                if (progress < 1) requestAnimationFrame(step);
+                else el.textContent = format === "$" ? "$" + end.toLocaleString() : end;
+                };
+
+                requestAnimationFrame(step);
             }
-            el.textContent = value;
-            if (rawProgress < 1) {
-                window.requestAnimationFrame(step);
-            } else {
-                el.textContent = end;
-            }
-        };
-        window.requestAnimationFrame(step);
-    }
 
-    // Observe each .row individually to only make them animate when user goes past them
-    document.querySelectorAll('.row').forEach(row => {
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    row.querySelectorAll('.statistic .title').forEach(el => {
-                        if (!el.dataset.animated) {
-                            let endValue = el.textContent.trim();
-                            let startValue = 0;
-                            if (endValue.startsWith('$')) {
-                                endValue = '$' + parseInt(endValue.replace(/\D/g, ''));
-                            } else if (!isNaN(parseFloat(endValue))) {
-                                endValue = endValue.includes('.') ? parseFloat(endValue) : parseInt(endValue, 10);
-                            }
-                            animateValue(el, startValue, endValue, duration);
-                            el.dataset.animated = "true";
-                        }
-                    });
-                    observer.disconnect();
+            function parse(el) {
+                let txt = el.textContent.trim();
+                if (txt.startsWith("$")) return { end: +txt.replace(/\D/g, ""), format: "$" };
+                if (txt.includes(".")) return { end: parseFloat(txt), format: "decimal" };
+                return { end: parseInt(txt, 10), format: "number" };
+            }
+
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.dataset.animated) {
+                    let { end, format } = parse(entry.target);
+                    animate(entry.target, end, format);
+                    entry.target.dataset.animated = "true";
                 }
-            });
-        }, { threshold: 0.3 });
-        observer.observe(row);
-    });
-});
-</script>
+                });
+            }, { threshold: 0.3 });
+
+            document.querySelectorAll(".statistic .title").forEach(el => observer.observe(el));
+        });
+
+    </script>
 </body>
 </html>

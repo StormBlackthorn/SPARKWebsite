@@ -5,6 +5,7 @@
 }
 
 .container {
+    margin: 0 auto;
 
     /* everything thats not the hero section, have side margin */
     & > :not(.club-info) { 
@@ -106,7 +107,7 @@
                 display: none;
                 height: 50px;
                 width: 50px;
-                display: flex;
+                display: none;
                 /* justify-content: center;
                 align-items: center; */
                 /* top: 50%;
@@ -157,10 +158,9 @@
                 }
             }
     
-    
-            /* &:hover { */
+            &:hover {
                 #pauseButton {
-                    display: inline;
+                    display: block;
                 }
                 
                 .arrows {
@@ -174,7 +174,8 @@
                 .circular-progress {
                     display: block;
                 }
-            /* } */
+            }
+
     
             .arrows {
                 position: absolute;
