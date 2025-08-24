@@ -50,7 +50,6 @@ function search(parentEl, { title, searchedText="", filteredTags=[] }) {
                 break;
             }
         }
-    console.log(searchedText, matchesTitle, matchesTags)
 
       if (matchesTitle && matchesTags) {
             child.style.display = "block";
