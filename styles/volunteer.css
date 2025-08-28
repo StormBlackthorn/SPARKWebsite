@@ -51,6 +51,7 @@
                 cursor: pointer;
                 font-weight: bold;
                 transition: background 0.2s;
+                font-family: Alata, Arial;
 
                 &.active {
                     background: #ffcccb;

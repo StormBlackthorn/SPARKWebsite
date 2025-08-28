@@ -15,7 +15,6 @@ class Navbar extends HTMLElement {
             justify-content: space-between;
             align-items: center;
             position: sticky;
-            top: 0;
             border-bottom: 4px solid black;
             z-index: 9999;
 

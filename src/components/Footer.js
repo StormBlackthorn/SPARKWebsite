@@ -12,7 +12,10 @@ class Footer extends HTMLElement {
         border-top: 4px solid black;
         padding: 40px 20px;
         color: #222;
-        font-family: Arial, sans-serif;
+        font-family: Alata, Arial, sans-serif;
+        position: sticky;
+        z-index: 10000;
+
       }
       
       .icon {
@@ -28,6 +31,7 @@ class Footer extends HTMLElement {
     justify-content: space-between;
     max-width: 1200px;
     margin: 0 auto;
+    z-index: 10000;
 
     h3 {
       margin-bottom: 12px;
@@ -110,14 +114,14 @@ class Footer extends HTMLElement {
               <p>
                   Inspiring STEM creativity through projects, innovation, 
                   and collaboration. Empowering the next generation of 
-                  problem solvers and innovators. <b>A fully student ran,
+                  problem solvers and innovators. <b>A fully student-run,
                   non-profit organization.</b>
               </p>
           </div>
       </div>
 
       <div class="footer-bottom">
-          © 2025 SPARK STEM Club · All Rights Reserved
+          <b>© 2025 SPARK STEM Club</b> · All Rights Reserved
           <br>
           Website designed by Yo-cheng Liao and Videep Mannava
       </div>
