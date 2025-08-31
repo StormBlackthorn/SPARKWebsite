@@ -129,7 +129,26 @@ class Footer extends HTMLElement {
   </footer>
 
     `;
+
+    // Adjust footer to fill remaining viewport height when page content is short
+    this.fillHeight = () => {
+        const footer = this.shadowRoot.querySelector('footer');
+
+        // Remaining viewport space below the top of this element
+        const remaining = window.innerHeight - this.getBoundingClientRect().top;
+
+        //make the footer at least tall enough to fill in remaining space
+        footer.style.minHeight = remaining + 'px';
+        //this property does not make sense to me but its required so the height doesn't randomly overflow
+        footer.style.boxSizing = 'border-box';
+    };
+
+    window.addEventListener('resize', this.fillHeight);
+
+    // Observe DOM changes that could affect layout (images loading, content changes)
+    new MutationObserver(() => this.fillHeight()).observe(document.body, { childList: true, subtree: true, attributes: true, characterData: true });
   }
+
 }
 
 customElements.define('footer-component', Footer);
