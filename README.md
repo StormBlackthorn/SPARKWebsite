@@ -6,4 +6,4 @@ Made ya look!
 
 This repository is the official repo for the SPARK Website. Any development progress will be reflected here. Please open an issue if you found any bug/typo, or have any suggestions. 
 
-[Website (GitHub pages)](https://stormblackthorn.github.io/SPARKWebsite/pages/index.html)
+[Website (GitHub pages)](https://spark-stem.web.app)
