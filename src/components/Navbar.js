@@ -110,7 +110,7 @@ class Navbar extends HTMLElement {
       </style>
 
       <div id="nav-bar">
-        <a href="pages/home.html"><img src="styles/assets/sparkTextLogo.png" id="logo" alt="Logo"></a>
+        <a href="pages/index.html"><img src="styles/assets/sparkTextLogo.png" id="logo" alt="Logo"></a>
         <div id="nav-links">
           <div class="dropdown">
             <div class="dropdown-title">

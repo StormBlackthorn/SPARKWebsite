@@ -92,7 +92,7 @@ class Footer extends HTMLElement {
           <div>
               <h3>Quick Links</h3>
               <ul>
-                  <li><a href="/pages/home.html">Home</a></li>
+                  <li><a href="/pages/index.html">Home</a></li>
                   <li><a href="/pages/about/statistics.html">Our Statistics</a></li>
                   <li><a href="/pages/volunteer.html">Volunteer</a></li>
                   <li><a href="/pages/contactUs.html">Contact Us</a></li>
