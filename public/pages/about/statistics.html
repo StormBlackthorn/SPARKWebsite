@@ -38,12 +38,12 @@
             <div class="row">
                 <div class="statistic">
                     <img src="styles/assets/icons/studentsTaught.png" class="icon" loading="lazy">
-                    <h2 class="title">256</h2>
+                    <h2 class="title">200+</h2>
                     <p class="label">Students Taught</p>
                 </div>
                 <div class="statistic">
                     <img src="styles/assets/icons/fundsRaised.png" class="icon" loading="lazy">
-                    <h2 class="title">$21,000</h2>
+                    <h2 class="title">$[Place Holder]</h2>
                     <p class="label">Funds Raised for PTSA</p>
                 </div>
                 <div class="statistic">
@@ -57,12 +57,12 @@
             <div class="row">
                 <div class="statistic">
                     <img src="styles/assets/icons/dedicatedVolunteerTeachers.png" class="icon" loading="lazy">
-                    <h2 class="title">32</h2>
+                    <h2 class="title">19</h2>
                     <p class="label">Dedicated Volunteer Teachers</p>
                 </div>
                 <div class="statistic">
                     <img src="styles/assets/icons/hoursContributed.png" class="icon" loading="lazy">
-                    <h2 class="title">512</h2>
+                    <h2 class="title">150+</h2>
                     <p class="label">Hours Contributed</p>
                 </div>
             </div>
@@ -71,13 +71,13 @@
             <div class="row">
                 <div class="statistic">
                     <img src="styles/assets/icons/schools.png" class="icon" loading="lazy">
-                    <h2 class="title">6</h2>
+                    <h2 class="title">4</h2>
                     <p class="label">Schools</p>
                 </div>
                 <div class="statistic">
                     <img src="styles/assets/icons/schoolDistricts.png" class="icon" loading="lazy">
-                    <h2 class="title">2</h2>
-                    <p class="label">School Districts</p>
+                    <h2 class="title">1</h2>
+                    <p class="label">School District</p>
                 </div>
             </div>
 
@@ -120,17 +120,17 @@
                 let start = null;
 
                 const step = ts => {
-                if (!start) start = ts;
-                let progress = Math.min((ts - start) / duration, 1);
-                let eased = easeOutCubic(progress);
-                let value = end * eased;
+                    if (!start) start = ts;
+                    let progress = Math.min((ts - start) / duration, 1);
+                    let eased = easeOutCubic(progress);
+                    let value = end * eased;
 
-                if (format === "$") el.textContent = "$" + Math.floor(value).toLocaleString();
-                else if (format === "decimal") el.textContent = value.toFixed(1);
-                else el.textContent = Math.floor(value);
+                    if (format === "$") el.textContent = "$" + Math.floor(value).toLocaleString();
+                    else if (format === "decimal") el.textContent = value.toFixed(1);
+                    else el.textContent = Math.floor(value);
 
-                if (progress < 1) requestAnimationFrame(step);
-                else el.textContent = format === "$" ? "$" + end.toLocaleString() : end;
+                    if (progress < 1) requestAnimationFrame(step);
+                    else el.textContent = format === "$" ? "$" + end.toLocaleString() : end;
                 };
 
                 requestAnimationFrame(step);
