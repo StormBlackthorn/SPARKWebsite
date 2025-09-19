@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPARK - Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link 
+        href="https://fonts.googleapis.com/css2?family=Alata&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" 
+        rel="stylesheet">
+    <script>
+         //fix github relative path issue
+        const base = document.createElement('base');
+        base.href = location.hostname === "stormblackthorn.github.io" ? "/SPARKWebsite/" : "/";
+        document.head.appendChild(base);
+    </script>
+    <script src="public/src/index.js"></script>
+    <link rel="stylesheet" href="public/styles/styles.css">
+    <link rel="stylesheet" href="public/styles/home.css">
+    <script src="public/src/carousel.js" defer></script>
+</head>
+
+<body>
+
+    <navbar-component></navbar-component>
+
+    <div class="container">
+
+        <div class="club-info">
+            <div class="club-details">
+                <h2>SPARK</h2>
+                <h3>STEM Path Activities & Resources for Kids</h3>
+                <p>A fully student-run organization dedicated to providing afterschool teaching for STEM 
+                    related subjects in local elementary schools.</p>
+                <div class="mission-members-buttons">
+                    <a href="public/pages/about/mission.html"><button>Our Mission</button></a>
+                    <a href="public/pages/about/members.html"><button>Our Members</button></a>
+                </div>
+            </div>
+
+            <div class="carousel">
+                <div style="width: 50px; height: 50px">
+                    
+                    <!-- its centered now via the power of margin 9px 9=((50-32)/2) -->
+                    <div style="position: absolute; top: 17px; left: 4px;">
+                        <svg width="50" height="50" viewBox="0 0 250 250" class="circular-progress">
+                            <circle class="fg"></circle>
+                        </svg>
+                        <span id="pauseButton" onclick="pause()">
+                            <img id="pauseIcon" src="public/styles/assets/pause.svg" alt="Pause" style="width:32px;height:32px;margin:9px;" loading="lazy">
+                        </span>
+                    </div>  
+
+                </div>
+                <span class="arrows" style="transform: translateX(50%);" onclick="rotate(['.images', '.dots'], -1);"><</span>
+                <div class="images">
+                    <img src="https://picsum.photos/1280/960?random=1" alt="Carousel Image" class="current">
+                    <img src="https://picsum.photos/1280/960?random=2" alt="Carousel Image">
+                    <img src="https://picsum.photos/1280/960?random=3" alt="Carousel Image">
+                    <img src="https://picsum.photos/1280/960?random=4" alt="Carousel Image">
+                </div>
+                <span class="arrows" style="right: 0;transform: translateX(-50%);" onclick="rotate(['.images', '.dots'], 1);">></span>
+                <div class="dots">
+                    <span class="dot current" onclick="rotate(['.images', '.dots'], 0, true);"></span>
+                    <span class="dot" onclick="rotate(['.images', '.dots'], 1, true);"></span>
+                    <span class="dot" onclick="rotate(['.images', '.dots'], 2, true);"></span>
+                    <span class="dot" onclick="rotate(['.images', '.dots'], 3, true);"></span>
+                </div> 
+            </div>
+        </div>
+        
+        <div class="stats-section">
+            <h2 class="header">We believe that <span style="color:green">EVERYONE</span> deserves the chance of STEM education.</h2>
+            <div style="display: flex; gap: 80px; margin-bottom: 20px;">
+                <p class="header-description">In our current era, where technology is everywhere in our basic, everyday lives, we at SPARK
+                    believe that all children deserve the chance to learn about STEM, regardless of economic or social status. We 
+                    provide affordable and accessible resources, activities, and lessons to make sure that every children gets an equal
+                    chance to learn about what shapes our everyday world.
+                </p>
+                <a href="public/pages/about/statistics.html"><button >Explore Our Impact &rarr;</button></a>
+            </div>
+            <div style="display: flex; gap: 20px;">
+                <div class="stat-box"> <img src="public/styles/assets/icons/dedicatedVolunteerTeachers.png" loading="lazy"> <p>27 Members</p> </div>
+                <div class="stat-box"> <img src="public/styles/assets/icons/studentsTaught.png" loading="lazy"> <p>186+ Kids Taught</p> </div>
+                <div class="stat-box"> <img src="public/styles/assets/icons/schools.png" loading="lazy"> <p>Trusted By 3 schools</p> </div>
+                <div class="stat-box"> <img src="public/styles/assets/icons/hoursContributed.png" loading="lazy"> <p>578+ Hours Spent</p> </div>
+            </div>
+        </div>
+
+        <!--Lowkey ran out of names for this part bruh-->
+        <div class="ratings-section">
+            <h2 class="header">What <span style="color:green">others</span> say about us</h2>
+            <div class="ratings-container">
+                <!--I have no clue why but the rotate direction for this is opposite??-->
+                <span class="arrows" onclick="rotate('.ratings', -1)"><</span>
+                <div class="ratings">
+                    <div class="rating current"> 
+                        <p>"I really enjoyed STEM class. It taught me how to use Scratch, and I learned how to make games with it."</p> 
+                        <span>- 1</span>
+                    </div>
+                    <div class="rating current"> 
+                        <p>"I'm the father of two third graders who has been attending STEM club for the last year. They come home excited and tell me all about what they did today in class. Its great seeming them this excited for something school related."</p> 
+                        <span>- 2</span>
+                    </div>
+                    <div class="rating current"> 
+                        <p>"Glaze here"</p> 
+                        <span>- 3</span>
+                    </div>
+                    <div class="rating"> 
+                        <p>"Glaze here"</p> 
+                        <span>- 4</span>
+                    </div>
+                    <div class="rating"> 
+                        <p>"Glaze here"</p> 
+                        <span>- 5</span>
+                    </div>
+                </div>
+                <span class="arrows" style="right: 0;" onclick="rotate('.ratings', 1)">></span> 
+
+            </div>
+        </div>
+    </div>
+    <footer-component></footer-component>
+    
+    <script defer>
+        //honestly this code doesn't even make sense 
+
+        const pauseButton = document.getElementById('pauseButton'),
+              circularProgress = document.querySelector('.circular-progress');
+
+        const duration = 7500; // ms
+
+        //honestly, I don't even know what startTime and pausedTime is nor how it works
+        let paused = false,
+            startTime = null,
+            pausedTime = 0;
+        
+        //start rotating by default
+        requestAnimationFrame(animate);
+
+        function animate(timestamp) {
+            if (!startTime) startTime = timestamp - pausedTime;
+            if(paused) return;
+
+            //how much time was passed since last call
+            let progress = (timestamp - startTime) / duration;
+
+            if (progress >= 1) {
+                rotate(['.images', '.dots'], 1);
+                startTime = timestamp;
+                progress = 0;
+            }
+
+            circularProgress.style.setProperty('--progress', (progress * 100).toString());
+            requestAnimationFrame(animate); //recursively call itself if not paused
+            
+
+        }
+
+        function pause() {
+            paused = !paused;
+            // Swap icon image instead of text
+            const pauseIcon = document.getElementById('pauseIcon');
+            pauseIcon.src = paused ? 'public/styles/assets/play.svg' : 'public/styles/assets/pause.svg';
+            pauseIcon.alt = paused ? 'Play' : 'Pause';
+
+            //some magical math and time manipulation
+            if (paused) pausedTime = performance.now() - startTime;
+            else {
+                startTime = performance.now() - pausedTime;
+                requestAnimationFrame(animate);
+            }
+        }
+
+        // Reset progress on manual rotate
+        document.querySelectorAll('.carousel .arrows').forEach(arrow => {
+            arrow.addEventListener('click', () => {
+                startTime = null;
+                pausedTime = 0;
+                circularProgress.style.setProperty('--progress', '0');
+            });
+        });
+
+
+    </script>
+
+</body>
+</html>
