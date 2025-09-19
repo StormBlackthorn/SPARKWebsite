@@ -15,10 +15,10 @@
         base.href = location.hostname === "stormblackthorn.github.io" ? "/SPARKWebsite/" : "/";
         document.head.appendChild(base);
     </script>
-    <script src="public/src/index.js"></script>
-    <link rel="stylesheet" href="public/styles/styles.css">
-    <link rel="stylesheet" href="public/styles/home.css">
-    <script src="public/src/carousel.js" defer></script>
+    <script src="src/index.js"></script>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/home.css">
+    <script src="src/carousel.js" defer></script>
 </head>
 
 <body>
@@ -34,8 +34,8 @@
                 <p>A fully student-run organization dedicated to providing afterschool teaching for STEM 
                     related subjects in local elementary schools.</p>
                 <div class="mission-members-buttons">
-                    <a href="public/pages/about/mission.html"><button>Our Mission</button></a>
-                    <a href="public/pages/about/members.html"><button>Our Members</button></a>
+                    <a href="pages/about/mission.html"><button>Our Mission</button></a>
+                    <a href="pages/about/members.html"><button>Our Members</button></a>
                 </div>
             </div>
 
@@ -48,7 +48,7 @@
                             <circle class="fg"></circle>
                         </svg>
                         <span id="pauseButton" onclick="pause()">
-                            <img id="pauseIcon" src="public/styles/assets/pause.svg" alt="Pause" style="width:32px;height:32px;margin:9px;" loading="lazy">
+                            <img id="pauseIcon" src="styles/assets/pause.svg" alt="Pause" style="width:32px;height:32px;margin:9px;" loading="lazy">
                         </span>
                     </div>  
 
@@ -78,13 +78,13 @@
                     provide affordable and accessible resources, activities, and lessons to make sure that every children gets an equal
                     chance to learn about what shapes our everyday world.
                 </p>
-                <a href="public/pages/about/statistics.html"><button >Explore Our Impact &rarr;</button></a>
+                <a href="pages/about/statistics.html"><button >Explore Our Impact &rarr;</button></a>
             </div>
             <div style="display: flex; gap: 20px;">
-                <div class="stat-box"> <img src="public/styles/assets/icons/dedicatedVolunteerTeachers.png" loading="lazy"> <p>27 Members</p> </div>
-                <div class="stat-box"> <img src="public/styles/assets/icons/studentsTaught.png" loading="lazy"> <p>186+ Kids Taught</p> </div>
-                <div class="stat-box"> <img src="public/styles/assets/icons/schools.png" loading="lazy"> <p>Trusted By 3 schools</p> </div>
-                <div class="stat-box"> <img src="public/styles/assets/icons/hoursContributed.png" loading="lazy"> <p>578+ Hours Spent</p> </div>
+                <div class="stat-box"> <img src="styles/assets/icons/dedicatedVolunteerTeachers.png" loading="lazy"> <p>27 Members</p> </div>
+                <div class="stat-box"> <img src="styles/assets/icons/studentsTaught.png" loading="lazy"> <p>186+ Kids Taught</p> </div>
+                <div class="stat-box"> <img src="styles/assets/icons/schools.png" loading="lazy"> <p>Trusted By 3 schools</p> </div>
+                <div class="stat-box"> <img src="styles/assets/icons/hoursContributed.png" loading="lazy"> <p>578+ Hours Spent</p> </div>
             </div>
         </div>
 
@@ -162,7 +162,7 @@
             paused = !paused;
             // Swap icon image instead of text
             const pauseIcon = document.getElementById('pauseIcon');
-            pauseIcon.src = paused ? 'public/styles/assets/play.svg' : 'public/styles/assets/pause.svg';
+            pauseIcon.src = paused ? 'styles/assets/play.svg' : 'styles/assets/pause.svg';
             pauseIcon.alt = paused ? 'Play' : 'Pause';
 
             //some magical math and time manipulation

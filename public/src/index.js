@@ -10,8 +10,8 @@
 
     //load all components/scripts
     const scripts = [
-        "public/src/components/Footer.js",
-        "public/src/components/Navbar.js"
+        "src/components/Footer.js",
+        "src/components/Navbar.js"
     ];
 
     //no clue wth this is. All hail chatGPT
@@ -19,7 +19,7 @@
         async function loadScripts() {...}
             Declares an asynchronous function, meaning you can use await inside it to pause until things are done — in this case, script loading.
 
-        const scripts = ["/public/src/components/Footer.js", "/public/src/components/Navbar.js"];
+        const scripts = ["/src/components/Footer.js", "/src/components/Navbar.js"];
             An array of paths to the script files you want to load.
 
         Promise.all(scripts.map(...))

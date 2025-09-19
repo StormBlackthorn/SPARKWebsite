@@ -92,11 +92,11 @@ class Footer extends HTMLElement {
           <div>
               <h3>Quick Links</h3>
               <ul>
-                  <li><a href="/public/pages/index.html">Home</a></li>
-                  <li><a href="/public/pages/about/statistics.html">Our Statistics</a></li>
-                  <li><a href="/public/pages/volunteer.html">Volunteer</a></li>
-                  <li><a href="/public/pages/contactUs.html">Contact Us</a></li>
-                  <li><a href="https://github.com/StormBlackthorn/SPARKWebsite" target="_blank"><img src="/public/styles/assets/icons/github.png" alt="GitHub" class="icon">GitHub Repo</a></li>
+                  <li><a href="/pages/index.html">Home</a></li>
+                  <li><a href="/pages/about/statistics.html">Our Statistics</a></li>
+                  <li><a href="/pages/volunteer.html">Volunteer</a></li>
+                  <li><a href="/pages/contactUs.html">Contact Us</a></li>
+                  <li><a href="https://github.com/StormBlackthorn/SPARKWebsite" target="_blank"><img src="/styles/assets/icons/github.png" alt="GitHub" class="icon">GitHub Repo</a></li>
               </ul>
           </div>
 
@@ -104,7 +104,7 @@ class Footer extends HTMLElement {
           <div>
               <h3>Connect with Us</h3>
               <ul>
-                  <li><a href="https://www.instagram.com/spark.stem/" target="_blank"><img src="/public/styles/assets/icons/instagram.png" alt="Instagram" class="icon">Instagram</a></li>
+                  <li><a href="https://www.instagram.com/spark.stem/" target="_blank"><img src="/styles/assets/icons/instagram.png" alt="Instagram" class="icon">Instagram</a></li>
               </ul>
           </div>
 
