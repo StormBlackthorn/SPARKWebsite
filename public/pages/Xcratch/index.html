@@ -68,7 +68,7 @@
           (Object.getOwnPropertyDescriptor(
             window.HTMLInputElement.prototype,
             "value"
-          ).set).call(input, "https://raw.githack.com/StormBlackthorn/xcx-arduino/main/dist/xcxArduino.mjs");
+          ).set).call(input, "https://cdn.jsdelivr.net/gh/StormBlackthorn/xcx-arduino@main/dist/xcxArduino.mjs");
           input.dispatchEvent(new Event("change", { bubbles: true }));
 
           (await waitForElement("#okButton")).click();
