@@ -3,14 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Join SPARK as a volunteer — help teach STEM at local elementary schools or start a new chapter.">
     <title>SPARK - Volunteer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link 
-        href="https://fonts.googleapis.com/css2?family=Alata&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" 
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
     <script>
-         //fix github relative path issue
         const base = document.createElement('base');
         base.href = location.hostname === "stormblackthorn.github.io" ? "/SPARKWebsite/" : "/";
         document.head.appendChild(base);
@@ -23,30 +21,29 @@
 <body>
     <navbar-component></navbar-component>
 
-    <div class="container">
+    <main class="container">
         
-        <div class="header">
+        <header class="page-header">
             <h1 class="title">Volunteer</h1>
             <p class="description">Through countless hours of hard work put together by both student and parent volunteers, we have been able to make a real difference in our community. Join us and help us expand our impact and brighten our future!</p>
-        </div>
+        </header>
 
-          
-        <div class="subsection">
-            <h2 class="subsectionHeading">We want you to join us! </h2>
+        <section class="subsection">
+            <h2 class="subsectionHeading">We want you to join us!</h2>
             <p class="subsectionContent">
                 Everyone can make a difference, and we need all the help that we can get. Check out the section below and see what you can do!
             </p>
-            <p class="subsectionContent" style="font-style: italic; margin-top: 0; font-size: 0.95em;">
-                *Disclaimer: You must be a high school student to volunteer with SPARK. 
+            <p class="subsectionDisclaimer">
+                *Disclaimer: You must be a high school student to volunteer with SPARK.
             </p>
-        </div>
+        </section>
 
         <div class="tabsContainer">
             
-            <div class="tabs">
-                <button class="tab active" onclick="showTab(0)">Join an Existing Chapter</button>
-                <button class="tab" onclick="showTab(1)">Start a New Chapter</button>
-                <button class="tab" onclick="showTab(2)">Parents? We need you too!</button>
+            <div class="tabs" role="tablist" aria-label="Volunteer options">
+                <button type="button" class="tab active" role="tab" aria-selected="true" onclick="showTab(0)">Join an Existing Chapter</button>
+                <button type="button" class="tab" role="tab" aria-selected="false" onclick="showTab(1)">Start a New Chapter</button>
+                <button type="button" class="tab" role="tab" aria-selected="false" onclick="showTab(2)">Parents? We need you too!</button>
             </div>
 
             <div class="background">
@@ -58,8 +55,8 @@
                         <p><a href="pages/contactUs.html">Contact us</a> and express your interest in joining the chapter.</p>
                     </div>
                     
-                    <p style="font-size: 1.2em;">And you're done!! We will be in touch with you shortly.</p>
-                    <p style="font-style: italic;">*Disclaimer: Our volunteer policy is that you can only miss up to <strong>two</strong> sessions per season, unless it is for some unforeseen circumstance. Moreover, if you need to skip a session, <strong>please tell your local club leader.</strong></p>
+                    <p>And you're done! We will be in touch with you shortly.</p>
+                    <p class="subsectionDisclaimer">*Disclaimer: Our volunteer policy is that you can only miss up to <strong>two</strong> sessions per season, unless it is for some unforeseen circumstance. Moreover, if you need to skip a session, <strong>please tell your local club leader.</strong></p>
                 </div>
                 <div class="content" style="display: none;">
                     <div class="steps">
@@ -81,32 +78,38 @@
                         <p>Often, we have to cut down on the sizes of our clubs or even cancel them altogether due to a lack of adult supervision. If you are a parent or guardian interested in helping out, please sign up to be a chaperon.</p>
                         <p>The process is different for every school, so please consult your local school's website for more information how to become a chaperon.</p>
                         <p>Most of the times, chaperons are only responsible for taking attendance. During lessons, chaperons are free to do whatever as long as they stay in the class.</p>
-                        <p style="font-style: italic;">*Note: Most school require adult volunteers to be ran through a background check, which may require additional charges.</p>
+                        <p class="subsectionDisclaimer">*Note: Most school require adult volunteers to be ran through a background check, which may require additional charges.</p>
                     </div>
                 </div>
             </div>
 
         </div>
 
-    </div>
+    </main>
 
     <footer-component></footer-component>
 
     <script>
+        const background = document.querySelector(".background");
+        const tabs = document.querySelector(".tabs");
 
-        // force the content section to be the same width as the less wide tabs header
-        document.querySelector(".background").style.width = `${document.querySelector(".tabs").offsetWidth}px`;
-
-        function showTab(idx) {
-            const tabs = document.querySelectorAll('.tab');
-            document.querySelectorAll(".content").forEach((content, i) => {
-                content.style.display = i === idx ? 'block' : 'none';
-                tabs[i].classList.toggle('active', i === idx);
-            });
+        function syncTabWidth() {
+            if (tabs && background) {
+                background.style.width = `${tabs.offsetWidth}px`;
+            }
         }
 
+        syncTabWidth();
+        window.addEventListener('resize', syncTabWidth);
 
-
+        function showTab(idx) {
+            const tabButtons = document.querySelectorAll('.tab');
+            document.querySelectorAll(".content").forEach((content, i) => {
+                content.style.display = i === idx ? 'block' : 'none';
+                tabButtons[i].classList.toggle('active', i === idx);
+                tabButtons[i].setAttribute('aria-selected', i === idx);
+            });
+        }
     </script>
 </body>
 </html>

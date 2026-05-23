@@ -1,46 +1,26 @@
-.container {
+/* Members page — card sizing & role tag colors */
 
-    .search .filter .tooltip::before {
-        left: 37%;
-    }
-
-    .cards {
-        .card {
-            width: 362px;
-
-            .tags {
-
-                .male {
-                    --tag-color: #007bff; 
-                }
-                .female {
-                    --tag-color: #ff69b4; 
-                }
-
-                .executive {
-                    --tag-color: #dd1414; 
-                }
-                .programmer {
-                    --tag-color: #32cdcd; 
-                }
-                .artist {
-                    --tag-color: #f35454; 
-                }
-
-                .canyonCreek {
-                    --tag-color: #ff8c00; 
-                }
-                .fernwood {
-                    --tag-color: #00a651; 
-                }
-                .cottageLake {
-                    --tag-color: #8a2be2; 
-                }
-                .woodin {
-                    --tag-color: #ff4500; 
-                }
-
-            }
-        }
-    }
+.cards {
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 }
+
+.cards .card {
+  max-width: 380px;
+  justify-self: center;
+  width: 100%;
+}
+
+.cards .card img {
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.tag.male { background: #eff6ff; color: #2563eb; border-color: transparent; }
+.tag.female { background: #fdf2f8; color: #db2777; border-color: transparent; }
+.tag.executive { background: #fef2f2; color: #dc2626; border-color: transparent; }
+.tag.programmer { background: #ecfeff; color: #0891b2; border-color: transparent; }
+.tag.artist { background: #fff1f2; color: #e11d48; border-color: transparent; }
+.tag.canyonCreek { background: #fff7ed; color: #ea580c; border-color: transparent; }
+.tag.fernwood { background: #ecfdf5; color: #059669; border-color: transparent; }
+.tag.cottageLake { background: #f5f3ff; color: #7c3aed; border-color: transparent; }
+.tag.woodin { background: #fff7ed; color: #c2410c; border-color: transparent; }

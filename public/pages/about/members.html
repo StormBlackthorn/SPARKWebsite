@@ -3,14 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Meet the dedicated SPARK volunteers and teachers bringing STEM education to local schools.">
     <title>SPARK - Members</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link 
-        href="https://fonts.googleapis.com/css2?family=Alata&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" 
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
     <script>
-         //fix github relative path issue
         const base = document.createElement('base');
         base.href = location.hostname === "stormblackthorn.github.io" ? "/SPARKWebsite/" : "/";
         document.head.appendChild(base);
@@ -24,42 +22,41 @@
 <body>
 
     <navbar-component></navbar-component>
- <div class="container">
-        <div class="header">
+
+    <main class="container">
+        <header class="page-header">
             <h1 class="title">Our Members</h1>
             <p class="description">These are all of our dedicated volunteers and teachers.</p>
-        </div>
+        </header>
 
         <div class="search">
-            <input type="text" id="searchInput" placeholder="Search for a member...">
+            <input type="search" id="searchInput" placeholder="Search for a member..." aria-label="Search members">
             <div class="filter">
-                <img src="styles/assets/icons/filter.png" alt="Filter Icon" id="filterIcon">
+                <img src="styles/assets/icons/filter.png" alt="" id="filterIcon" role="button" tabindex="0" aria-label="Filter members">
 
-                <div class="tooltip">
+                <div class="tooltip" role="dialog" aria-label="Filter options">
                     <h2>Filter by Gender</h2>
-                    <label><input type="checkbox" name="gender" value="male">Male</label>
-                    <label><input type="checkbox" name="gender" value="female">Female</label>
+                    <label><input type="checkbox" name="gender" value="male"> Male</label>
+                    <label><input type="checkbox" name="gender" value="female"> Female</label>
 
                     <h2>Filter by Role</h2>
-                    <label><input type="checkbox" name="role" value="executive">Executive</input></label>
-                    <label><input type="checkbox" name="role" value="programmer">Software Developer</label>
-                    <label><input type="checkbox" name="role" value="artist">Graphic Designer</label>
+                    <label><input type="checkbox" name="role" value="executive"> Executive</label>
+                    <label><input type="checkbox" name="role" value="programmer"> Software Developer</label>
+                    <label><input type="checkbox" name="role" value="artist"> Graphic Designer</label>
 
                     <h2>Filter by Chapter</h2>
-                    <label><input type="checkbox" name="chapter" value="canyonCreek">Canyon Creek</label>
-                    <label><input type="checkbox" name="chapter" value="fernwood">Fernwood</label>
-                    <label><input type="checkbox" name="chapter" value="cottageLake">Cottage Lake</label>
-                    <label><input type="checkbox" name="chapter" value="woodin">Woodin</label>
+                    <label><input type="checkbox" name="chapter" value="canyonCreek"> Canyon Creek</label>
+                    <label><input type="checkbox" name="chapter" value="fernwood"> Fernwood</label>
+                    <label><input type="checkbox" name="chapter" value="cottageLake"> Cottage Lake</label>
+                    <label><input type="checkbox" name="chapter" value="woodin"> Woodin</label>
                 </div>
-
             </div>
-
         </div>
 
         <div class="cards">
 
-            <div class="card">
-                <img src="styles/assets/memberThumbnails/defaultMalePicture.jpg">
+            <article class="card">
+                <img src="styles/assets/memberThumbnails/defaultMalePicture.jpg" alt="Yo-cheng Liao">
                 <h3 class="title">Yo-cheng Liao</h3>
                 <span class="description">Club President, Lead Programmer | 2024</span>
                 <div class="tags">
@@ -69,10 +66,10 @@
                     <div class="tag canyonCreek"><span class="label">Canyon Creek</span></div>
                     <div class="tag fernwood"><span class="label">Fernwood</span></div>
                 </div>
-            </div>
+            </article>
 
-             <div class="card">
-                <img src="styles/assets/memberThumbnails/defaultMalePicture.jpg">
+            <article class="card">
+                <img src="styles/assets/memberThumbnails/defaultMalePicture.jpg" alt="Videep Mannava">
                 <h3 class="title">Videep Mannava</h3>
                 <span class="description">[Insert Role] | 2024</span>
                 <div class="tags">
@@ -82,27 +79,22 @@
                     <div class="tag canyonCreek"><span class="label">Canyon Creek</span></div>
                     <div class="tag fernwood"><span class="label">Fernwood</span></div>
                 </div>
-            </div>
+            </article>
 
-            <div class="card">
-                <img src="styles/assets/memberThumbnails/defaultFemalePicture.jpg">
+            <article class="card">
+                <img src="styles/assets/memberThumbnails/defaultFemalePicture.jpg" alt="Ishita Agrawal">
                 <h3 class="title">Ishita Agrawal</h3>
                 <span class="description">[Insert Role] | 2025</span>
                 <div class="tags">
                     <div class="tag female"><span class="label">She/Her</span></div>
                     <div class="tag executive"><span class="label">Executive</span></div>
                 </div>
-            </div>
-
+            </article>
 
         </div>
-
-        
-
-    </div>
+    </main>
 
     <footer-component></footer-component>
 
-    
 </body>
 </html>
