@@ -10,7 +10,7 @@ class Navbar extends HTMLElement {
         :host { display: block; }
 
         #nav-bar {
-          background: rgba(255, 255, 255, 0.85);
+          background: rgba(242, 239, 233, 0.9);
           backdrop-filter: blur(12px);
           -webkit-backdrop-filter: blur(12px);
           padding: 0 24px;
@@ -20,7 +20,7 @@ class Navbar extends HTMLElement {
           align-items: center;
           position: sticky;
           top: 0;
-          border-bottom: 1px solid #e2e8f0;
+          border-bottom: 1px solid var(--color-border);
           z-index: 9999;
         }
 
@@ -43,7 +43,7 @@ class Navbar extends HTMLElement {
 
         #nav-links a,
         .dropdown-title {
-          color: #475569;
+          color: var(--color-text-secondary);
           text-decoration: none;
           padding: 8px 14px;
           border-radius: 8px;
@@ -59,8 +59,8 @@ class Navbar extends HTMLElement {
         #nav-links a:hover,
         .dropdown-title:hover,
         #nav-links a.active {
-          color: #0f172a;
-          background: #f1f5f9;
+          color: var(--color-text);
+          background: var(--color-bg-subtle);
         }
 
         .dropdown {
@@ -76,7 +76,7 @@ class Navbar extends HTMLElement {
         .dropdown .arrow {
           font-size: 0.75rem;
           transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
-          color: #94a3b8;
+          color: var(--color-text-tertiary);
         }
 
         .dropdown:hover .arrow,
@@ -87,27 +87,37 @@ class Navbar extends HTMLElement {
         .dropdown-content {
           display: none;
           position: absolute;
-          top: calc(100% + 6px);
+          top: 100%;
           left: 0;
-          background: #fff;
-          border: 1px solid #e2e8f0;
+          margin-top: 6px;
+          background: var(--color-surface);
+          border: 1px solid var(--color-border);
           border-radius: 12px;
           min-width: 200px;
-          box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+          box-shadow: var(--shadow-sm);
           padding: 6px;
+        }
+
+        .dropdown::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 100%;
+          height: 10px;
         }
 
         .dropdown-content a {
           display: block;
           padding: 10px 14px;
-          color: #475569;
+          color: var(--color-text-secondary);
           border-radius: 8px;
           font-size: 0.9375rem;
         }
 
         .dropdown-content a:hover {
-          background: #f1f5f9;
-          color: #4f46e5;
+          background: var(--color-bg-subtle);
+          color: var(--color-primary);
         }
 
         .dropdown:hover .dropdown-content,
@@ -122,13 +132,13 @@ class Navbar extends HTMLElement {
         }
 
         .nav-cta {
-          background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%) !important;
+          background: var(--color-primary) !important;
           color: #fff !important;
           margin-left: 8px;
         }
 
         .nav-cta:hover {
-          background: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%) !important;
+          background: var(--color-primary-hover) !important;
           color: #fff !important;
         }
 
@@ -142,14 +152,14 @@ class Navbar extends HTMLElement {
         }
 
         #menu-toggle:hover {
-          background: #f1f5f9;
+          background: var(--color-bg-subtle);
         }
 
         #menu-toggle span {
           display: block;
           width: 20px;
           height: 2px;
-          background: #0f172a;
+          background: var(--color-text);
           margin: 4px 0;
           border-radius: 1px;
           transition: transform 200ms ease, opacity 200ms ease;
@@ -166,12 +176,12 @@ class Navbar extends HTMLElement {
             right: 0;
             flex-direction: column;
             align-items: stretch;
-            background: rgba(255, 255, 255, 0.98);
+            background: rgba(242, 239, 233, 0.98);
             backdrop-filter: blur(12px);
-            border-bottom: 1px solid #e2e8f0;
+            border-bottom: 1px solid var(--color-border);
             padding: 12px 16px 20px;
             gap: 2px;
-            box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.08);
+            box-shadow: var(--shadow-sm);
           }
 
           #nav-links.open { display: flex; }

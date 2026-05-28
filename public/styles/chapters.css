@@ -16,7 +16,20 @@
 }
 
 .cards .card > *:not(img) {
-  padding: var(--space-md) var(--space-lg) var(--space-lg);
+  padding-inline: var(--space-lg);
+}
+
+.cards .card .title {
+  margin-top: var(--space-md);
+}
+
+.cards .card .description {
+  display: block;
+  margin: var(--space-xs) 0 var(--space-sm);
+}
+
+.cards .card .tags {
+  padding-bottom: var(--space-lg);
 }
 
 .cards .card img {
@@ -24,7 +37,7 @@
 }
 
 .tag.northshore {
-  background: var(--color-primary-light);
+  background: var(--brand-tint);
   color: var(--color-primary);
   border-color: transparent;
 }

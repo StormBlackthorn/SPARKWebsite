@@ -34,20 +34,19 @@ main.mission-page {
 .missionSection {
   padding: var(--space-2xl);
   background: var(--color-surface);
-  border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-sm);
 }
 
 .missionSection .title {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: 24px;
   margin-bottom: var(--space-lg);
   letter-spacing: -0.03em;
 }
 
 .missionSection .description {
-  font-size: 1.0625rem;
-  line-height: 1.75;
+  font-size: 15px;
+  line-height: 1.6;
   color: var(--color-text-secondary);
 }
 
@@ -61,37 +60,28 @@ main.mission-page {
 .valuesSection {
   padding: var(--space-xl);
   background: var(--color-surface);
-  border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-sm);
-  transition: box-shadow var(--duration-normal) var(--ease-out);
-}
-
-.visionSection:hover,
-.valuesSection:hover {
-  box-shadow: var(--shadow-md);
 }
 
 .visionSection {
-  background: linear-gradient(135deg, #eef2ff 0%, #ffffff 100%);
-  border-color: #c7d2fe;
+  background: var(--color-surface);
 }
 
 .valuesSection {
-  background: linear-gradient(135deg, #ecfdf5 0%, #ffffff 100%);
-  border-color: #a7f3d0;
+  background: var(--color-surface);
 }
 
 .visionSection .title,
 .valuesSection .title {
-  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-size: 20px;
   margin-bottom: var(--space-md);
 }
 
 .visionSection .description,
 .valuesSection .list {
-  font-size: 1rem;
-  line-height: 1.7;
+  font-size: 15px;
+  line-height: 1.6;
   color: var(--color-text-secondary);
 }
 
@@ -106,7 +96,7 @@ main.mission-page {
 }
 
 .valuesSection .listItem::marker {
-  color: var(--color-success);
+  color: var(--color-primary);
 }
 
 @media (max-width: 900px) {

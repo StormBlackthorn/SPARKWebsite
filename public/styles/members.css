@@ -15,12 +15,31 @@
   object-fit: cover;
 }
 
-.tag.male { background: #eff6ff; color: #2563eb; border-color: transparent; }
-.tag.female { background: #fdf2f8; color: #db2777; border-color: transparent; }
-.tag.executive { background: #fef2f2; color: #dc2626; border-color: transparent; }
-.tag.programmer { background: #ecfeff; color: #0891b2; border-color: transparent; }
-.tag.artist { background: #fff1f2; color: #e11d48; border-color: transparent; }
-.tag.canyonCreek { background: #fff7ed; color: #ea580c; border-color: transparent; }
-.tag.fernwood { background: #ecfdf5; color: #059669; border-color: transparent; }
-.tag.cottageLake { background: #f5f3ff; color: #7c3aed; border-color: transparent; }
-.tag.woodin { background: #fff7ed; color: #c2410c; border-color: transparent; }
+.tag.male,
+.tag.female,
+.tag.canyonCreek,
+.tag.fernwood,
+.tag.cottageLake,
+.tag.woodin {
+  background: var(--surface-subtle);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--surface-muted);
+}
+
+.tag.executive {
+  background: rgba(88, 101, 242, 0.14);
+  color: #3f4bbd;
+  border-color: transparent;
+}
+
+.tag.programmer {
+  background: rgba(87, 242, 135, 0.14);
+  color: #1f7a4a;
+  border-color: transparent;
+}
+
+.tag.artist {
+  background: rgba(235, 69, 158, 0.14);
+  color: #9b1d66;
+  border-color: transparent;
+}
