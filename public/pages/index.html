@@ -27,18 +27,26 @@
 
     <navbar-component></navbar-component>
 
+    <section class="announcement-bar" aria-label="Announcement">
+        <span class="announcement-tag">New</span>
+        <p>Summer sessions are open. Join a chapter or start one at your school.</p>
+        <a href="pages/volunteer.html" class="announcement-link">Get involved</a>
+        <button type="button" class="announcement-close" aria-label="Dismiss announcement">&times;</button>
+    </section>
+
     <main class="container">
 
         <section class="club-info" aria-label="Hero">
             <div class="club-details">
-                <h1>SPARK</h1>
-                <h2>STEM Path Activities & Resources for Kids</h2>
-                <p>A fully student-run organization dedicated to providing afterschool teaching for STEM
-                    related subjects in local elementary schools.</p>
+                <p class="hero-kicker">Student-run STEM program</p>
+                <h1 class="hero-title">SPARK</h1>
+                <h2 class="hero-subtitle">STEM Path Activities & Resources for Kids</h2>
+                <p class="hero-description">A fully student-run organization dedicated to providing afterschool
+                    STEM education in local elementary schools.</p>
                 <div class="mission-members-buttons">
-                    <a href="pages/about/mission.html"><button type="button">Our Mission</button></a>
-                    <a href="pages/about/members.html"><button type="button" class="btn-secondary">Our
-                            Members</button></a>
+                    <a href="pages/about/mission.html"><button type="button">About Us</button></a>
+                    <a href="pages/about/statistics.html"><button type="button" class="btn-secondary">Our
+                            Statistics</button></a>
                 </div>
             </div>
 
@@ -75,39 +83,39 @@
         </section>
 
         <section class="stats-section" aria-labelledby="stats-heading">
-            <h2 id="stats-heading" class="header">We believe that <span class="text-accent">everyone</span> deserves the
-                chance of STEM education.</h2>
-            <div class="section-intro">
-                <p class="header-description divider-accent">In our current era, where technology is everywhere in our
-                    basic, everyday lives, we at SPARK
-                    believe that all children deserve the chance to learn about STEM, regardless of economic or social
-                    status. We
-                    provide affordable and accessible resources, activities, and lessons to make sure that every
-                    children gets an equal
-                    chance to learn about what shapes our everyday world.
-                </p>
-                <a href="pages/about/statistics.html"><button type="button" class="btn-lg">Explore Our Impact
-                        &rarr;</button></a>
+            <div class="stats-header">
+                <h2 id="stats-heading" class="section-title">Our impact so far</h2>
+                <p class="section-description">We build confidence through hands-on STEM and consistent mentorship.</p>
             </div>
             <div class="stats-grid">
-                <div class="stat-box"><img src="styles/assets/icons/dedicatedVolunteerTeachers.png" alt=""
-                        loading="lazy">
-                    <p>19 Members</p>
+                <div class="stat-card">
+                    <h3 class="stat-label">Members</h3>
+                    <p class="stat-value">19</p>
+                    <p class="stat-note">Volunteer teachers</p>
                 </div>
-                <div class="stat-box"><img src="styles/assets/icons/studentsTaught.png" alt="" loading="lazy">
-                    <p>200+ Students Taught</p>
+                <div class="stat-card">
+                    <h3 class="stat-label">Kids Helped</h3>
+                    <p class="stat-value">200+</p>
+                    <p class="stat-note">Students taught</p>
                 </div>
-                <div class="stat-box"><img src="styles/assets/icons/schools.png" alt="" loading="lazy">
-                    <p>Trusted By 4 schools</p>
+                <div class="stat-card">
+                    <h3 class="stat-label">Trusted By</h3>
+                    <p class="stat-value">4</p>
+                    <p class="stat-note">Local schools</p>
                 </div>
-                <div class="stat-box"><img src="styles/assets/icons/hoursContributed.png" alt="" loading="lazy">
-                    <p>150+ Hours Spent</p>
+                <div class="stat-card">
+                    <h3 class="stat-label">Hours Spent</h3>
+                    <p class="stat-value">150+</p>
+                    <p class="stat-note">Classroom hours</p>
                 </div>
             </div>
         </section>
 
         <section class="ratings-section" aria-labelledby="ratings-heading">
-            <h2 id="ratings-heading" class="header">What <span class="text-accent">others</span> say about us</h2>
+            <div class="ratings-header">
+                <h2 id="ratings-heading" class="section-title">What people say</h2>
+                <p class="section-description">Honest feedback from students and parents.</p>
+            </div>
             <div class="ratings-container">
                 <button type="button" class="arrows prev" aria-label="Previous testimonial"
                     onclick="rotate('.ratings', -1)">&lsaquo;</button>
@@ -198,6 +206,17 @@
                 circularProgress.style.setProperty('--progress', '0');
             });
         });
+
+        const announcement = document.querySelector('.announcement-bar');
+        const announcementClose = document.querySelector('.announcement-close');
+
+        if (announcement && announcementClose) {
+            announcementClose.addEventListener('click', () => {
+                announcement.remove();
+            });
+        }
+
+        
 
 
     </script>
