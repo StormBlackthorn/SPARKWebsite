@@ -12,10 +12,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
         rel="stylesheet">
     <script>
-        const base = document.createElement('base');
-        const isGitHubPages = location.hostname === "stormblackthorn.github.io";
-        base.href = isGitHubPages ? "/SPARKWebsite/public/" : "/public/";
-        document.head.appendChild(base);
+        document.head.appendChild(Object.assign(document.createElement('base'), {
+            href: location.hostname === "spark-stem.web.app" ? "/SPARKWebsite/" : "/public/"
+        }));
     </script>
     <script src="src/index.js"></script>
     <link rel="stylesheet" href="styles/styles.css">
@@ -118,20 +117,20 @@
             </div>
             <div class="ratings-container">
                 <button type="button" class="arrows prev" aria-label="Previous testimonial"
-                    onclick="rotate('.ratings', -1)">&lsaquo;</button>
+                    onclick="rotateRatings(1)">&lsaquo;</button>
                 <div class="ratings">
-                    <blockquote class="rating current">
+                    <blockquote class="rating">
                         <p>"I really enjoyed STEM class. It taught me how to use Scratch, and I learned how to make
                             games with it."</p>
                         <cite>— 4th Grade Student</cite>
                     </blockquote>
-                    <blockquote class="rating current">
+                    <blockquote class="rating">
                         <p>"I'm the father of two third graders who has been attending STEM club for the last year. They
                             come home excited and tell me all about what they did today in class. Its great seeing them
                             this excited for something school related."</p>
                         <cite>— Parent of 3rd Graders</cite>
                     </blockquote>
-                    <blockquote class="rating current">
+                    <blockquote class="rating">
                         <p>"Spark makes learning about science and coding so much fun! We built our own tiny robots last
                             week, and the teachers always help us figure out the tricky parts without just giving us the
                             answers."</p>
@@ -151,7 +150,7 @@
                     </blockquote>
                 </div>
                 <button type="button" class="arrows next" aria-label="Next testimonial"
-                    onclick="rotate('.ratings', 1)">&rsaquo;</button>
+                    onclick="rotateRatings(-1)">&rsaquo;</button>
             </div>
         </section>
     </main>
@@ -216,8 +215,32 @@
             });
         }
 
-        
+        /* --- Ratings Carousel Logic --- */
+        const ratingCards = document.querySelectorAll('.rating');
+        let currentRatingIndex = 0;
 
+        function updateRatingsDisplay() {
+            ratingCards.forEach((card, index) => {
+                // Reset classes
+                card.classList.remove('active', 'prev-card', 'next-card');
+
+                // Apply new positional classes
+                if (index === currentRatingIndex) {
+                    card.classList.add('active');
+                } else if (index === (currentRatingIndex - 1 + ratingCards.length) % ratingCards.length) {
+                    card.classList.add('prev-card');
+                } else if (index === (currentRatingIndex + 1) % ratingCards.length) {
+                    card.classList.add('next-card');
+                }
+            });
+        }
+
+        function rotateRatings(direction) {
+            currentRatingIndex = (currentRatingIndex + direction + ratingCards.length) % ratingCards.length;
+            updateRatingsDisplay();
+        }
+
+        updateRatingsDisplay();
 
     </script>
 
