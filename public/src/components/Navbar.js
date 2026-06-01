@@ -256,7 +256,9 @@ class Navbar extends HTMLElement {
     });
 
     document.addEventListener('click', (e) => {
-      if (!this.shadowRoot.contains(e.target)) {
+      const clickPath = e.composedPath();
+      const clickedInside = clickPath.includes(this) || clickPath.includes(this.shadowRoot);
+      if (!clickedInside) {
         navLinks.classList.remove('open');
         dropdown.classList.remove('open');
         toggle.setAttribute('aria-expanded', 'false');
