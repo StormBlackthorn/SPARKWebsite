@@ -215,7 +215,7 @@ class Navbar extends HTMLElement {
             </button>
             <div class="dropdown-content" role="menu">
               <a href="pages/about/mission.html" role="menuitem">Mission</a>
-              <a href="pages/about/chapters.html" role="menuitem">Chapters</a>
+
               <a href="pages/about/statistics.html" role="menuitem">Statistics</a>
             </div>
           </div>
