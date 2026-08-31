@@ -1,5 +1,10 @@
 /* Chapters directory styling */
 
+.chapters-page {
+  display: flex;
+  flex-direction: column;
+}
+
 .page-header .title {
   font-size: clamp(2rem, 4vw, 2.75rem);
 }

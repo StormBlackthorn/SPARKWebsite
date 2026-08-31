@@ -9,11 +9,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
     <script>
-        const base = document.createElement('base');
-        base.href = location.hostname === "stormblackthorn.github.io" ? "/SPARKWebsite/" : "/";
-        document.head.appendChild(base);
+        document.head.appendChild(Object.assign(document.createElement('base'), {
+            href: "/"
+        }));
     </script>
     <script src="src/index.js"></script>
+    <script src="src/UI.js"></script>
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/home.css">
     <script src="src/carousel.js" defer></script>
@@ -29,7 +30,7 @@
             <div class="club-details">
                 <h1>SPARK</h1>
                 <h2>STEM Path Activities & Resources for Kids</h2>
-                <p>A fully student-run organization dedicated to providing afterschool teaching for STEM 
+                <p>A fully student-run organization dedicated to providing afterschool teaching for STEM
                     related subjects in local elementary schools.</p>
                 <div class="mission-actions">
                     <a href="pages/about/mission.html"><button type="button">Our Mission</button></a>
@@ -60,12 +61,12 @@
                 </div>
             </div>
         </section>
-        
+
         <section class="stats-section" aria-labelledby="stats-heading">
             <h2 id="stats-heading" class="header">We believe that <span class="text-accent">everyone</span> deserves the chance of STEM education.</h2>
             <div class="section-intro">
                 <p class="header-description divider-accent">In our current era, where technology is everywhere in our basic, everyday lives, we at SPARK
-                    believe that all children deserve the chance to learn about STEM, regardless of economic or social status. We 
+                    believe that all children deserve the chance to learn about STEM, regardless of economic or social status. We
                     provide affordable and accessible resources, activities, and lessons to make sure that every children gets an equal
                     chance to learn about what shapes our everyday world.
                 </p>
@@ -82,36 +83,25 @@
         <section class="ratings-section" aria-labelledby="ratings-heading">
             <h2 id="ratings-heading" class="header">What <span class="text-accent">others</span> say about us</h2>
             <div class="ratings-container">
-                <button type="button" class="arrows prev" aria-label="Previous testimonial" onclick="rotate('.ratings', -1)">&lsaquo;</button>
-                <div class="ratings">
-                    <blockquote class="rating current">
-                        <p>"I really enjoyed STEM class. It taught me how to use Scratch, and I learned how to make games with it."</p> 
-                        <cite>— 1</cite>
-                    </blockquote>
-                    <blockquote class="rating current"> 
-                        <p>"I'm the father of two third graders who has been attending STEM club for the last year. They come home excited and tell me all about what they did today in class. Its great seeming them this excited for something school related."</p> 
-                        <cite>— 2</cite>
-                    </blockquote>
-                    <blockquote class="rating current"> 
-                        <p>"[Place Holder]"</p> 
-                        <cite>— 3</cite>
-                    </blockquote>
-                    <blockquote class="rating"> 
-                        <p>"[Place Holder]"</p> 
-                        <cite>— 4</cite>
-                    </blockquote>
-                    <blockquote class="rating"> 
-                        <p>"[Place Holder]"</p> 
-                        <cite>— 5</cite>
-                    </blockquote>
-                </div>
-                <button type="button" class="arrows next" aria-label="Next testimonial" onclick="rotate('.ratings', 1)">&rsaquo;</button>
+                <button type="button" class="arrows prev" aria-label="Previous testimonial" onclick="rotate('.ratings', -1)"></button>
+                <button type="button" class="arrows next" aria-label="Next testimonial" onclick="rotate('.ratings', 1)"></button>
             </div>
         </section>
     </main>
 
     <footer-component></footer-component>
-    
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            await UI.loadComponents([
+                "testimonial/quote.js",
+                "testimonial/testimonials.js"
+            ], "src/components/");
+
+            UI.add(document.querySelector(".ratings-container"), renderTestimonials(), 1);
+        });
+    </script>
+
     <script defer>
         const pauseButton = document.getElementById('pauseButton'),
               circularProgress = document.querySelector('.circular-progress');
@@ -121,7 +111,7 @@
         let paused = false,
             startTime = null,
             pausedTime = 0;
-        
+
         requestAnimationFrame(animate);
 
         function animate(timestamp) {

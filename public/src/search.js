@@ -18,18 +18,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const searchInput = document.getElementById('searchInput');
     const cardsParent = document.querySelector('.cards');
-    const directoryRows = document.querySelector('.directory-rows');
-    const filterCheckboxes = Array.from(document.querySelectorAll('input[type=checkbox]'));
+    const directoryTable = document.querySelector('.directory-table');
+
+    function getFilterCheckboxes() {
+        return Array.from(document.querySelectorAll('input[type=checkbox][name=location]'));
+    }
 
     function normalizeValue(value) {
         return (value || '').toLowerCase().replace(/[^a-z0-9]/g, '');
     }
 
     function runLocationSearch() {
+        const directoryRows = document.querySelector('.directory-rows');
         if (!directoryRows || !searchInput) return;
 
         const searchedText = searchInput.value.toLowerCase().trim();
-        const activeLocations = filterCheckboxes.filter(cb => cb.checked).map(cb => normalizeValue(cb.value));
+        const activeLocations = getFilterCheckboxes().filter(cb => cb.checked).map(cb => normalizeValue(cb.value));
 
         Array.from(directoryRows.children).forEach(row => {
             const rowText = row.textContent.toLowerCase();
@@ -47,22 +51,23 @@ document.addEventListener("DOMContentLoaded", () => {
         search(cardsParent, {
             title: 'title',
             searchedText: searchInput.value,
-            filteredTags: filterCheckboxes.filter(cb => cb.checked).map(cb => cb.value)
+            filteredTags: getFilterCheckboxes().filter(cb => cb.checked).map(cb => cb.value)
         });
     }
 
-    if (searchInput && (cardsParent || directoryRows)) {
+    if (searchInput && (cardsParent || directoryTable)) {
         searchInput.addEventListener('input', () => {
-            if (directoryRows) runLocationSearch();
+            if (document.querySelector('.directory-rows')) runLocationSearch();
             if (cardsParent) runCardSearch();
         });
 
-        filterCheckboxes.forEach(cb => cb.addEventListener('change', () => {
-            if (directoryRows) runLocationSearch();
+        tooltip?.addEventListener('change', (e) => {
+            if (!e.target.matches('input[type=checkbox][name=location]')) return;
+            if (document.querySelector('.directory-rows')) runLocationSearch();
             if (cardsParent) runCardSearch();
-        }));
+        });
 
-        if (directoryRows) runLocationSearch();
+        if (document.querySelector('.directory-rows')) runLocationSearch();
         if (cardsParent) runCardSearch();
     }
 });
