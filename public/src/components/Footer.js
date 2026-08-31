@@ -115,7 +115,7 @@ class Footer extends HTMLElement {
         </div>
 
         <div class="footer-bottom">
-          <b>© 2025 SPARK STEM Club</b> · All Rights Reserved
+          <b>© 2026 SPARK STEM Club</b> · All Rights Reserved
           <div>Website designed by Yo-cheng Liao and Videep Mannava</div>
         </div>
       </footer>
