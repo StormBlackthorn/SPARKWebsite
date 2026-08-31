@@ -14,6 +14,7 @@
         }));
     </script>
     <script src="src/index.js"></script>
+    <script src="src/UI.js"></script>
     <script src="src/search.js"></script>
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/chapters.css">
@@ -22,7 +23,7 @@
 <body>
     <navbar-component></navbar-component>
 
-    <main class="container">
+    <main class="container chapters-page">
         <header class="page-header">
             <h1 class="title">Our Chapters</h1>
             <p class="description">These are the local schools we teach at.</p>
@@ -35,18 +36,6 @@
 
                 <div class="tooltip" role="dialog" aria-label="Filter options">
                     <h2>Filter by Location</h2>
-                    <label>
-                        <input type="checkbox" name="location" value="united-states">
-                        United States
-                    </label>
-                    <label>
-                        <input type="checkbox" name="location" value="washington">
-                        Washington
-                    </label>
-                    <label>
-                        <input type="checkbox" name="location" value="n/a">
-                        N/A
-                    </label>
                 </div>
             </div>
         </div>
@@ -60,33 +49,25 @@
                         <th scope="col">State/Region</th>
                     </tr>
                 </thead>
-                <tbody class="directory-rows">
-                    <tr class="directory-row" data-country="united states" data-region="washington">
-                        <td><a href="https://canyoncreek.nsd.org/" target="_blank" rel="noopener noreferrer">Canyon Creek Elementary</a></td>
-                        <td>United States</td>
-                        <td>Washington</td>
-                    </tr>
-                    <tr class="directory-row" data-country="united states" data-region="washington">
-                        <td><a href="https://fernwood.nsd.org/" target="_blank" rel="noopener noreferrer">Fernwood Elementary</a></td>
-                        <td>United States</td>
-                        <td>Washington</td>
-                    </tr>
-                    <tr class="directory-row" data-country="united states" data-region="washington">
-                        <td><a href="https://cottagelake.nsd.org/" target="_blank" rel="noopener noreferrer">Wellington Elementary</a></td>
-                        <td>United States</td>
-                        <td>Washington</td>
-                    </tr>
-                    <tr class="directory-row" data-country="united states" data-region="washington">
-                        <td><a href="https://woodin.nsd.org/" target="_blank" rel="noopener noreferrer">Woodin Elementary</a></td>
-                        <td>United States</td>
-                        <td>Washington</td>
-                    </tr>
-                </tbody>
             </table>
         </div>
     </main>
 
     <footer-component></footer-component>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            await UI.loadComponents([
+                "chapter/school.js",
+                "chapter/location-filter.js",
+                "chapter/chapters.js"
+            ], "src/components/");
+
+            UI.add(document.querySelector(".directory-table"), renderChapters());
+            UI.add(document.querySelector(".tooltip"), renderLocationFilters(), 1);
+            document.getElementById("searchInput")?.dispatchEvent(new Event("input"));
+        });
+    </script>
 
 </body>
 </html>

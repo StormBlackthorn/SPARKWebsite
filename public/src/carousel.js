@@ -7,10 +7,10 @@
  * @returns void
  */
 function rotate(wrapper, rotation, setTo=false) {
-    
+
     wrapper = Array.isArray(wrapper) ? wrapper : [wrapper];
     wrapper.map(selector => document.querySelector(selector)).forEach(parent => {
-        
+
         const children = Array.from(parent.children);
 
         if(setTo) {
@@ -22,11 +22,9 @@ function rotate(wrapper, rotation, setTo=false) {
         }
 
         const currentElements = children.filter(child => child.classList.contains("current"));
-        
-        if(currentElements.length > 1) rotation *= -1; 
 
-        const indexes = children.map((child, i) => child.classList.contains("current") ? i : -1).filter(i => i !== -1);   
-        
+        const indexes = children.map((child, i) => child.classList.contains("current") ? i : -1).filter(i => i !== -1);
+
         currentElements.forEach(e => e.classList.remove("current"));
 
         for(let i = 0, l = currentElements.length; i < l; i++) {
@@ -36,7 +34,7 @@ function rotate(wrapper, rotation, setTo=false) {
         }
 
         if(currentElements.length > 1) {
-            for(let i = 0, l = Math.abs(rotation); i < l; i++) 
+            for(let i = 0, l = Math.abs(rotation); i < l; i++)
                 rotation > 0 ? children.push(children.shift()) : children.unshift(children.pop());
 
             parent.innerHTML = '';
