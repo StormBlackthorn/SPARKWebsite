@@ -4,30 +4,67 @@
 */
 document.addEventListener("DOMContentLoaded", () => {
     const tooltip = document.querySelector('.tooltip');
+    const filterIcon = document.getElementById('filterIcon');
 
-        document.getElementById('filterIcon').addEventListener('click', (e) => {
+    if (filterIcon && tooltip) {
+        filterIcon.addEventListener('click', (e) => {
             e.stopPropagation();
             tooltip.classList.toggle('show');
         });
         document.addEventListener('click', (e) => {
             if (!tooltip.contains(e.target)) tooltip.classList.remove('show');
         });
+    }
 
-        const searchInput = document.getElementById('searchInput');
-        const cardsParent = document.querySelector('.cards');
-        const filterCheckboxes = Array.from(document.querySelectorAll('input[type=checkbox]'));
+    const searchInput = document.getElementById('searchInput');
+    const cardsParent = document.querySelector('.cards');
+    const directoryRows = document.querySelector('.directory-rows');
+    const filterCheckboxes = Array.from(document.querySelectorAll('input[type=checkbox]'));
 
-        function runSearch() {
-            search(cardsParent, {
-                title: 'title',
-                searchedText: searchInput.value,
-                filteredTags: filterCheckboxes.filter(cb => cb.checked).map(cb => cb.value)
-            });
-        }
+    function normalizeValue(value) {
+        return (value || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+    }
 
-        searchInput.addEventListener('input', runSearch);
-        filterCheckboxes.forEach(cb => cb.addEventListener('change', runSearch));
-        runSearch(); // to have all items have a fade-in animation on load
+    function runLocationSearch() {
+        if (!directoryRows || !searchInput) return;
+
+        const searchedText = searchInput.value.toLowerCase().trim();
+        const activeLocations = filterCheckboxes.filter(cb => cb.checked).map(cb => normalizeValue(cb.value));
+
+        Array.from(directoryRows.children).forEach(row => {
+            const rowText = row.textContent.toLowerCase();
+            const country = normalizeValue(row.dataset.country || '');
+            const region = normalizeValue(row.dataset.region || '');
+            const matchesText = !searchedText || rowText.includes(searchedText);
+            const matchesLocation = !activeLocations.length || activeLocations.some(value => country.includes(value) || region.includes(value));
+            row.style.display = matchesText && matchesLocation ? '' : 'none';
+        });
+    }
+
+    function runCardSearch() {
+        if (!cardsParent || !searchInput) return;
+
+        search(cardsParent, {
+            title: 'title',
+            searchedText: searchInput.value,
+            filteredTags: filterCheckboxes.filter(cb => cb.checked).map(cb => cb.value)
+        });
+    }
+
+    if (searchInput && (cardsParent || directoryRows)) {
+        searchInput.addEventListener('input', () => {
+            if (directoryRows) runLocationSearch();
+            if (cardsParent) runCardSearch();
+        });
+
+        filterCheckboxes.forEach(cb => cb.addEventListener('change', () => {
+            if (directoryRows) runLocationSearch();
+            if (cardsParent) runCardSearch();
+        }));
+
+        if (directoryRows) runLocationSearch();
+        if (cardsParent) runCardSearch();
+    }
 });
 
 

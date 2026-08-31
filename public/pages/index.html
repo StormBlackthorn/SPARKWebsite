@@ -1,20 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="SPARK — STEM Path Activities & Resources for Kids. A student-run organization providing afterschool STEM education in local elementary schools.">
+    <meta name="description" content="SPARK — STEM Path Activities & Resources for Kids. A student-run organization providing afterschool STEM education in local elementary schools.">
     <title>SPARK - Home</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
     <script>
-        document.head.appendChild(Object.assign(document.createElement('base'), {
-            href: location.hostname === "spark-stem.web.app" ? "/" : "/public/"
-        }));
+        const base = document.createElement('base');
+        base.href = location.hostname === "stormblackthorn.github.io" ? "/SPARKWebsite/" : "/";
+        document.head.appendChild(base);
     </script>
     <script src="src/index.js"></script>
     <link rel="stylesheet" href="styles/styles.css">
@@ -26,26 +23,17 @@
 
     <navbar-component></navbar-component>
 
-    <section class="announcement-bar" aria-label="Announcement">
-        <span class="announcement-tag">New</span>
-        <p>Summer sessions are open. Join a chapter or start one at your school.</p>
-        <a href="pages/volunteer.html" class="announcement-link">Get involved</a>
-        <button type="button" class="announcement-close" aria-label="Dismiss announcement">&times;</button>
-    </section>
-
     <main class="container">
 
         <section class="club-info" aria-label="Hero">
             <div class="club-details">
-                <p class="hero-kicker">Student-run STEM program</p>
-                <h1 class="hero-title">SPARK</h1>
-                <h2 class="hero-subtitle">STEM Path Activities & Resources for Kids</h2>
-                <p class="hero-description">A fully student-run organization dedicated to providing afterschool
-                    STEM education in local elementary schools.</p>
-                <div class="mission-members-buttons">
-                    <a href="pages/about/mission.html"><button type="button">About Us</button></a>
-                    <a href="pages/about/statistics.html"><button type="button" class="btn-secondary">Our
-                            Statistics</button></a>
+                <h1>SPARK</h1>
+                <h2>STEM Path Activities & Resources for Kids</h2>
+                <p>A fully student-run organization dedicated to providing afterschool teaching for STEM 
+                    related subjects in local elementary schools.</p>
+                <div class="mission-actions">
+                    <a href="pages/about/mission.html"><button type="button">Our Mission</button></a>
+                    <a href="pages/about/chapters.html"><button type="button" class="btn-secondary">Our Chapters</button></a>
                 </div>
             </div>
 
@@ -58,115 +46,84 @@
                         <img id="pauseIcon" src="styles/assets/pause.svg" alt="" width="32" height="32">
                     </div>
                 </div>
-                <button type="button" class="arrows prev" aria-label="Previous slide"
-                    onclick="rotate(['.images', '.dots'], -1);">&lsaquo;</button>
+                <button type="button" class="arrows prev" aria-label="Previous slide" onclick="rotate(['.images', '.dots'], -1);">&lsaquo;</button>
                 <div class="images">
                     <img src="https://picsum.photos/1280/960?random=1" alt="SPARK club activity" class="current">
                     <img src="https://picsum.photos/1280/960?random=2" alt="Students learning STEM">
                     <img src="https://picsum.photos/1280/960?random=3" alt="Volunteer teaching session">
                     <img src="https://picsum.photos/1280/960?random=4" alt="STEM workshop">
                 </div>
-                <button type="button" class="arrows next" aria-label="Next slide"
-                    onclick="rotate(['.images', '.dots'], 1);">&rsaquo;</button>
+                <button type="button" class="arrows next" aria-label="Next slide" onclick="rotate(['.images', '.dots'], 1);">&rsaquo;</button>
                 <div class="dots" role="tablist" aria-label="Carousel slides">
-                    <button type="button" class="dot current" role="tab" aria-selected="true" aria-label="Slide 1"
-                        onclick="rotate(['.images', '.dots'], 0, true);"></button>
-                    <button type="button" class="dot" role="tab" aria-label="Slide 2"
-                        onclick="rotate(['.images', '.dots'], 1, true);"></button>
-                    <button type="button" class="dot" role="tab" aria-label="Slide 3"
-                        onclick="rotate(['.images', '.dots'], 2, true);"></button>
-                    <button type="button" class="dot" role="tab" aria-label="Slide 4"
-                        onclick="rotate(['.images', '.dots'], 3, true);"></button>
+                    <button type="button" class="dot current" role="tab" aria-selected="true" aria-label="Slide 1" onclick="rotate(['.images', '.dots'], 0, true);"></button>
+                    <button type="button" class="dot" role="tab" aria-label="Slide 2" onclick="rotate(['.images', '.dots'], 1, true);"></button>
+                    <button type="button" class="dot" role="tab" aria-label="Slide 3" onclick="rotate(['.images', '.dots'], 2, true);"></button>
+                    <button type="button" class="dot" role="tab" aria-label="Slide 4" onclick="rotate(['.images', '.dots'], 3, true);"></button>
                 </div>
             </div>
         </section>
-
+        
         <section class="stats-section" aria-labelledby="stats-heading">
-            <div class="stats-header">
-                <h2 id="stats-heading" class="section-title">Our impact so far</h2>
-                <p class="section-description">We build confidence through hands-on STEM and consistent mentorship.</p>
+            <h2 id="stats-heading" class="header">We believe that <span class="text-accent">everyone</span> deserves the chance of STEM education.</h2>
+            <div class="section-intro">
+                <p class="header-description divider-accent">In our current era, where technology is everywhere in our basic, everyday lives, we at SPARK
+                    believe that all children deserve the chance to learn about STEM, regardless of economic or social status. We 
+                    provide affordable and accessible resources, activities, and lessons to make sure that every children gets an equal
+                    chance to learn about what shapes our everyday world.
+                </p>
+                <a href="pages/about/statistics.html"><button type="button" class="btn-lg">Explore Our Impact &rarr;</button></a>
             </div>
             <div class="stats-grid">
-                <div class="stat-card">
-                    <h3 class="stat-label">Members</h3>
-                    <p class="stat-value">19</p>
-                    <p class="stat-note">Volunteer teachers</p>
-                </div>
-                <div class="stat-card">
-                    <h3 class="stat-label">Kids Helped</h3>
-                    <p class="stat-value">200+</p>
-                    <p class="stat-note">Students taught</p>
-                </div>
-                <div class="stat-card">
-                    <h3 class="stat-label">Trusted By</h3>
-                    <p class="stat-value">4</p>
-                    <p class="stat-note">Local schools</p>
-                </div>
-                <div class="stat-card">
-                    <h3 class="stat-label">Hours Spent</h3>
-                    <p class="stat-value">150+</p>
-                    <p class="stat-note">Classroom hours</p>
-                </div>
+                <div class="stat-box"><img src="styles/assets/icons/dedicatedVolunteerTeachers.png" alt="" loading="lazy"><p>19 Members</p></div>
+                <div class="stat-box"><img src="styles/assets/icons/studentsTaught.png" alt="" loading="lazy"><p>200+ Students Taught</p></div>
+                <div class="stat-box"><img src="styles/assets/icons/schools.png" alt="" loading="lazy"><p>Trusted By 4 schools</p></div>
+                <div class="stat-box"><img src="styles/assets/icons/hoursContributed.png" alt="" loading="lazy"><p>150+ Hours Spent</p></div>
             </div>
         </section>
 
         <section class="ratings-section" aria-labelledby="ratings-heading">
-            <div class="ratings-header">
-                <h2 id="ratings-heading" class="section-title">What people say</h2>
-                <p class="section-description">Honest feedback from students and parents.</p>
-            </div>
+            <h2 id="ratings-heading" class="header">What <span class="text-accent">others</span> say about us</h2>
             <div class="ratings-container">
-                <button type="button" class="arrows prev" aria-label="Previous testimonial"
-                    onclick="rotateRatings(1)">&lsaquo;</button>
+                <button type="button" class="arrows prev" aria-label="Previous testimonial" onclick="rotate('.ratings', -1)">&lsaquo;</button>
                 <div class="ratings">
-                    <blockquote class="rating">
-                        <p>"I really enjoyed STEM class. It taught me how to use Scratch, and I learned how to make
-                            games with it."</p>
-                        <cite>— 4th Grade Student</cite>
+                    <blockquote class="rating current">
+                        <p>"I really enjoyed STEM class. It taught me how to use Scratch, and I learned how to make games with it."</p> 
+                        <cite>— 1</cite>
                     </blockquote>
-                    <blockquote class="rating">
-                        <p>"I'm the father of two third graders who has been attending STEM club for the last year. They
-                            come home excited and tell me all about what they did today in class. Its great seeing them
-                            this excited for something school related."</p>
-                        <cite>— Parent of 3rd Graders</cite>
+                    <blockquote class="rating current"> 
+                        <p>"I'm the father of two third graders who has been attending STEM club for the last year. They come home excited and tell me all about what they did today in class. Its great seeming them this excited for something school related."</p> 
+                        <cite>— 2</cite>
                     </blockquote>
-                    <blockquote class="rating">
-                        <p>"Spark makes learning about science and coding so much fun! We built our own tiny robots last
-                            week, and the teachers always help us figure out the tricky parts without just giving us the
-                            answers."</p>
-                        <cite>— 5th Grade Student</cite>
+                    <blockquote class="rating current"> 
+                        <p>"[Place Holder]"</p> 
+                        <cite>— 3</cite>
                     </blockquote>
-                    <blockquote class="rating">
-                        <p>"Since my daughter started the Spark STEM program, her interest in technology has
-                            skyrocketed. The instructors are incredibly patient and engaging, and she
-                            absolutely looks forward to going to every single session."</p>
-                        <cite>— Parent of a 4th Grader</cite>
+                    <blockquote class="rating"> 
+                        <p>"[Place Holder]"</p> 
+                        <cite>— 4</cite>
                     </blockquote>
-                    <blockquote class="rating">
-                        <p>"We absolutely love Spark! My son used to think coding was too hard, but the way they teach
-                            makes it super accessible. Now he is constantly building new projects and wants to be an
-                            engineer."</p>
-                        <cite>— Parent of a 5th Grader</cite>
+                    <blockquote class="rating"> 
+                        <p>"[Place Holder]"</p> 
+                        <cite>— 5</cite>
                     </blockquote>
                 </div>
-                <button type="button" class="arrows next" aria-label="Next testimonial"
-                    onclick="rotateRatings(-1)">&rsaquo;</button>
+                <button type="button" class="arrows next" aria-label="Next testimonial" onclick="rotate('.ratings', 1)">&rsaquo;</button>
             </div>
         </section>
     </main>
 
     <footer-component></footer-component>
-
+    
     <script defer>
         const pauseButton = document.getElementById('pauseButton'),
-            circularProgress = document.querySelector('.circular-progress');
+              circularProgress = document.querySelector('.circular-progress');
 
         const duration = 7500;
 
         let paused = false,
             startTime = null,
             pausedTime = 0;
-
+        
         requestAnimationFrame(animate);
 
         function animate(timestamp) {
@@ -205,45 +162,7 @@
                 circularProgress.style.setProperty('--progress', '0');
             });
         });
-
-        const announcement = document.querySelector('.announcement-bar');
-        const announcementClose = document.querySelector('.announcement-close');
-
-        if (announcement && announcementClose) {
-            announcementClose.addEventListener('click', () => {
-                announcement.remove();
-            });
-        }
-
-        /* --- Ratings Carousel Logic --- */
-        const ratingCards = document.querySelectorAll('.rating');
-        let currentRatingIndex = 0;
-
-        function updateRatingsDisplay() {
-            ratingCards.forEach((card, index) => {
-                // Reset classes
-                card.classList.remove('active', 'prev-card', 'next-card');
-
-                // Apply new positional classes
-                if (index === currentRatingIndex) {
-                    card.classList.add('active');
-                } else if (index === (currentRatingIndex - 1 + ratingCards.length) % ratingCards.length) {
-                    card.classList.add('prev-card');
-                } else if (index === (currentRatingIndex + 1) % ratingCards.length) {
-                    card.classList.add('next-card');
-                }
-            });
-        }
-
-        function rotateRatings(direction) {
-            currentRatingIndex = (currentRatingIndex + direction + ratingCards.length) % ratingCards.length;
-            updateRatingsDisplay();
-        }
-
-        updateRatingsDisplay();
-
     </script>
 
 </body>
-
 </html>

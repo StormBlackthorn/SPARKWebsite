@@ -1,476 +1,328 @@
 @property --progress {
-            syntax: "<number>";
-            inherits: false;
-            initial-value: 0;
-        }
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
 
-        /* Hero */
-        .club-info {
-            display: grid;
-            grid-template-columns: 1.05fr 1.35fr;
-            gap: 0;
-            align-items: stretch;
-            margin-bottom: var(--space-4xl);
-            border-radius: var(--radius-xl);
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-        }
+/* Hero */
+.club-info {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: var(--space-lg);
+  align-items: stretch;
+  margin-bottom: var(--space-4xl);
+}
 
-        .club-details {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: calc(var(--space-2xl) + 6px);
-            background: var(--color-surface);
-            border-radius: 0;
-            box-shadow: none;
-        }
+.club-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-2xl);
+  background: var(--gradient-hero);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+}
 
-        .mission-members-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-md);
-        }
+.club-details h2 {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  letter-spacing: -0.04em;
+  margin-bottom: var(--space-sm);
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+}
 
-        .mission-members-buttons a {
-            text-decoration: none;
-        }
+.club-details h3 {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-lg);
+  line-height: 1.5;
+}
 
-        .mission-members-buttons button {
-            width: 100%;
-        }
+.club-details > p {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  margin-bottom: var(--space-xl);
+}
 
-        /* Carousel */
-        .announcement-bar {
-            display: flex;
-            align-items: center;
-            gap: var(--space-md);
-            padding: 12px 24px;
-            background: #e26a6a;
-            color: #ffffff;
-        }
+.mission-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
 
-        .announcement-tag {
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            background: rgba(255, 255, 255, 0.2);
-            color: #ffffff;
-            padding: 4px 8px;
-            border-radius: var(--radius-full);
-        }
+.mission-actions a {
+  text-decoration: none;
+}
 
-        .announcement-bar p {
-            margin: 0;
-            color: #ffffff;
-        }
+.mission-actions button {
+  width: 100%;
+}
 
-        .announcement-link {
-            margin-left: auto;
-            font-weight: 600;
-            color: #ffffff;
-        }
+/* Carousel */
+.carousel {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-lg);
+  user-select: none;
+  min-height: 320px;
+}
 
-        .announcement-link:hover {
-            color: #ffffff;
-            text-decoration: underline;
-        }
+.carousel .images {
+  height: 100%;
+  min-height: 320px;
+}
 
-        .announcement-close {
-            background: transparent;
-            border: none;
-            color: #ffffff;
-            font-size: 20px;
-            line-height: 1;
-            cursor: pointer;
-            padding: 6px;
-        }
+.carousel .images img {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  object-fit: cover;
+  display: none;
+}
 
-        /* Hero */
-        .hero-kicker {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--color-text-tertiary);
-            margin: 0 0 var(--space-sm);
-        }
+.carousel .images img.current {
+  display: block;
+}
 
-        .hero-title {
-            font-size: 40px;
-            letter-spacing: -0.02em;
-            margin-bottom: var(--space-xs);
-        }
+.carousel-controls {
+  position: absolute;
+  top: var(--space-md);
+  left: var(--space-md);
+  z-index: 4;
+}
 
-        .hero-subtitle {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--color-text);
-            margin-bottom: var(--space-md);
-            line-height: 1.35;
-        }
+#pauseButton {
+  cursor: pointer;
+  display: none;
+  width: 50px;
+  height: 50px;
+  position: relative;
+}
 
-        .hero-description {
-            font-size: 16px;
-            line-height: 1.7;
-            margin-bottom: var(--space-xl);
-            color: var(--color-text-secondary);
-        }
+.carousel:hover #pauseButton,
+.carousel:hover .circular-progress {
+  display: block;
+}
 
-        .carousel {
-            position: relative;
-            border-radius: 0;
-            overflow: hidden;
-            background: var(--color-surface);
-            box-shadow: none;
-            user-select: none;
-            min-height: 320px;
-        }
+.circular-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  display: none;
+  --size: 250px;
+  --half-size: calc(var(--size) / 2);
+  --stroke-width: 20px;
+  --radius: calc((var(--size) - var(--stroke-width)) / 2);
+  --circumference: calc(var(--radius) * pi * 2);
+  --dash: calc((var(--progress) * var(--circumference)) / 100);
+}
 
-        .carousel .images {
-            height: 100%;
-            min-height: 320px;
-        }
+.circular-progress circle {
+  cx: var(--half-size);
+  cy: var(--half-size);
+  r: var(--radius);
+  stroke-width: var(--stroke-width);
+  fill: none;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: var(--half-size) var(--half-size);
+  stroke-dasharray: var(--dash) calc(var(--circumference) - var(--dash));
+  stroke: rgba(255, 255, 255, 0.7);
+}
 
-        .carousel .images img {
-            width: 100%;
-            height: 100%;
-            min-height: 320px;
-            object-fit: cover;
-            display: none;
-        }
+#pauseIcon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.3));
+}
 
-        .carousel .images img.current {
-            display: block;
-        }
+.carousel .arrows {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 2rem;
+  cursor: pointer;
+  display: none;
+  z-index: 3;
+  padding: var(--space-sm) var(--space-md);
+  background: rgba(15, 23, 42, 0.3);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(4px);
+  transition: background var(--duration-fast) ease;
+  user-select: none;
+  border: none;
+  line-height: 1;
+}
 
-        .carousel-controls {
-            position: absolute;
-            top: var(--space-md);
-            left: var(--space-md);
-            z-index: 4;
-        }
+.carousel .arrows:hover {
+  background: rgba(15, 23, 42, 0.5);
+}
 
-        #pauseButton {
-            cursor: pointer;
-            display: none;
-            width: 50px;
-            height: 50px;
-            position: relative;
-        }
+.carousel .arrows.prev { left: var(--space-md); }
+.carousel .arrows.next { right: var(--space-md); }
 
-        .carousel:hover #pauseButton,
-        .carousel:hover .circular-progress {
-            display: block;
-        }
+.carousel:hover .arrows,
+.carousel:hover .dots {
+  display: flex;
+}
 
-        .circular-progress {
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 3;
-            display: none;
-            --size: 250px;
-            --half-size: calc(var(--size) / 2);
-            --stroke-width: 20px;
-            --radius: calc((var(--size) - var(--stroke-width)) / 2);
-            --circumference: calc(var(--radius) * pi * 2);
-            --dash: calc((var(--progress) * var(--circumference)) / 100);
-        }
+.carousel .dots {
+  position: absolute;
+  bottom: var(--space-lg);
+  left: 0;
+  right: 0;
+  justify-content: center;
+  gap: var(--space-sm);
+  display: none;
+  z-index: 3;
+}
 
-        .circular-progress circle {
-            cx: var(--half-size);
-            cy: var(--half-size);
-            r: var(--radius);
-            stroke-width: var(--stroke-width);
-            fill: none;
-            stroke-linecap: round;
-            transform: rotate(-90deg);
-            transform-origin: var(--half-size) var(--half-size);
-            stroke-dasharray: var(--dash) calc(var(--circumference) - var(--dash));
-            stroke: rgba(255, 255, 255, 0.7);
-        }
+.carousel .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: background var(--duration-fast) ease, transform var(--duration-fast) ease;
+  border: none;
+  padding: 0;
+}
 
-        #pauseIcon {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 5;
-            filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.3));
-        }
+.carousel .dot.current {
+  background: #fff;
+  transform: scale(1.25);
+}
 
-        .carousel .arrows {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #ffffff;
-            font-size: 2rem;
-            cursor: pointer;
-            display: none;
-            z-index: 3;
-            padding: var(--space-sm) var(--space-md);
-            background: rgba(6, 27, 49, 0.35);
-            border-radius: var(--radius-md);
-            backdrop-filter: blur(4px);
-            transition: background var(--duration-fast) ease;
-            user-select: none;
-            border: none;
-            line-height: 1;
-        }
+/* Stats section */
+.stats-section {
+  margin-bottom: var(--space-4xl);
+}
 
-        .carousel .arrows:hover {
-            background: rgba(6, 27, 49, 0.5);
-        }
+.stats-section .section-intro {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-2xl);
+}
 
-        .carousel .arrows.prev {
-            left: var(--space-md);
-        }
+.stats-section .header-description {
+  flex: 1;
+  min-width: 280px;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  margin: 0;
+}
 
-        .carousel .arrows.next {
-            right: var(--space-md);
-        }
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
+}
 
-        .carousel:hover .arrows,
-        .carousel:hover .dots {
-            display: flex;
-        }
+/* Ratings */
+.ratings-section {
+  margin-bottom: var(--space-2xl);
+}
 
-        .carousel .dots {
-            position: absolute;
-            bottom: var(--space-lg);
-            left: 0;
-            right: 0;
-            justify-content: center;
-            gap: var(--space-sm);
-            display: none;
-            z-index: 3;
-        }
+.ratings-container {
+  position: relative;
+}
 
-        .carousel .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: var(--radius-full);
-            background: rgba(255, 255, 255, 0.6);
-            cursor: pointer;
-            transition: background var(--duration-fast) ease, transform var(--duration-fast) ease;
-            border: none;
-            padding: 0;
-        }
+.ratings-container > .arrows {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  font-size: 1.75rem;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  user-select: none;
+  padding: var(--space-sm);
+  border-radius: var(--radius-md);
+  transition: color var(--duration-fast) ease, background var(--duration-fast) ease;
+}
 
-        .carousel .dot.current {
-            background: #ffffff;
-            transform: scale(1.15);
-        }
+.ratings-container > .arrows:hover {
+  color: var(--color-primary);
+  background: var(--color-primary-light);
+}
 
-        /* Stats section */
-        .stats-section {
-            margin-bottom: var(--space-4xl);
-        }
+.ratings-container > .arrows.prev { left: 0; }
+.ratings-container > .arrows.next { right: 0; }
 
-        .stats-header {
-            margin-bottom: var(--space-xl);
-        }
+.ratings {
+  display: flex;
+  gap: var(--space-lg);
+  padding: var(--space-xl) var(--space-3xl);
+}
 
-        .section-title {
-            font-size: 26px;
-            margin-bottom: var(--space-xs);
-        }
+.rating {
+  flex: 1;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--space-xl);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  min-height: 180px;
+}
 
-        .section-description {
-            margin: 0;
-            color: var(--color-text-secondary);
-            font-size: 15px;
-        }
+.rating.current {
+  display: flex;
+}
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: var(--space-lg);
-        }
+.rating p {
+  font-size: 1.0625rem;
+  font-style: italic;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-md);
+}
 
-        .stat-card {
-            background: var(--color-surface);
-            border-radius: var(--radius-lg);
-            padding: var(--space-lg);
-            box-shadow: var(--shadow-sm);
-        }
+.rating cite {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-left: auto;
+  font-style: normal;
+}
 
-        .stat-label {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--color-text-tertiary);
-            margin: 0 0 var(--space-sm);
-        }
+@media (max-width: 900px) {
+  .club-info {
+    grid-template-columns: 1fr;
+  }
 
-        .stat-value {
-            font-size: 28px;
-            font-weight: 700;
-            margin: 0 0 var(--space-xs);
-            color: var(--color-text);
-        }
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-        .stat-note {
-            margin: 0;
-            color: var(--color-text-secondary);
-            font-size: 13px;
-        }
+  .stats-section .section-intro {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
 
-        /* Ratings */
-        .ratings-section {
-            margin-bottom: var(--space-2xl);
-        }
+@media (max-width: 540px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
 
-        .ratings-header {
-            margin-bottom: var(--space-lg);
-        }
-
-        .ratings-container {
-            position: relative;
-        }
-
-        /* Upgraded Arrows to ensure they stand out and don't get lost in text */
-        .ratings-container > .arrows {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 10;
-            font-size: 1.75rem;
-            color: var(--color-text-tertiary);
-            cursor: pointer;
-            user-select: none;
-            padding: 8px 12px;
-            border-radius: var(--radius-md);
-            background: none;
-            border: 1px solid rgba(0,0,0,0.05);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            transition: all 0.2s ease;
-        }
-
-        .ratings-container > .arrows:hover {
-            color: var(--color-primary);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        .ratings-container > .arrows.prev {
-            left: 0;
-        }
-
-        .ratings-container > .arrows.next {
-            right: 0;
-        }
-
-        /* Updated Ratings Container */
-        .ratings {
-            position: relative;
-            height: 380px; 
-            width: 100%;
-            overflow: hidden;
-            display: block; 
-            padding: 0 !important; /* Force override old padding */
-            margin: 0;
-        }
-
-        /* Updated Base Rating Card */
-        .rating {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 30%;
-            min-height: 240px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: var(--space-xl);
-            background: var(--color-surface);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-sm);
-            
-            /* SQUASH default blockquote margins which shift the layout right */
-            margin: 0 !important; 
-            
-            /* Hidden by default */
-            opacity: 0;
-            transform: translate(-50%, -50%) scale(0.6);
-            z-index: 0;
-            pointer-events: none;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        /* Active (Center) Card */
-        .rating.active {
-            left: 50%; /* Mathematically centered */
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1);
-            z-index: 3;
-            pointer-events: auto;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
-        }
-
-        /* Previous (Left) Card */
-        .rating.prev-card {
-            left: 16%; /* Perfect symmetrical placement */
-            opacity: 0.4;
-            transform: translate(-50%, -50%) scale(0.85);
-            z-index: 2;
-        }
-
-        /* Next (Right) Card */
-        .rating.next-card {
-            left: 84%; /* Perfect symmetrical placement */
-            opacity: 0.4;
-            transform: translate(-50%, -50%) scale(0.85);
-            z-index: 2;
-        }
-
-        .rating p {
-            font-size: 15px;
-            font-style: italic;
-            line-height: 1.6;
-            color: var(--color-text-secondary);
-            margin-bottom: var(--space-md);
-        }
-
-        .rating cite {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--color-text-tertiary);
-            margin-left: auto;
-            font-style: normal;
-        }
-
-
-        @media (max-width: 900px) {
-            .club-info {
-                grid-template-columns: 1fr;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .stats-section .section-intro {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            /* Shift to 1 card layout cleanly */
-            .rating {
-                width: 70%;
-            }
-            .rating.prev-card, .rating.next-card {
-                opacity: 0;
-                pointer-events: none;
-            }
-        }
-
-        @media (max-width: 540px) {
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .rating {
-                width: 90%;
-            }
-        }
+  .ratings {
+    padding: var(--space-xl) var(--space-2xl);
+  }
+}
