@@ -9,9 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
     <script>
-        const base = document.createElement('base');
-        base.href = location.hostname === "stormblackthorn.github.io" ? "/SPARKWebsite/" : "/";
-        document.head.appendChild(base);
+        document.head.appendChild(Object.assign(document.createElement('base'), {
+            href: "/"
+        }));
     </script>
     <script src="src/index.js"></script>
     <script src="src/search.js"></script>
