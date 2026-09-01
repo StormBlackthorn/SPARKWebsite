@@ -14,6 +14,7 @@
         }));
     </script>
     <script src="src/index.js"></script>
+    <script src="src/UI.js"></script>
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/volunteer.css">
 </head>
@@ -40,71 +41,24 @@
             </div>
         </section>
 
-        <section class="tabs-container" id="volunteer-paths" aria-label="Volunteer paths">
-            <div class="tabs" role="tablist">
-                <button type="button" class="tab active" role="tab" id="tab-join" aria-selected="true"
-                    aria-controls="panel-join" onclick="showTab(0)">Join a chapter</button>
-                <button type="button" class="tab" role="tab" id="tab-start" aria-selected="false"
-                    aria-controls="panel-start" onclick="showTab(1)">Start a chapter</button>
-                <button type="button" class="tab" role="tab" id="tab-chaperone" aria-selected="false"
-                    aria-controls="panel-chaperone" onclick="showTab(2)">Chaperone</button>
-            </div>
-
-            <div class="tab-panels">
-                <div class="tab-panel active" role="tabpanel" id="panel-join" aria-labelledby="tab-join">
-                    <ol class="steps">
-                        <li>Find a school on the <a href="pages/about/chapters.html">Chapters</a> page.</li>
-                        <li><a href="pages/contactUs.html">Contact us</a> with the chapter you want to join.</li>
-                    </ol>
-                    <a href="pages/about/chapters.html"><button type="button">Browse chapters</button></a>
-                </div>
-
-                <div class="tab-panel" role="tabpanel" id="panel-start" aria-labelledby="tab-start" hidden>
-                    <ol class="steps">
-                        <li><a href="pages/contactUs.html">Contact us</a> first.</li>
-                        <li>Recruit 4–5 students.</li>
-                        <li>Plan what you'll teach.</li>
-                        <li>Email your local elementary school.</li>
-                        <li>Start the club once approved.</li>
-                    </ol>
-                    <a href="pages/contactUs.html"><button type="button">Contact us</button></a>
-                </div>
-
-                <div class="tab-panel" role="tabpanel" id="panel-chaperone" aria-labelledby="tab-chaperone" hidden>
-                    <ol class="steps">
-                        <li>Stay in the classroom during sessions.</li>
-                        <li>Sign up through your school's volunteer process.</li>
-                        <li><a href="pages/contactUs.html">Contact us</a> when you're signed up.</li>
-                    </ol>
-                    <p class="panel-note">Schools usually require a background check.</p>
-                    <a href="pages/contactUs.html"><button type="button">Contact us</button></a>
-                </div>
-            </div>
-
-            <p class="page-note">*Teaching volunteers must be in high school.</p>
-        </section>
+        <section class="tabs-container" id="volunteer-paths" aria-label="Volunteer paths"></section>
 
     </main>
 
     <footer-component></footer-component>
 
     <script>
-        const tabButtons = document.querySelectorAll('.tabs-container .tab');
-        const tabPanels = document.querySelectorAll('.tabs-container .tab-panel');
+        document.addEventListener("DOMContentLoaded", async () => {
+            await UI.loadComponents([
+                "volunteer/volunteer-tab.js",
+                "volunteer/volunteer-panel.js",
+                "volunteer/volunteer-paths.js"
+            ], "src/components/");
 
-        function showTab(idx) {
-            tabButtons.forEach((button, i) => {
-                const isActive = i === idx;
-                button.classList.toggle('active', isActive);
-                button.setAttribute('aria-selected', isActive);
-            });
-
-            tabPanels.forEach((panel, i) => {
-                const isActive = i === idx;
-                panel.classList.toggle('active', isActive);
-                panel.hidden = !isActive;
-            });
-        }
+            const container = document.getElementById("volunteer-paths");
+            UI.add(container, renderVolunteerPaths());
+            initVolunteerTabs(container);
+        });
     </script>
 </body>
 </html>

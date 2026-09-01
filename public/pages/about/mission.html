@@ -14,6 +14,7 @@
         }));
     </script>
     <script src="src/index.js"></script>
+    <script src="src/UI.js"></script>
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/mission.css">
 </head>
@@ -22,6 +23,8 @@
     <navbar-component></navbar-component>
 
     <main class="container about-page">
+        <nav class="about-subnav" id="about-nav" aria-label="About pages"></nav>
+
         <section class="about-cover">
             <img src="styles/assets/classroom_images/1.png" alt="Students working together on a project">
             <div class="about-cover-content">
@@ -57,6 +60,18 @@
     </main>
 
     <footer-component></footer-component>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            await UI.loadScripts(["about.js"], "src/data/");
+            await UI.loadComponents([
+                "dropdown/dropdown.js",
+                "about/about-nav.js"
+            ], "src/components/");
+
+            UI.add(document.getElementById("about-nav"), renderAboutNav("mission"));
+        });
+    </script>
 
 </body>
 </html>

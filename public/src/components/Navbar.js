@@ -65,6 +65,8 @@ class Navbar extends HTMLElement {
 
         .dropdown {
           position: relative;
+          padding-bottom: 6px;
+          margin-bottom: -6px;
         }
 
         .dropdown-title {
@@ -87,7 +89,7 @@ class Navbar extends HTMLElement {
         .dropdown-content {
           display: none;
           position: absolute;
-          top: calc(100% + 6px);
+          top: 100%;
           left: 0;
           background: #fff;
           border: 1px solid #e2e8f0;

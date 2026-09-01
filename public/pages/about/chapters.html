@@ -25,6 +25,7 @@
 
     <main class="container chapters-page">
         <header class="page-header">
+            <nav class="about-subnav" id="about-nav" aria-label="About pages"></nav>
             <h1 class="title">Our Chapters</h1>
             <p class="description">These are the local schools we teach at.</p>
         </header>
@@ -57,11 +58,16 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", async () => {
+            await UI.loadScripts(["schools.js", "about.js"], "src/data/");
             await UI.loadComponents([
+                "dropdown/dropdown.js",
+                "about/about-nav.js",
                 "chapter/school.js",
                 "chapter/location-filter.js",
                 "chapter/chapters.js"
             ], "src/components/");
+
+            UI.add(document.getElementById("about-nav"), renderAboutNav("chapters"));
 
             UI.add(document.querySelector(".directory-table"), renderChapters());
             UI.add(document.querySelector(".tooltip"), renderLocationFilters(), 1);

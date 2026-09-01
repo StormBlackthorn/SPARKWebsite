@@ -14,6 +14,7 @@
         }));
     </script>
     <script src="src/index.js"></script>
+    <script src="src/UI.js"></script>
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/contactUs.css">
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
@@ -45,11 +46,7 @@
                 </label>
 
                 <label for="school">School<span class="required">*</span>
-                    <select id="school" name="school" required>
-                        <option value="General Inquiry (Not School Specific)" selected>General Inquiry (Not School Specific)</option>
-                        <option value="Canyon Creek Elementary School">Canyon Creek Elementary School</option>
-                        <option value="Fernwood Elementary School">Fernwood Elementary School</option>
-                    </select>
+                    <span id="school-mount"></span>
                 </label>
 
                 <label for="message">Message<span class="required">*</span>
@@ -64,6 +61,18 @@
     </main>
 
     <footer-component></footer-component>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            await UI.loadScripts(["schools.js"], "src/data/");
+            await UI.loadComponents([
+                "dropdown/dropdown.js",
+                "contact/school-options.js"
+            ], "src/components/");
+
+            document.getElementById("school-mount").replaceWith(renderSchoolSelect());
+        });
+    </script>
 
 </body>
 </html>

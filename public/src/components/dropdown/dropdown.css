@@ -1,0 +1,124 @@
+.spark-dropdown {
+  position: relative;
+  width: 100%;
+  padding-bottom: 6px;
+  margin-bottom: -6px;
+}
+
+.spark-dropdown-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding: 12px 14px;
+  margin: 0;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  background: var(--surface-subtle);
+  color: var(--color-text);
+  font: inherit;
+  font-weight: 400;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: none;
+  transition:
+    border-color var(--duration-fast) ease,
+    box-shadow var(--duration-fast) ease,
+    background var(--duration-fast) ease;
+}
+
+.spark-dropdown-trigger:hover,
+.spark-dropdown-trigger:active {
+  background: var(--surface-subtle);
+  color: var(--color-text);
+  border-color: var(--color-border);
+  box-shadow: none;
+}
+
+.spark-dropdown.open .spark-dropdown-trigger,
+.spark-dropdown.open .spark-dropdown-trigger:hover,
+.spark-dropdown.open .spark-dropdown-trigger:active,
+.spark-dropdown-trigger:focus,
+.spark-dropdown-trigger:focus-visible {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(83, 58, 253, 0.2);
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.spark-dropdown-label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.spark-dropdown-arrow {
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  transition: transform var(--duration-fast) ease;
+}
+
+.spark-dropdown.open .spark-dropdown-arrow {
+  transform: rotate(90deg);
+}
+
+.spark-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 6px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.spark-dropdown-menu[hidden] {
+  display: none;
+}
+
+.spark-dropdown-item {
+  width: 100%;
+  padding: 10px 12px;
+  margin: 0;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-text-secondary);
+  font: inherit;
+  font-weight: 400;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.spark-dropdown-item:hover,
+.spark-dropdown-item:active,
+.spark-dropdown-item:focus,
+.spark-dropdown-item:focus-visible,
+.spark-dropdown-item.selected {
+  background: var(--surface-muted);
+  color: var(--color-text);
+  outline: none;
+  box-shadow: none;
+}
+
+.about-subnav {
+  margin-bottom: var(--space-lg);
+}
+
+.about-subnav .spark-dropdown {
+  max-width: 280px;
+}

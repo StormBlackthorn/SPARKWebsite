@@ -8,22 +8,19 @@ document.addEventListener("DOMContentLoaded", function () {
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    //get all the values of the form input fields
-    const { sender, subject, school, message } = Object.fromEntries(new FormData(form).entries());
+    const { email, subject, school, message } = Object.fromEntries(new FormData(form).entries());
 
-    //change receiver based on school
-    const receiver = {
-        "General Inquiry (Not School Specific)": "2025238@apps.nsd.org", //Yo-cheng
-        "Canyon Creek Elementary School": "2002159@apps.nsd.org", //Videep
-        "Fernwood Elementary School": "2025238@apps.nsd.org", 
-        //ishita 2002469@apps.nsd.org
-    }[school] || "2025238@apps.nsd.org";
+    const defaultEmail = typeof DEFAULT_CONTACT_EMAIL !== "undefined"
+        ? DEFAULT_CONTACT_EMAIL
+        : "2025238@apps.nsd.org";
+    const receiver = (typeof CHAPTERS !== "undefined" ? CHAPTERS : [])
+        .find((chapter) => `${chapter.school} School` === school)?.contactEmail ?? defaultEmail;
 
     const cc = "";
 
     try {
         emailjs.send("service_pqhebck", "template_krpovpb", {
-            sender: sender,
+            sender: email,
             subject: subject,
             school: school,
             message: message,
@@ -41,5 +38,4 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 });
-
 

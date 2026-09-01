@@ -80,12 +80,7 @@
                 </p>
                 <a href="pages/about/statistics.html"><button type="button" class="btn-lg">Explore Our Impact &rarr;</button></a>
             </div>
-            <div class="stats-grid">
-                <div class="stat-box"><img src="styles/assets/icons/studentsTaught.png" alt="" loading="lazy"><p>500+ Students Taught</p></div>
-                <div class="stat-box"><img src="styles/assets/icons/dedicatedVolunteerTeachers.png" alt="" loading="lazy"><p>80 Volunteer Teachers</p></div>
-                <div class="stat-box"><img src="styles/assets/icons/schools.png" alt="" loading="lazy"><p>30 Schools</p></div>
-                <div class="stat-box"><img src="styles/assets/icons/hoursContributed.png" alt="" loading="lazy"><p>700+ Hours Contributed</p></div>
-            </div>
+            <div class="stats-grid"></div>
         </section>
 
         <section class="ratings-section" aria-labelledby="ratings-heading">
@@ -109,11 +104,15 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", async () => {
+            await UI.loadScripts(["stats.js"], "src/data/");
             await UI.loadComponents([
                 "testimonial/quote.js",
-                "testimonial/testimonials.js"
+                "testimonial/testimonials.js",
+                "statistic/stat-box.js",
+                "statistic/home-stats.js"
             ], "src/components/");
 
+            document.querySelector(".stats-grid").replaceWith(renderHomeStats());
             UI.add(document.querySelector(".ratings-container"), renderTestimonials(), 1);
         });
     </script>
