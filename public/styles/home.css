@@ -152,18 +152,30 @@
   top: 50%;
   transform: translateY(-50%);
   color: rgba(255, 255, 255, 0.9);
-  font-size: 2rem;
   cursor: pointer;
   display: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  font-size: 0;
+  line-height: 0;
+  font-weight: 400;
   z-index: 3;
-  padding: var(--space-sm) var(--space-md);
   background: rgba(15, 23, 42, 0.3);
   border-radius: var(--radius-md);
   backdrop-filter: blur(4px);
   transition: background var(--duration-fast) ease;
   user-select: none;
   border: none;
-  line-height: 1;
+}
+
+.carousel .arrows .arrow-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  display: block;
+  flex-shrink: 0;
 }
 
 .carousel .arrows:hover {

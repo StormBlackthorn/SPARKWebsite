@@ -47,13 +47,21 @@
                         <img id="pauseIcon" src="styles/assets/pause.svg" alt="" width="32" height="32">
                     </div>
                 </div>
-                <button type="button" class="arrows prev" aria-label="Previous slide" onclick="rotate(['.images', '.dots'], -1);">&lsaquo;</button>
+                <button type="button" class="arrows prev" aria-label="Previous slide" onclick="rotate(['.images', '.dots'], -1);">
+                    <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
                 <div class="images">
                     <img src="styles/assets/classroom_images/1.png" alt="SPARK club activity" class="current">
                     <img src="styles/assets/classroom_images/2.png" alt="Students learning STEM">
                     <img src="styles/assets/classroom_images/3.png" alt="Volunteer teaching session">
                 </div>
-                <button type="button" class="arrows next" aria-label="Next slide" onclick="rotate(['.images', '.dots'], 1);">&rsaquo;</button>
+                <button type="button" class="arrows next" aria-label="Next slide" onclick="rotate(['.images', '.dots'], 1);">
+                    <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
                 <div class="dots" role="tablist" aria-label="Carousel slides">
                     <button type="button" class="dot current" role="tab" aria-selected="true" aria-label="Slide 1" onclick="rotate(['.images', '.dots'], 0, true);"></button>
                     <button type="button" class="dot" role="tab" aria-label="Slide 2" onclick="rotate(['.images', '.dots'], 1, true);"></button>
@@ -83,8 +91,16 @@
         <section class="ratings-section" aria-labelledby="ratings-heading">
             <h2 id="ratings-heading" class="header">What <span class="text-accent">others</span> say about us</h2>
             <div class="ratings-container">
-                <button type="button" class="arrows prev" aria-label="Previous testimonial" onclick="rotate('.ratings', -1)"></button>
-                <button type="button" class="arrows next" aria-label="Next testimonial" onclick="rotate('.ratings', 1)"></button>
+                <button type="button" class="arrows prev" aria-label="Previous testimonial" onclick="rotate('.ratings', -1)">
+                    <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <button type="button" class="arrows next" aria-label="Next testimonial" onclick="rotate('.ratings', 1)">
+                    <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
             </div>
         </section>
     </main>
