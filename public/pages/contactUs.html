@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="styles/contactUs.css">
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="src/sendEmail.js" defer></script>
+    <script src="src/contact-prefill.js" defer></script>
 </head>
 <body>
 
@@ -71,6 +72,7 @@
             ], "src/components/");
 
             document.getElementById("school-mount").replaceWith(renderSchoolSelect());
+            prefillContactFormFromUrl();
         });
     </script>
 

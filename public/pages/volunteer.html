@@ -31,7 +31,7 @@
                 <p class="page-lead">High school students teach afterschool STEM clubs. Parents chaperone in the
                     classroom.</p>
                 <div class="hero-actions">
-                    <a href="pages/contactUs.html"><button type="button">Get started</button></a>
+                    <a id="volunteer-hero-cta" href="pages/contactUs.html"><button type="button">Get started</button></a>
                     <a href="pages/about/chapters.html"><button type="button" class="btn-secondary">Browse
                             chapters</button></a>
                 </div>
@@ -39,6 +39,22 @@
             <div class="volunteer-hero-media">
                 <img src="styles/assets/classroom_images/3.png" alt="SPARK volunteer teaching a small group of students">
             </div>
+        </section>
+
+        <section class="volunteer-why" aria-labelledby="why-volunteer-heading">
+            <div class="volunteer-why-content">
+                <h2 id="why-volunteer-heading">Why volunteer with SPARK?</h2>
+                <p>High school students lead afterschool STEM clubs at local elementary schools. You'll plan
+                    lessons, mentor kids, and build real leadership experience — usually about 2–3 hours per week
+                    during the school year.</p>
+                <ul class="volunteer-benefits">
+                    <li>Teach hands-on STEM through projects kids actually enjoy</li>
+                    <li>Develop leadership, communication, and teaching skills</li>
+                    <li>Earn service hours while making a direct impact in your community</li>
+                    <li>Join a network of student volunteers across 30+ schools</li>
+                </ul>
+            </div>
+            <div class="volunteer-stats" aria-label="Volunteer impact"></div>
         </section>
 
         <section class="tabs-container" id="volunteer-paths" aria-label="Volunteer paths"></section>
@@ -49,11 +65,17 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", async () => {
+            await UI.loadScripts(["stats.js"], "src/data/");
             await UI.loadComponents([
+                "statistic/stat-box.js",
                 "volunteer/volunteer-tab.js",
                 "volunteer/volunteer-panel.js",
+                "volunteer/volunteer-stats.js",
                 "volunteer/volunteer-paths.js"
             ], "src/components/");
+
+            document.querySelector(".volunteer-stats").replaceWith(renderVolunteerStats());
+            document.getElementById("volunteer-hero-cta").href = volunteerContactUrl("general");
 
             const container = document.getElementById("volunteer-paths");
             UI.add(container, renderVolunteerPaths());

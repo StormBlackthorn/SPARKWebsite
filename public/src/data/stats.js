@@ -71,3 +71,4 @@ const STAT_SECTIONS = [
 ];
 
 const HOME_STATS = ["studentsTaught", "volunteerTeachers", "schools", "hoursContributed"];
+const VOLUNTEER_STATS = ["volunteerTeachers", "hoursContributed", "schools", "studentsTaught"];
