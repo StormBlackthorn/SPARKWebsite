@@ -1,5 +1,5 @@
 UI.register("volunteer-panel", `
-<div class="tab-panel" role="tabpanel" id="panel-@param(id)" aria-labelledby="tab-@param(id)" hidden></div>
+<div class="tab-panel" role="tabpanel" id="panel-@param(id)" aria-labelledby="tab-@param(id)" aria-hidden="true"></div>
 `, {
     id: "join",
     steps: [],
@@ -9,7 +9,9 @@ UI.register("volunteer-panel", `
 }, (element, params) => {
     if (params.active) {
         element.classList.add("active");
-        element.hidden = false;
+        element.setAttribute("aria-hidden", "false");
+    } else {
+        element.toggleAttribute("inert", true);
     }
 
     const stepsList = UI.element("ol", { class: "steps" });
@@ -35,8 +37,10 @@ UI.register("volunteer-panel", `
     }
 
     if (params.cta) {
+        const ctaFooter = UI.element("div", { class: "panel-cta" });
         const ctaLink = UI.element("a", { href: params.cta.href });
         UI.add(ctaLink, UI.element("button", { type: "button" }, { textContent: params.cta.label }));
-        UI.add(element, ctaLink);
+        UI.add(ctaFooter, ctaLink);
+        UI.add(element, ctaFooter);
     }
 });

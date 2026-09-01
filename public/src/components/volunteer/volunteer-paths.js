@@ -107,7 +107,8 @@ function initVolunteerTabs(container) {
         tabPanels.forEach((panel, i) => {
             const isActive = i === index;
             panel.classList.toggle("active", isActive);
-            panel.hidden = !isActive;
+            panel.setAttribute("aria-hidden", String(!isActive));
+            panel.toggleAttribute("inert", !isActive);
         });
     }
 

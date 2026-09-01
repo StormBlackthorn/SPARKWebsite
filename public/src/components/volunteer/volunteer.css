@@ -53,14 +53,19 @@
 
 .tab-panels {
   padding: var(--space-md);
+  display: grid;
 }
 
 .tab-panel {
-  display: none;
+  grid-area: 1 / 1;
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
 }
 
 .tab-panel.active {
-  display: block;
+  visibility: visible;
 }
 
 .steps {
@@ -79,14 +84,19 @@
   margin-bottom: 0;
 }
 
-.tab-panel > a {
-  text-decoration: none;
-}
-
 .panel-note {
   margin: 0 0 var(--space-md);
   font-size: 13px;
   color: var(--color-text-muted);
+}
+
+.panel-cta {
+  margin-top: auto;
+  padding-top: var(--space-md);
+}
+
+.panel-cta a {
+  text-decoration: none;
 }
 
 .page-note {
