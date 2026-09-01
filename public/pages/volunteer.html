@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Join SPARK as a volunteer — help teach STEM at local elementary schools or start a new chapter.">
+    <meta name="description" content="Volunteer with SPARK — teach STEM at local elementary schools or chaperone a club.">
     <title>SPARK - Volunteer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,73 +23,65 @@
 
     <main class="container volunteer-page">
 
-        <section class="volunteer-hero">
+        <section class="volunteer-hero" aria-label="Volunteer overview">
             <div class="volunteer-hero-content">
                 <p class="hero-kicker">Get involved</p>
                 <h1 class="page-title">Volunteer</h1>
-                <p class="page-lead">Help us run engaging STEM clubs for kids in local schools. Whether you are a
-                    student volunteer or a parent chaperone, there is a place for you.</p>
+                <p class="page-lead">High school students teach afterschool STEM clubs. Parents chaperone in the
+                    classroom.</p>
                 <div class="hero-actions">
-                    <a href="pages/contactUs.html"><button type="button">Contact Us</button></a>
-                    <a href="pages/about/chapters.html"><button type="button" class="btn-secondary">View
-                            Chapters</button></a>
+                    <a href="pages/contactUs.html"><button type="button">Get started</button></a>
+                    <a href="pages/about/chapters.html"><button type="button" class="btn-secondary">Browse
+                            chapters</button></a>
                 </div>
             </div>
             <div class="volunteer-hero-media">
-                <img src="https://picsum.photos/960/720?random=31" alt="Students collaborating">
+                <img src="styles/assets/classroom_images/3.png" alt="SPARK volunteer teaching a small group of students">
             </div>
         </section>
 
-        <section class="volunteer-callout">
-            <h2>We want you to join us</h2>
-            <p>Everyone can make a difference, and we need all the help we can get. Choose a path below to see how you
-                can participate.</p>
-            <p class="subsectionDisclaimer">*You must be a high school student to volunteer with SPARK.</p>
-        </section>
-
-        <section class="tabsContainer">
-            <div class="tabs" role="tablist" aria-label="Volunteer options">
-                <button type="button" class="tab active" role="tab" aria-selected="true" onclick="showTab(0)">Join an Existing Chapter</button>
-                <button type="button" class="tab" role="tab" aria-selected="false" onclick="showTab(1)">Start a New Chapter</button>
-                <button type="button" class="tab" role="tab" aria-selected="false" onclick="showTab(2)">Parents & Guardians</button>
+        <section class="tabs-container" id="volunteer-paths" aria-label="Volunteer paths">
+            <div class="tabs" role="tablist">
+                <button type="button" class="tab active" role="tab" id="tab-join" aria-selected="true"
+                    aria-controls="panel-join" onclick="showTab(0)">Join a chapter</button>
+                <button type="button" class="tab" role="tab" id="tab-start" aria-selected="false"
+                    aria-controls="panel-start" onclick="showTab(1)">Start a chapter</button>
+                <button type="button" class="tab" role="tab" id="tab-chaperone" aria-selected="false"
+                    aria-controls="panel-chaperone" onclick="showTab(2)">Chaperone</button>
             </div>
 
-            <div class="background">
-                <div class="content" style="display: block;">
-                    <div class="steps">
-                        <h3>Step 1: Find the chapter you want to join</h3>
-                        <p>Visit the <a href="pages/about/chapters.html">Chapters</a> page to see the list of existing chapters. Find a location that works for you with lesson subjects that fits your interest.</p>
-                        <h3>Step 2: Reach out</h3>
-                        <p><a href="pages/contactUs.html">Contact us</a> and express your interest in joining the chapter.</p>
-                    </div>
+            <div class="tab-panels">
+                <div class="tab-panel active" role="tabpanel" id="panel-join" aria-labelledby="tab-join">
+                    <ol class="steps">
+                        <li>Find a school on the <a href="pages/about/chapters.html">Chapters</a> page.</li>
+                        <li><a href="pages/contactUs.html">Contact us</a> with the chapter you want to join.</li>
+                    </ol>
+                    <a href="pages/about/chapters.html"><button type="button">Browse chapters</button></a>
+                </div>
 
-                    <p>And you are done! We will be in touch with you shortly.</p>
-                    <p class="subsectionDisclaimer">*You can only miss up to <strong>two</strong> sessions per season unless there is an unforeseen circumstance. Please tell your local club leader if you need to miss a session.</p>
+                <div class="tab-panel" role="tabpanel" id="panel-start" aria-labelledby="tab-start" hidden>
+                    <ol class="steps">
+                        <li><a href="pages/contactUs.html">Contact us</a> first.</li>
+                        <li>Recruit 4–5 students.</li>
+                        <li>Plan what you'll teach.</li>
+                        <li>Email your local elementary school.</li>
+                        <li>Start the club once approved.</li>
+                    </ol>
+                    <a href="pages/contactUs.html"><button type="button">Contact us</button></a>
                 </div>
-                <div class="content" style="display: none;">
-                    <div class="steps">
-                        <h3>Step 1: Contact us</h3>
-                        <p><a href="pages/contactUs.html">Contact us</a> and express your interest in starting a chapter. We can provide help and our experiences along the way to ensure your success.</p>
-                        <h3>Step 2: Gather some friends</h3>
-                        <p>Find other people who are also interested and willing to help you start the chapter. We recommend at least having 4-5 founding members.</p>
-                        <h3>Step 3: Come up with a plan</h3>
-                        <p>Brainstorm what you want to teach and how you will teach it. Come up with a basic curriculum.</p>
-                        <h3>Step 4: Reach out to your local schools</h3>
-                        <p>Email your local school and ask about their interest in starting a chapter. This step can take time, so be patient.</p>
-                        <h3>Step 5: Start the club!</h3>
-                        <p>Once you have the necessary approvals and support, you can officially start teaching afterschool clubs at your selected elementary school.</p>
-                    </div>
-                </div>
-                <div class="content" style="display: none;">
-                    <div class="steps">
-                        <h3>We are always in need of chaperones</h3>
-                        <p>We sometimes have to reduce club sizes or cancel sessions due to a lack of adult supervision. If you are a parent or guardian interested in helping out, please sign up to be a chaperone.</p>
-                        <p>The process is different for every school, so please consult your local school's website for more information.</p>
-                        <p>Most of the time, chaperones are responsible for attendance. During lessons, you are free to help or observe as long as you stay in the classroom.</p>
-                        <p class="subsectionDisclaimer">*Most schools require adult volunteers to complete a background check.</p>
-                    </div>
+
+                <div class="tab-panel" role="tabpanel" id="panel-chaperone" aria-labelledby="tab-chaperone" hidden>
+                    <ol class="steps">
+                        <li>Stay in the classroom during sessions.</li>
+                        <li>Sign up through your school's volunteer process.</li>
+                        <li><a href="pages/contactUs.html">Contact us</a> when you're signed up.</li>
+                    </ol>
+                    <p class="panel-note">Schools usually require a background check.</p>
+                    <a href="pages/contactUs.html"><button type="button">Contact us</button></a>
                 </div>
             </div>
+
+            <p class="page-note">*Teaching volunteers must be in high school.</p>
         </section>
 
     </main>
@@ -97,24 +89,20 @@
     <footer-component></footer-component>
 
     <script>
-        const background = document.querySelector(".background");
-        const tabs = document.querySelector(".tabs");
-
-        function syncTabWidth() {
-            if (tabs && background) {
-                background.style.width = `${tabs.offsetWidth}px`;
-            }
-        }
-
-        syncTabWidth();
-        window.addEventListener('resize', syncTabWidth);
+        const tabButtons = document.querySelectorAll('.tabs-container .tab');
+        const tabPanels = document.querySelectorAll('.tabs-container .tab-panel');
 
         function showTab(idx) {
-            const tabButtons = document.querySelectorAll('.tab');
-            document.querySelectorAll(".content").forEach((content, i) => {
-                content.style.display = i === idx ? 'block' : 'none';
-                tabButtons[i].classList.toggle('active', i === idx);
-                tabButtons[i].setAttribute('aria-selected', i === idx);
+            tabButtons.forEach((button, i) => {
+                const isActive = i === idx;
+                button.classList.toggle('active', isActive);
+                button.setAttribute('aria-selected', isActive);
+            });
+
+            tabPanels.forEach((panel, i) => {
+                const isActive = i === idx;
+                panel.classList.toggle('active', isActive);
+                panel.hidden = !isActive;
             });
         }
     </script>
