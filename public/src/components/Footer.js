@@ -93,10 +93,12 @@ class Footer extends HTMLElement {
           <div>
             <h3>Quick Links</h3>
             <ul>
-              <li><a href="/pages/index.html">Home</a></li>
-              <li><a href="/pages/about/statistics.html">Our Statistics</a></li>
-              <li><a href="/pages/volunteer.html">Volunteer</a></li>
-              <li><a href="/pages/contactUs.html">Contact Us</a></li>
+              <li><a href="/public/pages/index.html">Home</a></li>
+              <li><a href="/public/pages/about/mission.html">Mission</a></li>
+              <li><a href="/public/pages/about/chapters.html">Chapters</a></li>
+              <li><a href="/public/pages/about/statistics.html">Our Statistics</a></li>
+              <li><a href="/public/pages/volunteer.html">Volunteer</a></li>
+              <li><a href="/public/pages/contactUs.html">Contact Us</a></li>
               <li><a href="https://github.com/StormBlackthorn/SPARKWebsite" target="_blank" rel="noopener noreferrer">GitHub Repo</a></li>
             </ul>
           </div>
