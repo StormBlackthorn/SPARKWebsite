@@ -88,6 +88,18 @@ class Footer extends HTMLElement {
         }
       </style>
 
+      <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            document.querySelectorAll("a").forEach(link => {
+                const currentPath = link.getAttribute('href');
+                if (currentPath?.startsWith('/public/')) {
+                    link.setAttribute('href', fixAbsolutePath(currentPath));
+                }
+            });
+        });
+      </script>
+
       <footer>
         <div class="footer-container">
           <div>

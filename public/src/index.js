@@ -46,7 +46,7 @@
         return new Promise((resolve, reject) => {
             document.head.appendChild(
                 Object.assign(document.createElement("script"), {
-                    src,
+                    src: fixAbsolutePath(src),
                     defer: true,
                     onload: resolve,
                     onerror: () => reject(new Error(`Failed to load script: ${src}`))
@@ -56,3 +56,7 @@
     }));
 
 })();
+
+function fixAbsolutePath(path) {
+    return location.hostname == "spark-stem.web.app" ? path.replace("/public", "") : path;
+}

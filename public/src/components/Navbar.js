@@ -197,6 +197,18 @@ class Navbar extends HTMLElement {
         }
       </style>
 
+      <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            document.querySelectorAll("a").forEach(link => {
+                const currentPath = link.getAttribute('href');
+                if (currentPath?.startsWith('/public/')) {
+                    link.setAttribute('href', fixAbsolutePath(currentPath));
+                }
+            });
+        });
+      </script>
+
       <nav id="nav-bar" aria-label="Main navigation">
         <a href="/public/pages/index.html" id="logo-link">
           <img src="/public/styles/assets/sparkTextLogo.png" id="logo" alt="SPARK STEM">
