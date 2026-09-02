@@ -7,3 +7,6 @@ Made ya look!
 This repository is the official repo for the SPARK Website. Any development progress will be reflected here. Please open an issue if you found any bug/typo, or have any suggestions. 
 
 [Website (Firebase Free Deploy)](https://spark-stem.web.app)
+
+## Contribution
+Contributions are welcome. Please follow the [Style Guidelines](CONTRIBUTION.md).
