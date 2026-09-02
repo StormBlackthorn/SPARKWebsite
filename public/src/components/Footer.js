@@ -6,16 +6,6 @@ class Footer extends HTMLElement {
 
   connectedCallback() {
 
-    
-     document.addEventListener("DOMContentLoaded", () => {
-          document.querySelectorAll("a").forEach(link => {
-              const currentPath = link.getAttribute('href');
-              if (currentPath?.startsWith('/public/')) {
-                  link.setAttribute('href', fixAbsolutePath(currentPath));
-              }
-          });
-      });
-
     this.shadowRoot.innerHTML = `
       <style>
         :host { display: block; }
@@ -133,6 +123,19 @@ class Footer extends HTMLElement {
         </div>
       </footer>
     `;
+
+    this.shadowRoot.querySelectorAll("[href], [src]").forEach(element => {
+      
+      ['href', 'src'].forEach(attr => {
+        const currentPath = element.getAttribute(attr);
+        
+        if (currentPath?.startsWith('/public/')) {
+          element.setAttribute(attr, fixAbsolutePath(currentPath));
+        }
+      });
+      
+    });
+
   }
 }
 
