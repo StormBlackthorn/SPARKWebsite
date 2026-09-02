@@ -10,8 +10,8 @@
 
     //load all components/scripts
     const scripts = [
-        "/public/src/components/Footer.js",
-        "/public/src/components/Navbar.js"
+        "/src/components/Footer.js",
+        "/src/components/Navbar.js"
     ];
 
     //no clue wth this is. All hail chatGPT
@@ -46,7 +46,7 @@
         return new Promise((resolve, reject) => {
             document.head.appendChild(
                 Object.assign(document.createElement("script"), {
-                    src: fixAbsolutePath(src),
+                    src: src,
                     defer: true,
                     onload: resolve,
                     onerror: () => reject(new Error(`Failed to load script: ${src}`))
@@ -56,7 +56,3 @@
     }));
     
 })();
-
-function fixAbsolutePath(path) {
-    return location.hostname == "spark-stem.web.app" ? path.replace("/public", "") : path;
-}

@@ -84,22 +84,5 @@
 
     <footer-component></footer-component>
 
-<<<<<<< HEAD
-    <script>
-        document.addEventListener("DOMContentLoaded", async () => {
-            await UI.loadComponents([
-                "chapter/school.js",
-                "chapter/location-filter.js",
-                "chapter/chapters.js"
-            ], "../../src/components/");
-
-            UI.add(document.querySelector(".directory-table"), renderChapters());
-            UI.add(document.querySelector(".tooltip"), renderLocationFilters(), 1);
-            document.getElementById("searchInput")?.dispatchEvent(new Event("input"));
-        });
-    </script>
-
-=======
->>>>>>> parent of a0c6f00 (Merge pull request #39 from cloud-000/main)
 </body>
 </html>

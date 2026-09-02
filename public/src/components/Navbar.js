@@ -199,8 +199,8 @@ class Navbar extends HTMLElement {
       </style>
 
       <nav id="nav-bar" aria-label="Main navigation">
-        <a href="/public/pages/index.html" id="logo-link">
-          <img src="/public/styles/assets/sparkTextLogo.png" id="logo" alt="SPARK STEM">
+        <a href="/pages/index.html" id="logo-link">
+          <img src="/styles/assets/sparkTextLogo.png" id="logo" alt="SPARK STEM">
         </a>
 
         <button id="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
@@ -215,29 +215,17 @@ class Navbar extends HTMLElement {
               About Us <span class="arrow" aria-hidden="true">›</span>
             </button>
             <div class="dropdown-content" role="menu">
-              <a href="/public/pages/about/mission.html" role="menuitem">Mission</a>
-              <a href="/public/pages/about/chapters.html" role="menuitem">Chapters</a>
-              <a href="/public/pages/about/statistics.html" role="menuitem">Statistics</a>
+              <a href="/pages/aboutUs/mission.html" role="menuitem">Mission</a>
+              <a href="/pages/aboutUs/chapters.html" role="menuitem">Chapters</a>
+              <a href="/pages/aboutUs/statistics.html" role="menuitem">Statistics</a>
             </div>
           </div>
-          <a href="/public/pages/Xcratch/index.html">Xcratch</a>
-          <a href="/public/pages/volunteer.html">Volunteer</a>
-          <a href="/public/pages/contactUs.html" class="nav-cta">Contact Us</a>
+          <a href="/pages/Xcratch/index.html">Xcratch</a>
+          <a href="/pages/volunteer.html">Volunteer</a>
+          <a href="/pages/contactUs.html" class="nav-cta">Contact Us</a>
         </div>
       </nav>
     `;
-
-    this.shadowRoot.querySelectorAll("[href], [src]").forEach(element => {
-      
-      ['href', 'src'].forEach(attr => {
-        const currentPath = element.getAttribute(attr);
-        
-        if (currentPath?.startsWith('/public/')) {
-          element.setAttribute(attr, fixAbsolutePath(currentPath));
-        }
-      });
-      
-    });
 
     const toggle = this.shadowRoot.getElementById('menu-toggle');
     const navLinks = this.shadowRoot.getElementById('nav-links');
