@@ -5,7 +5,7 @@ We are not very script, but just follow general good coding practices
 CamelCasing, four spaces indentations. I'd prefer shorthand/shortcuts instead of excessive variables and functions, as AI often love to do. 
 
 ### CSS
-**CSS files should be written with a nested structure.**
+**CSS files should be written with a nested structure,** unless it is just a quick one-liner. This is to make it easier to read and understand the structure of the page.
 
 Each page should only have ONE css file, and it should be named after the page. E.g. `about.html` should have `about.css`. CSS used across multiple files should go in `styles.css`.
 ```css
