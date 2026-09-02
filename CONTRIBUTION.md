@@ -4,6 +4,9 @@ We are not very script, but just follow general good coding practices
 ### JavaScript
 CamelCasing, four spaces indentations. I'd prefer shorthand/shortcuts instead of excessive variables and functions, as AI often love to do. 
 
+### HTML
+Absolute paths needs to be wrapped in `fixAbsolutePath()` function found in `index,js`. This is to make sure that the link works in firebase free deploy, where root is `/public` instead of `/`.
+
 ### CSS
 **CSS files should be written with a nested structure,** unless it is just a quick one-liner. This is to make it easier to read and understand the structure of the page.
 
