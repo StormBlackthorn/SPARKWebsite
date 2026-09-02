@@ -4,8 +4,8 @@ Because firebase hosting is used, the root of the website is `public/` instead o
 For example, in VSCode, put this in `.vscode/settings.json`:
 ```js
 {
-  "livePreview.serverRoot": "/public" //Live preview plugin
-  "liveServer.settings.root": "/public" // Live Server plugin
+  "livePreview.serverRoot": "public" //Live preview plugin
+  "liveServer.settings.root": "public" // Live Server plugin
 }
 ```
 
@@ -14,6 +14,9 @@ We are not very script, but just follow general good coding practices
 
 ### JavaScript
 CamelCasing, four spaces indentations. I'd prefer shorthand/shortcuts instead of excessive variables and functions, as AI often love to do. 
+
+### HTML
+Each page must have a `<base href="/pages/">` tag in the `<head>` section. This is due to Firebase rewrite rules messing up relative links. 
 
 ### CSS
 **CSS files should be written with a nested structure,** unless it is just a quick one-liner. This is to make it easier to read and understand the structure of the page.
