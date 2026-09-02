@@ -6,7 +6,7 @@ class Footer extends HTMLElement {
 
   connectedCallback() {
 
-    this.shadowRoot.innerHTML = `
+    this.shadowRoot.innerHTML = /*html*/`
       <style>
         :host { display: block; }
 

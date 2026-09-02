@@ -5,8 +5,7 @@ class Navbar extends HTMLElement {
   }
 
   connectedCallback() {
-
-    this.shadowRoot.innerHTML = `
+    this.shadowRoot.innerHTML = /*html*/`
       <style>
         :host { display: block; }
 
@@ -85,17 +84,34 @@ class Navbar extends HTMLElement {
           transform: rotate(90deg);
         }
 
-        .dropdown-content {
+        /* 
+          FOOLPROOF FIX: The hover bridge wrapper 
+          This element sits exactly against the button and does NOT animate.
+          The 6px padding creates the invisible, hoverable gap.
+        */
+        .dropdown-hover-bridge {
           display: none;
           position: absolute;
-          top: calc(100% + 6px);
+          top: 100%; 
           left: 0;
+          padding-top: 6px; 
+          z-index: 100;
+        }
+
+        .dropdown:hover .dropdown-hover-bridge,
+        .dropdown.open .dropdown-hover-bridge {
+          display: block;
+        }
+
+        /* The visual menu now lives safely inside the bridge */
+        .dropdown-content {
           background: #fff;
           border: 1px solid #e2e8f0;
           border-radius: 12px;
           min-width: 200px;
           box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
           padding: 6px;
+          animation: dropIn 200ms cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .dropdown-content a {
@@ -109,12 +125,6 @@ class Navbar extends HTMLElement {
         .dropdown-content a:hover {
           background: #f1f5f9;
           color: #4f46e5;
-        }
-
-        .dropdown:hover .dropdown-content,
-        .dropdown.open .dropdown-content {
-          display: block;
-          animation: dropIn 200ms cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         @keyframes dropIn {
@@ -182,15 +192,18 @@ class Navbar extends HTMLElement {
             padding: 12px 14px;
           }
 
+          /* Reset bridge layout for mobile */
+          .dropdown-hover-bridge {
+            position: static;
+            padding-top: 0;
+          }
+
           .dropdown-content {
             position: static;
             box-shadow: none;
             border: none;
             padding: 0 0 0 12px;
             background: transparent;
-          }
-
-          .dropdown:hover .dropdown-content {
             animation: none;
           }
 
@@ -214,11 +227,16 @@ class Navbar extends HTMLElement {
             <button class="dropdown-title" aria-haspopup="true" aria-expanded="false">
               About Us <span class="arrow" aria-hidden="true">›</span>
             </button>
-            <div class="dropdown-content" role="menu">
-              <a href="/pages/aboutUs/mission.html" role="menuitem">Mission</a>
-              <a href="/pages/aboutUs/chapters.html" role="menuitem">Chapters</a>
-              <a href="/pages/aboutUs/statistics.html" role="menuitem">Statistics</a>
+            
+            <!-- NEW WRAPPER ADDED HERE -->
+            <div class="dropdown-hover-bridge">
+              <div class="dropdown-content" role="menu">
+                <a href="/pages/aboutUs/mission.html" role="menuitem">Mission</a>
+                <a href="/pages/aboutUs/chapters.html" role="menuitem">Chapters</a>
+                <a href="/pages/aboutUs/statistics.html" role="menuitem">Statistics</a>
+              </div>
             </div>
+
           </div>
           <a href="/pages/Xcratch/index.html">Xcratch</a>
           <a href="/pages/volunteer.html">Volunteer</a>
@@ -246,7 +264,7 @@ class Navbar extends HTMLElement {
     });
 
     document.addEventListener('click', (e) => {
-      if (!this.shadowRoot.contains(e.target)) {
+      if (!e.composedPath().includes(this)) {
         navLinks.classList.remove('open');
         dropdown.classList.remove('open');
         toggle.setAttribute('aria-expanded', 'false');
