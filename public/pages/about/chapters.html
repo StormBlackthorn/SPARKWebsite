@@ -8,17 +8,29 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+<<<<<<< HEAD
     <script src="../../src/index.js"></script>
     <script src="../../src/UI.js"></script>
     <script src="../../src/search.js"></script>
     <link rel="stylesheet" href="../../styles/styles.css">
     <link rel="stylesheet" href="../../styles/chapters.css">
+=======
+    <script>
+        const base = document.createElement('base');
+        base.href = location.hostname === "stormblackthorn.github.io" ? "/SPARKWebsite/" : "/";
+        document.head.appendChild(base);
+    </script>
+    <script src="src/index.js"></script>
+    <script src="src/search.js"></script>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/chapters.css">
+>>>>>>> parent of a0c6f00 (Merge pull request #39 from cloud-000/main)
 </head>
 
 <body>
     <navbar-component></navbar-component>
 
-    <main class="container chapters-page">
+    <main class="container">
         <header class="page-header">
             <h1 class="title">Our Chapters</h1>
             <p class="description">These are the local schools we teach at.</p>
@@ -31,6 +43,18 @@
 
                 <div class="tooltip" role="dialog" aria-label="Filter options">
                     <h2>Filter by Location</h2>
+                    <label>
+                        <input type="checkbox" name="location" value="united-states">
+                        United States
+                    </label>
+                    <label>
+                        <input type="checkbox" name="location" value="washington">
+                        Washington
+                    </label>
+                    <label>
+                        <input type="checkbox" name="location" value="n/a">
+                        N/A
+                    </label>
                 </div>
             </div>
         </div>
@@ -44,12 +68,35 @@
                         <th scope="col">State/Region</th>
                     </tr>
                 </thead>
+                <tbody class="directory-rows">
+                    <tr class="directory-row" data-country="united states" data-region="washington">
+                        <td><a href="https://canyoncreek.nsd.org/" target="_blank" rel="noopener noreferrer">Canyon Creek Elementary</a></td>
+                        <td>United States</td>
+                        <td>Washington</td>
+                    </tr>
+                    <tr class="directory-row" data-country="united states" data-region="washington">
+                        <td><a href="https://fernwood.nsd.org/" target="_blank" rel="noopener noreferrer">Fernwood Elementary</a></td>
+                        <td>United States</td>
+                        <td>Washington</td>
+                    </tr>
+                    <tr class="directory-row" data-country="united states" data-region="washington">
+                        <td><a href="https://cottagelake.nsd.org/" target="_blank" rel="noopener noreferrer">Wellington Elementary</a></td>
+                        <td>United States</td>
+                        <td>Washington</td>
+                    </tr>
+                    <tr class="directory-row" data-country="united states" data-region="washington">
+                        <td><a href="https://woodin.nsd.org/" target="_blank" rel="noopener noreferrer">Woodin Elementary</a></td>
+                        <td>United States</td>
+                        <td>Washington</td>
+                    </tr>
+                </tbody>
             </table>
         </div>
     </main>
 
     <footer-component></footer-component>
 
+<<<<<<< HEAD
     <script>
         document.addEventListener("DOMContentLoaded", async () => {
             await UI.loadComponents([
@@ -64,5 +111,7 @@
         });
     </script>
 
+=======
+>>>>>>> parent of a0c6f00 (Merge pull request #39 from cloud-000/main)
 </body>
 </html>
