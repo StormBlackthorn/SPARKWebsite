@@ -8,18 +8,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
-    <script>
-        if(location.hostname !== "spark-stem.web.app") {
-            document.head.appendChild(Object.assign(document.createElement('base'), {
-                href: "/public/"
-            }));
-        }
-    </script>
-    <script src="src/index.js"></script>
-    <script src="src/UI.js"></script>
-    <link rel="stylesheet" href="styles/styles.css">
-    <link rel="stylesheet" href="styles/home.css">
-    <script src="src/carousel.js" defer></script>
+    <script src="../src/index.js"></script>
+    <script src="../src/UI.js"></script>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/home.css">
+    <script src="../src/carousel.js" defer></script>
 </head>
 
 <body>
@@ -35,8 +28,8 @@
                 <p>A fully student-run organization dedicated to providing afterschool teaching for STEM
                     related subjects in local elementary schools.</p>
                 <div class="mission-actions">
-                    <a href="pages/about/mission.html"><button type="button">Our Mission</button></a>
-                    <a href="pages/about/chapters.html"><button type="button" class="btn-secondary">Our Chapters</button></a>
+                    <a href="./about/mission.html"><button type="button">Our Mission</button></a>
+                    <a href="./about/chapters.html"><button type="button" class="btn-secondary">Our Chapters</button></a>
                 </div>
             </div>
 
@@ -46,14 +39,14 @@
                         <svg width="50" height="50" viewBox="0 0 250 250" class="circular-progress" aria-hidden="true">
                             <circle class="fg"></circle>
                         </svg>
-                        <img id="pauseIcon" src="styles/assets/pause.svg" alt="" width="32" height="32">
+                        <img id="pauseIcon" src="../styles/assets/pause.svg" alt="" width="32" height="32">
                     </div>
                 </div>
                 <button type="button" class="arrows prev" aria-label="Previous slide" onclick="rotate(['.images', '.dots'], -1);">&lsaquo;</button>
                 <div class="images">
-                    <img src="styles/assets/classroom_images/1.png" alt="SPARK club activity" class="current">
-                    <img src="styles/assets/classroom_images/2.png" alt="Students learning STEM">
-                    <img src="styles/assets/classroom_images/3.png" alt="Volunteer teaching session">
+                    <img src="../styles/assets/classroom_images/1.png" alt="SPARK club activity" class="current">
+                    <img src="../styles/assets/classroom_images/2.png" alt="Students learning STEM">
+                    <img src="../styles/assets/classroom_images/3.png" alt="Volunteer teaching session">
                 </div>
                 <button type="button" class="arrows next" aria-label="Next slide" onclick="rotate(['.images', '.dots'], 1);">&rsaquo;</button>
                 <div class="dots" role="tablist" aria-label="Carousel slides">
@@ -72,13 +65,13 @@
                     provide affordable and accessible resources, activities, and lessons to make sure that every children gets an equal
                     chance to learn about what shapes our everyday world.
                 </p>
-                <a href="pages/about/statistics.html"><button type="button" class="btn-lg">Explore Our Impact &rarr;</button></a>
+                <a href="./about/statistics.html"><button type="button" class="btn-lg">Explore Our Impact &rarr;</button></a>
             </div>
             <div class="stats-grid">
-                <div class="stat-box"><img src="styles/assets/icons/studentsTaught.png" alt="" loading="lazy"><p>500+ Students Taught</p></div>
-                <div class="stat-box"><img src="styles/assets/icons/dedicatedVolunteerTeachers.png" alt="" loading="lazy"><p>80 Volunteer Teachers</p></div>
-                <div class="stat-box"><img src="styles/assets/icons/schools.png" alt="" loading="lazy"><p>30 Schools</p></div>
-                <div class="stat-box"><img src="styles/assets/icons/hoursContributed.png" alt="" loading="lazy"><p>700+ Hours Contributed</p></div>
+                <div class="stat-box"><img src="../styles/assets/icons/studentsTaught.png" alt="" loading="lazy"><p>500+ Students Taught</p></div>
+                <div class="stat-box"><img src="../styles/assets/icons/dedicatedVolunteerTeachers.png" alt="" loading="lazy"><p>80 Volunteer Teachers</p></div>
+                <div class="stat-box"><img src="../styles/assets/icons/schools.png" alt="" loading="lazy"><p>30 Schools</p></div>
+                <div class="stat-box"><img src="../styles/assets/icons/hoursContributed.png" alt="" loading="lazy"><p>700+ Hours Contributed</p></div>
             </div>
         </section>
 
@@ -98,7 +91,7 @@
             await UI.loadComponents([
                 "testimonial/quote.js",
                 "testimonial/testimonials.js"
-            ], "src/components/");
+            ], "../src/components/");
 
             UI.add(document.querySelector(".ratings-container"), renderTestimonials(), 1);
         });
@@ -135,7 +128,7 @@
         function pause() {
             paused = !paused;
             const pauseIcon = document.getElementById('pauseIcon');
-            pauseIcon.src = paused ? 'styles/assets/play.svg' : 'styles/assets/pause.svg';
+            pauseIcon.src = paused ? '../styles/assets/play.svg' : '../styles/assets/pause.svg';
             pauseIcon.alt = paused ? 'Play' : 'Pause';
 
             if (paused) pausedTime = performance.now() - startTime;
