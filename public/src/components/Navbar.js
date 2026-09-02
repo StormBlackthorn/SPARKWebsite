@@ -5,6 +5,16 @@ class Navbar extends HTMLElement {
   }
 
   connectedCallback() {
+
+     document.addEventListener("DOMContentLoaded", () => {
+          document.querySelectorAll("a").forEach(link => {
+              const currentPath = link.getAttribute('href');
+              if (currentPath?.startsWith('/public/')) {
+                  link.setAttribute('href', fixAbsolutePath(currentPath));
+              }
+          });
+      });
+
     this.shadowRoot.innerHTML = `
       <style>
         :host { display: block; }
@@ -196,18 +206,6 @@ class Navbar extends HTMLElement {
           .nav-cta { margin-left: 0; margin-top: 8px; text-align: center; }
         }
       </style>
-
-      <script>
-        document.addEventListener("DOMContentLoaded", () => {
-
-            document.querySelectorAll("a").forEach(link => {
-                const currentPath = link.getAttribute('href');
-                if (currentPath?.startsWith('/public/')) {
-                    link.setAttribute('href', fixAbsolutePath(currentPath));
-                }
-            });
-        });
-      </script>
 
       <nav id="nav-bar" aria-label="Main navigation">
         <a href="/public/pages/index.html" id="logo-link">
