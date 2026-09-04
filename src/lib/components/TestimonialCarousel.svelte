@@ -104,7 +104,7 @@
     .testimonial-card-container {
         flex: 1;
         position: relative;
-        min-height: 220px;
+        min-height: 280px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -120,8 +120,9 @@
         box-shadow: var(--shadow-sm);
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-between;
         text-align: center;
+        overflow: hidden;
     }
 
     .quote-mark {
@@ -130,19 +131,55 @@
         color: var(--brand-muted);
         font-family: Georgia, serif;
         margin-bottom: -10px;
+        flex-shrink: 0;
+        user-select: none;
+    }
+
+    .quote {
+        margin: 0;
+        flex: 1 1 auto;
+        min-height: 0;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        scrollbar-width: thin;
+        --scrollbar-thumb: var(--brand-muted);
+        --scrollbar-track: transparent;
+        scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+        display: flex;
+        flex-direction: column;
+        justify-content: safe center;
+        padding: 0 var(--space-xs);
+    }
+
+    @supports not (scrollbar-color: auto) {
+        .quote::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .quote::-webkit-scrollbar-thumb {
+            background: var(--scrollbar-thumb);
+            border-radius: 4px;
+        }
+
+        .quote::-webkit-scrollbar-track {
+            background: var(--scrollbar-track);
+        }
     }
 
     .quote p {
         font-size: clamp(1.05rem, 2vw, 1.2rem);
         font-style: italic;
         color: var(--text-primary);
-        line-height: 1.65;
-        margin: 0 0 var(--space-md) 0;
+        line-height: 1.6;
+        margin: auto 0;
+        padding: 2px 0;
     }
 
     .author-info {
         font-size: 0.9375rem;
         color: var(--text-tertiary);
+        flex-shrink: 0;
+        margin-top: var(--space-xs);
     }
 
     .author {
@@ -218,12 +255,12 @@
     }
 
     @media (max-width: 768px) {
-        .testimonial-card {
-            padding: var(--space-lg);
+        .testimonial-card-container {
+            min-height: 330px;
         }
 
-        .testimonial-card-container {
-            min-height: 280px;
+        .testimonial-card {
+            padding: var(--space-lg) var(--space-lg);
         }
 
         .arrow-btn {
@@ -234,6 +271,16 @@
                 width: 18px;
                 height: 18px;
             }
+        }
+    }
+
+    @media (max-width: 480px) {
+        .testimonial-card-container {
+            min-height: 350px;
+        }
+
+        .testimonial-card {
+            padding: var(--space-md) var(--space-md);
         }
     }
 </style>
