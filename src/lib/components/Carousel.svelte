@@ -139,7 +139,18 @@
         aria-label="Previous slide"
         onclick={prevSlide}
     >
-        ‹
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+        >
+            <polyline points="15 18 9 12 15 6" />
+        </svg>
     </button>
 
     <div class="slides-container">
@@ -158,7 +169,18 @@
         aria-label="Next slide"
         onclick={nextSlide}
     >
-        ›
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+        >
+            <polyline points="9 18 15 12 9 6" />
+        </svg>
     </button>
 
     <div class="dots" role="tablist" aria-label="Carousel slide dots">
@@ -277,8 +299,7 @@
         backdrop-filter: blur(6px);
         color: #ffffff;
         border: none;
-        font-size: 28px;
-        line-height: 1;
+        padding: 0;
         width: 44px;
         height: 44px;
         border-radius: 50%;
@@ -290,6 +311,12 @@
         transition:
             background 150ms ease,
             transform 150ms ease;
+
+        svg {
+            width: 22px;
+            height: 22px;
+            display: block;
+        }
 
         &:hover {
             background: rgba(0, 0, 0, 0.65);
@@ -350,7 +377,11 @@
         .arrows {
             width: 36px;
             height: 36px;
-            font-size: 22px;
+
+            svg {
+                width: 18px;
+                height: 18px;
+            }
         }
     }
 </style>

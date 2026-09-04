@@ -21,7 +21,18 @@
         aria-label="Previous testimonial"
         onclick={prev}
     >
-        ‹
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+        >
+            <polyline points="15 18 9 12 15 6" />
+        </svg>
     </button>
 
     <div class="testimonial-card-container">
@@ -52,7 +63,18 @@
         aria-label="Next testimonial"
         onclick={next}
     >
-        ›
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+        >
+            <polyline points="9 18 15 12 9 6" />
+        </svg>
     </button>
 </div>
 
@@ -141,8 +163,7 @@
         width: 44px;
         height: 44px;
         border-radius: 50%;
-        font-size: 26px;
-        line-height: 1;
+        padding: 0;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -154,6 +175,12 @@
             border-color 150ms ease;
         flex-shrink: 0;
         z-index: 2;
+
+        svg {
+            width: 22px;
+            height: 22px;
+            display: block;
+        }
 
         &:hover {
             background: var(--brand-tint);
@@ -202,7 +229,11 @@
         .arrow-btn {
             width: 36px;
             height: 36px;
-            font-size: 20px;
+
+            svg {
+                width: 18px;
+                height: 18px;
+            }
         }
     }
 </style>
