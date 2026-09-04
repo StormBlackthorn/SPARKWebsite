@@ -1,16 +1,42 @@
 <script lang="ts">
+    import { fly } from 'svelte/transition';
+    import { cubicOut } from 'svelte/easing';
     import { testimonials } from '$lib/data/testimonials';
-    import { fade } from 'svelte/transition';
 
     let currentIndex = $state(0);
+    let direction = $state(1);
+
+    function changeTo(index: number, movement = index > currentIndex ? 1 : -1) {
+        direction = movement;
+        currentIndex = (index + testimonials.length) % testimonials.length;
+    }
+
+    function quoteTransition(node: Element, { entering }: { entering: boolean }) {
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        return fly(node, {
+            x: reducedMotion ? 0 : (entering ? direction : -direction) * 20,
+            duration: reducedMotion ? 0 : entering ? 320 : 140,
+            delay: reducedMotion || !entering ? 0 : 100,
+            easing: cubicOut,
+        });
+    }
+
+    const positions = [-1, 0, 1];
+    const visibleTestimonials = $derived(
+        positions.map((position) => ({
+            position,
+            item: testimonials[
+                (currentIndex + position + testimonials.length) % testimonials.length
+            ],
+        })),
+    );
 
     function next() {
-        currentIndex = (currentIndex + 1) % testimonials.length;
+        changeTo(currentIndex + 1, 1);
     }
 
     function prev() {
-        currentIndex =
-            (currentIndex - 1 + testimonials.length) % testimonials.length;
+        changeTo(currentIndex - 1, -1);
     }
 </script>
 
@@ -35,25 +61,33 @@
         </svg>
     </button>
 
-    <div class="testimonial-card-container">
-        {#each testimonials as item, i}
-            {#if i === currentIndex}
-                <div
-                    class="testimonial-card"
-                    transition:fade={{ duration: 250 }}
-                >
+    <div class="testimonial-card-container" aria-live="polite" aria-atomic="true">
+        {#each visibleTestimonials as { item, position } (position)}
+            <div
+                class="testimonial-card"
+                class:featured={position === 0}
+                class:side-card={position !== 0}
+                aria-hidden={position !== 0 ? true : undefined}
+            >
+                {#key item.id}
+                    <div class="card-content"
+                        in:quoteTransition={{ entering: true }}
+                        out:quoteTransition={{ entering: false }}
+                    >
                     <div class="quote-mark" aria-hidden="true">“</div>
-                    <blockquote class="quote">
+                    <!-- svelte-ignore a11y_no_noninteractive_tabindex (Keyboard users need to focus this scrollable quote.) -->
+                    <blockquote class="quote" tabindex={position === 0 ? 0 : -1}>
                         <p>{item.quote}</p>
                     </blockquote>
                     <div class="author-info">
                         <cite class="author">{item.author}</cite>
                         {#if item.role}
-                            <span class="role">· {item.role}</span>
+                            <span class="role">{item.role}</span>
                         {/if}
                     </div>
-                </div>
-            {/if}
+                    </div>
+                {/key}
+            </div>
         {/each}
     </div>
 
@@ -85,7 +119,8 @@
             class="dot"
             class:active={i === currentIndex}
             aria-label={`Go to testimonial ${i + 1}`}
-            onclick={() => (currentIndex = i)}
+            aria-current={i === currentIndex ? 'true' : undefined}
+            onclick={() => changeTo(i)}
         ></button>
     {/each}
 </div>
@@ -96,33 +131,56 @@
         align-items: center;
         justify-content: center;
         gap: var(--space-md);
-        max-width: 820px;
+        max-width: 1200px;
         margin: 0 auto;
         position: relative;
     }
 
     .testimonial-card-container {
         flex: 1;
-        position: relative;
-        min-height: 280px;
-        display: flex;
+        min-width: 0;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.8fr) minmax(0, 1fr);
+        gap: clamp(10px, 1.5vw, 18px);
         align-items: center;
-        justify-content: center;
     }
 
     .testimonial-card {
-        position: absolute;
-        inset: 0;
+        min-width: 0;
+        height: 280px;
+        box-sizing: border-box;
         background: var(--color-surface);
         border: 1px solid var(--color-border);
         border-radius: var(--radius-xl);
-        padding: var(--space-xl) var(--space-2xl);
+        padding: var(--space-lg);
         box-shadow: var(--shadow-sm);
+        display: grid;
+        grid-template-rows: minmax(0, 1fr);
+        text-align: center;
+        overflow: clip;
+    }
+
+    .testimonial-card.featured {
+        height: 350px;
+        padding: var(--space-lg);
+        border-color: var(--brand-muted);
+    }
+
+    .card-content {
+        grid-area: 1 / 1;
+        min-width: 0;
+        min-height: 0;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-        text-align: center;
-        overflow: hidden;
+        gap: 6px;
+    }
+
+    .side-card .quote p {
+        font-size: 0.9375rem;
+    }
+
+    .side-card .author-info {
+        font-size: 0.8125rem;
     }
 
     .quote-mark {
@@ -130,56 +188,74 @@
         line-height: 1;
         color: var(--brand-muted);
         font-family: Georgia, serif;
-        margin-bottom: -10px;
+        height: 32px;
+        margin-bottom: 0;
         flex-shrink: 0;
         user-select: none;
     }
 
     .quote {
         margin: 0;
-        flex: 1 1 auto;
+        flex: 1 1 0;
         min-height: 0;
         overflow-y: auto;
+        overflow-x: hidden;
+        scrollbar-gutter: stable both-edges;
+        scroll-padding-block: 8px;
         overscroll-behavior: contain;
         scrollbar-width: thin;
-        --scrollbar-thumb: var(--brand-muted);
-        --scrollbar-track: transparent;
-        scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+        scrollbar-color: color-mix(in srgb, var(--text-primary) 16%, transparent) transparent;
+        /* Local covers move with the text, revealing shadows only where
+           more content remains above or below the visible quote. */
+        background:
+            linear-gradient(var(--color-surface) 35%, transparent) center top / 100% 28px local,
+            linear-gradient(transparent, var(--color-surface) 65%) center bottom / 100% 28px local,
+            radial-gradient(farthest-side at 50% 0, color-mix(in srgb, var(--text-primary) 8%, transparent), transparent) center top / 100% 8px scroll,
+            radial-gradient(farthest-side at 50% 100%, color-mix(in srgb, var(--text-primary) 8%, transparent), transparent) center bottom / 100% 8px scroll;
+        background-repeat: no-repeat;
         display: flex;
         flex-direction: column;
-        justify-content: safe center;
-        padding: 0 var(--space-xs);
+        padding: 8px 10px;
     }
 
-    @supports not (scrollbar-color: auto) {
-        .quote::-webkit-scrollbar {
-            width: 5px;
-        }
+    .quote:hover,
+    .quote:focus-visible {
+        scrollbar-color: color-mix(in srgb, var(--text-primary) 28%, transparent) transparent;
+    }
 
-        .quote::-webkit-scrollbar-thumb {
-            background: var(--scrollbar-thumb);
-            border-radius: 4px;
-        }
+    .quote::-webkit-scrollbar {
+        width: 4px;
+    }
 
-        .quote::-webkit-scrollbar-track {
-            background: var(--scrollbar-track);
-        }
+    .quote::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .quote::-webkit-scrollbar-thumb {
+        background: color-mix(in srgb, var(--text-primary) 16%, transparent);
+        border-radius: 999px;
+    }
+
+    .quote:hover::-webkit-scrollbar-thumb {
+        background: color-mix(in srgb, var(--text-primary) 28%, transparent);
     }
 
     .quote p {
+        flex-shrink: 0;
         font-size: clamp(1.05rem, 2vw, 1.2rem);
         font-style: italic;
         color: var(--text-primary);
         line-height: 1.6;
         margin: auto 0;
         padding: 2px 0;
+        overflow-wrap: anywhere;
     }
 
     .author-info {
         font-size: 0.9375rem;
         color: var(--text-tertiary);
         flex-shrink: 0;
-        margin-top: var(--space-xs);
+        margin-top: 0;
     }
 
     .author {
@@ -190,12 +266,13 @@
 
     .role {
         color: var(--text-secondary);
-        margin-left: 4px;
+        display: block;
+        margin-top: 4px;
     }
 
     .arrow-btn {
-        background: var(--color-surface);
-        border: 1px solid var(--color-border);
+        background: transparent;
+        border: 1px solid transparent;
         color: var(--text-primary);
         width: 44px;
         height: 44px;
@@ -205,7 +282,7 @@
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        box-shadow: var(--shadow-xs);
+
         transition:
             background 150ms ease,
             transform 150ms ease,
@@ -231,7 +308,7 @@
         display: flex;
         justify-content: center;
         gap: 8px;
-        margin-top: var(--space-lg);
+        margin-top: var(--space-md);
     }
 
     .dot {
@@ -254,33 +331,55 @@
         }
     }
 
+    .arrow-btn:focus-visible,
+    .dot:focus-visible,
+    .quote:focus-visible {
+        outline: 2px solid var(--brand);
+        outline-offset: 4px;
+    }
+
     @media (max-width: 768px) {
+        .testimonials-wrapper {
+            gap: var(--space-xs);
+        }
+
         .testimonial-card-container {
-            min-height: 330px;
+            gap: 12px;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
         }
 
         .testimonial-card {
-            padding: var(--space-lg) var(--space-lg);
+            padding: var(--space-sm);
+        }
+
+        .testimonial-card.featured {
+            padding: var(--space-lg);
+            height: 380px;
         }
 
         .arrow-btn {
             width: 36px;
-            height: 36px;
-
-            svg {
-                width: 18px;
-                height: 18px;
-            }
+            height: 44px;
         }
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 700px) {
         .testimonial-card-container {
-            min-height: 350px;
+            grid-template-columns: minmax(0, 1fr);
         }
 
-        .testimonial-card {
-            padding: var(--space-md) var(--space-md);
+        .side-card {
+            display: none;
+        }
+
+        .testimonial-card.featured {
+            padding: var(--space-lg);
+        }
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .arrow-btn,
+        .dot {
+            transition: none;
         }
     }
 </style>
