@@ -1,47 +1,51 @@
 ## Setup
-Because firebase hosting is used, the root of the website is `public/` instead of `/`. Make sure your IDE's web preview is configured correctly to use the correct root so links won't break.
 
-For example, in VSCode, put this in `.vscode/settings.json`:
-```js
-{
-  "livePreview.serverRoot": "public" //Live preview plugin
-  "liveServer.settings.root": "public" // Live Server plugin
-}
+The project is built with **SvelteKit** and **Svelte 5** in static generation mode (`@sveltejs/adapter-static`), generating production files into `build/` for Firebase Hosting.
+
+### Quick Start
+
+```bash
+npm install
+npm run dev
 ```
 
-## Style Guidelines
-We are not very script, but just follow general good coding practices
+Run type checks and validation:
 
-### JavaScript
-CamelCasing, four spaces indentations. I'd prefer shorthand/shortcuts instead of excessive variables and functions, as AI often love to do. 
+```bash
+npm run check
+npm run build
+```
 
-### HTML
-Each page must have a `<base href="/pages/">` tag in the `<head>` section. This is due to Firebase rewrite rules messing up relative links. 
+## Architecture & Code Guidelines
 
-### CSS
-**CSS files should be written with a nested structure,** unless it is just a quick one-liner. This is to make it easier to read and understand the structure of the page.
+### Svelte & TypeScript
 
-Each page should only have ONE css file, and it should be named after the page. E.g. `about.html` should have `about.css`. CSS used across multiple files should go in `styles.css`.
+- Components are located in `src/lib/components/` and use **Svelte 5 runes** (`$state`, `$derived`, `$props`, `$effect`).
+- Pages and routes are organized using SvelteKit directory-based routing under `src/routes/`.
+- Data sets (such as chapter directories, statistics, testimonials) are centralized under `src/lib/data/` and typed in `src/lib/types/`.
+
+### Scoped CSS & Styling
+
+- Prefer scoped `<style>` blocks in Svelte components.
+- Shared design tokens and global resets live in `src/lib/styles/global.css`.
+- **CSS rules should utilize nested structure** whenever applicable for clarity and readability:
+
 ```css
-.class {
-    .nestedClass {
+.card {
+  background: var(--color-surface);
 
-    }
-}
-```
-Instead of 
-```
-.class .nestedClass {
-
+  .title {
+    font-size: 1.25rem;
+  }
 }
 ```
 
-## AI Usage
-All AI usage MUST be disclosed. AI generated code MUST be hand reviewed. 
+### Static Assets
+
+- Static assets (images, icons) belong in `static/assets/`.
+- Standalone sub-apps such as the Scratch 3.0 GUI (`Xcratch`) reside in `static/Xcratch/`.
 
 ## Merging
-It would be appreciated if you could include an image showing the actual changes made in the PR live on the website(if the frontend is changed). 
 
-If a new page is added, please update the `rewrite` and `redirect` section in `firebase.json` accordingly. 
-
-**Please update `.gigignore` for any additional unneeded files(such as editor/ai configuration files).**
+- Ensure `npm run check` and `npm run build` pass with zero errors.
+- Include a screenshot or recording demonstrating visual changes in pull requests when updating frontend interfaces.

@@ -1,14 +1,9 @@
 {
   "hosting": {
-    "public": "public",
+    "public": "build",
     "cleanUrls": true,
     "trailingSlash": false,
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "*.md",
-      ".github/"
-    ],
+    "ignore": ["firebase.json", "**/.*", "*.md", ".github/"],
     "redirects": [
       {
         "source": "/pages/index.html",
@@ -48,32 +43,8 @@
     ],
     "rewrites": [
       {
-        "source": "/",
-        "destination": "/pages/index.html"
-      },
-      {
-        "source": "/volunteer",
-        "destination": "/pages/volunteer.html"
-      },
-      {
-        "source": "/contactUs",
-        "destination": "/pages/contactUs.html"
-      },
-      {
-        "source": "/aboutUs/mission",
-        "destination": "/pages/aboutUs/mission.html"
-      },
-      {
-        "source": "/aboutUs/chapters",
-        "destination": "/pages/aboutUs/chapters.html"
-      },
-      {
-        "source": "/aboutUs/statistics",
-        "destination": "/pages/aboutUs/statistics.html"
-      },
-      {
         "source": "/Xcratch",
-        "destination": "/pages/Xcratch/index.html"
+        "destination": "/Xcratch/index.html"
       }
     ]
   }
