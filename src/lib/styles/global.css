@@ -9,25 +9,25 @@
     sans-serif;
 
   /* Brand Colors */
-  --brand: #1b7a6d;
-  --brand-hover: #156457;
+  --brand: #146459;
+  --brand-hover: #0f4f46;
   --brand-tint: #e6f3f0;
-  --brand-muted: #59a99b;
+  --brand-muted: #328a7d;
 
   /* Text Colors */
   --text-primary: #1d2430;
   --text-secondary: #3a4658;
-  --text-tertiary: #6b7788;
-  --text-disabled: #a1adbd;
-  --icon-default: #6b7788;
+  --text-tertiary: #525e6f;
+  --text-disabled: #8a96a6;
+  --icon-default: #525e6f;
 
   /* Surfaces & Borders */
   --surface-page: #f2efe9;
   --card: #ffffff;
   --surface-subtle: #f7f3ee;
   --surface-muted: #e9e1d6;
-  --border: #e3d9cc;
-  --border-subtle: #ede5da;
+  --border: #d9cebe;
+  --border-subtle: #e6dcd0;
 
   /* Semantic Feedback */
   --success: #2f8f6b;
@@ -314,7 +314,7 @@ select {
   &:focus {
     outline: none;
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(27, 122, 109, 0.18);
+    box-shadow: 0 0 0 3px rgba(20, 100, 89, 0.2);
   }
 
   &::placeholder {

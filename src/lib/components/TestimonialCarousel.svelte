@@ -343,24 +343,36 @@
     .pagination-dots {
         display: flex;
         justify-content: center;
-        gap: 8px;
+        gap: 4px;
         margin-top: var(--space-md);
+        align-items: center;
     }
 
     .dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: var(--surface-muted);
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
         border: none;
         padding: 0;
         cursor: pointer;
-        transition:
-            background 200ms ease,
-            transform 200ms ease,
-            width 200ms ease;
 
-        &.active {
+        &::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--text-disabled);
+            transition:
+                background 200ms ease,
+                transform 200ms ease,
+                width 200ms ease,
+                border-radius 200ms ease;
+        }
+
+        &.active::after {
             background: var(--brand);
             width: 22px;
             border-radius: 4px;
