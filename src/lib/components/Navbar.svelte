@@ -157,7 +157,7 @@
     }
 
     #nav-bar {
-        max-width: var(--container-max, 1100px);
+        max-width: var(--container-max, 1280px);
         margin: 0 auto;
         padding: 0 var(--space-lg, 24px);
         height: var(--nav-height, 64px);

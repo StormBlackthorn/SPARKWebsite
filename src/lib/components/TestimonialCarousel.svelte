@@ -131,7 +131,7 @@
         align-items: center;
         justify-content: center;
         gap: var(--space-md);
-        max-width: 1200px;
+        max-width: 100%;
         margin: 0 auto;
         position: relative;
     }
