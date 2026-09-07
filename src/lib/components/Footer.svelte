@@ -91,7 +91,7 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 40px;
-        max-width: var(--container-max, 1100px);
+        max-width: var(--container-max, 1280px);
         margin: 0 auto;
     }
 
@@ -158,7 +158,7 @@
 
     .footer-bottom {
         text-align: center;
-        max-width: var(--container-max, 1100px);
+        max-width: var(--container-max, 1280px);
         margin: 48px auto 0;
         padding-top: 24px;
         border-top: 1px solid var(--border-subtle);

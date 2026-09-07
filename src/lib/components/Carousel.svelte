@@ -338,31 +338,42 @@
         left: 50%;
         transform: translateX(-50%);
         display: flex;
-        gap: 8px;
+        gap: 4px;
         z-index: 10;
         background: rgba(0, 0, 0, 0.35);
         backdrop-filter: blur(6px);
-        padding: 6px 12px;
+        padding: 4px 8px;
         border-radius: var(--radius-full);
+        align-items: center;
     }
 
     .dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.45);
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
         border: none;
         padding: 0;
         cursor: pointer;
-        transition:
-            background 200ms ease,
-            transform 200ms ease;
 
-        &:hover {
-            background: rgba(255, 255, 255, 0.8);
+        &::after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.55);
+            transition:
+                background 200ms ease,
+                transform 200ms ease;
         }
 
-        &.current {
+        &:hover::after {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        &.current::after {
             background: #ffffff;
             transform: scale(1.25);
         }

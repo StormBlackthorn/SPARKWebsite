@@ -22,7 +22,7 @@
     onMount(() => {
         function handleClickOutside(e: MouseEvent) {
             const target = e.target as HTMLElement | null;
-            if (target && !target.closest('#nav-bar')) {
+            if (target && !target.closest('#nav-header')) {
                 closeAll();
             }
         }
@@ -149,19 +149,21 @@
         top: 0;
         z-index: 1000;
         width: 100%;
-    }
-
-    #nav-bar {
         background: rgba(255, 255, 255, 0.88);
         backdrop-filter: blur(14px);
         -webkit-backdrop-filter: blur(14px);
-        padding: 0 24px;
+        border-bottom: 1px solid var(--color-border);
+        transition: background 200ms ease;
+    }
+
+    #nav-bar {
+        max-width: var(--container-max, 1280px);
+        margin: 0 auto;
+        padding: 0 var(--space-lg, 24px);
         height: var(--nav-height, 64px);
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-bottom: 1px solid var(--color-border);
-        transition: background 200ms ease;
     }
 
     #logo-link {
@@ -345,6 +347,10 @@
     }
 
     @media (max-width: 768px) {
+        #nav-bar {
+            padding: 0 var(--space-md, 18px);
+        }
+
         #menu-toggle {
             display: block;
         }

@@ -21,6 +21,27 @@
         });
     }
 
+    function revealOnScroll(node: HTMLElement) {
+        let timer: ReturnType<typeof setTimeout> | undefined;
+
+        function onScroll() {
+            node.classList.add('is-scrolling');
+            if (timer) clearTimeout(timer);
+            timer = setTimeout(() => {
+                node.classList.remove('is-scrolling');
+            }, 800);
+        }
+
+        node.addEventListener('scroll', onScroll, { passive: true });
+
+        return {
+            destroy() {
+                node.removeEventListener('scroll', onScroll);
+                if (timer) clearTimeout(timer);
+            },
+        };
+    }
+
     const positions = [-1, 0, 1];
     const visibleTestimonials = $derived(
         positions.map((position) => ({
@@ -76,7 +97,11 @@
                     >
                     <div class="quote-mark" aria-hidden="true">“</div>
                     <!-- svelte-ignore a11y_no_noninteractive_tabindex (Keyboard users need to focus this scrollable quote.) -->
-                    <blockquote class="quote" tabindex={position === 0 ? 0 : -1}>
+                    <blockquote
+                        class="quote"
+                        tabindex={position === 0 ? 0 : -1}
+                        use:revealOnScroll
+                    >
                         <p>{item.quote}</p>
                     </blockquote>
                     <div class="author-info">
@@ -131,7 +156,7 @@
         align-items: center;
         justify-content: center;
         gap: var(--space-md);
-        max-width: 1200px;
+        max-width: 100%;
         margin: 0 auto;
         position: relative;
     }
@@ -140,7 +165,7 @@
         flex: 1;
         min-width: 0;
         display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1.8fr) minmax(0, 1fr);
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.9fr) minmax(0, 1fr);
         gap: clamp(10px, 1.5vw, 18px);
         align-items: center;
     }
@@ -152,7 +177,7 @@
         background: var(--color-surface);
         border: 1px solid var(--color-border);
         border-radius: var(--radius-xl);
-        padding: var(--space-lg);
+        padding: var(--space-lg) var(--space-xs);
         box-shadow: var(--shadow-sm);
         display: grid;
         grid-template-rows: minmax(0, 1fr);
@@ -162,7 +187,7 @@
 
     .testimonial-card.featured {
         height: 350px;
-        padding: var(--space-lg);
+        padding: var(--space-xl) var(--space-sm) var(--space-lg);
         border-color: var(--brand-muted);
     }
 
@@ -172,7 +197,7 @@
         min-height: 0;
         display: flex;
         flex-direction: column;
-        gap: 6px;
+        gap: 8px;
     }
 
     .side-card .quote p {
@@ -188,7 +213,7 @@
         line-height: 1;
         color: var(--brand-muted);
         font-family: Georgia, serif;
-        height: 32px;
+        height: 30px;
         margin-bottom: 0;
         flex-shrink: 0;
         user-select: none;
@@ -200,31 +225,30 @@
         min-height: 0;
         overflow-y: auto;
         overflow-x: hidden;
-        scrollbar-gutter: stable both-edges;
         scroll-padding-block: 8px;
         overscroll-behavior: contain;
         scrollbar-width: thin;
-        scrollbar-color: color-mix(in srgb, var(--text-primary) 16%, transparent) transparent;
-        /* Local covers move with the text, revealing shadows only where
-           more content remains above or below the visible quote. */
-        background:
-            linear-gradient(var(--color-surface) 35%, transparent) center top / 100% 28px local,
-            linear-gradient(transparent, var(--color-surface) 65%) center bottom / 100% 28px local,
-            radial-gradient(farthest-side at 50% 0, color-mix(in srgb, var(--text-primary) 8%, transparent), transparent) center top / 100% 8px scroll,
-            radial-gradient(farthest-side at 50% 100%, color-mix(in srgb, var(--text-primary) 8%, transparent), transparent) center bottom / 100% 8px scroll;
-        background-repeat: no-repeat;
+        scrollbar-color: transparent transparent;
+        transition: scrollbar-color 300ms ease;
         display: flex;
         flex-direction: column;
-        padding: 8px 10px;
-    }
-
-    .quote:hover,
-    .quote:focus-visible {
-        scrollbar-color: color-mix(in srgb, var(--text-primary) 28%, transparent) transparent;
+        padding: 4px 14px 20px;
+        -webkit-mask-image: linear-gradient(
+            to bottom,
+            black 0%,
+            black calc(100% - 28px),
+            transparent 100%
+        );
+        mask-image: linear-gradient(
+            to bottom,
+            black 0%,
+            black calc(100% - 28px),
+            transparent 100%
+        );
     }
 
     .quote::-webkit-scrollbar {
-        width: 4px;
+        width: 3px;
     }
 
     .quote::-webkit-scrollbar-track {
@@ -232,12 +256,23 @@
     }
 
     .quote::-webkit-scrollbar-thumb {
-        background: color-mix(in srgb, var(--text-primary) 16%, transparent);
+        background: transparent;
         border-radius: 999px;
+        transition: background-color 300ms ease;
     }
 
-    .quote:hover::-webkit-scrollbar-thumb {
-        background: color-mix(in srgb, var(--text-primary) 28%, transparent);
+    .quote:global(.is-scrolling),
+    .quote:focus-visible {
+        scrollbar-color: color-mix(in srgb, var(--border) 50%, transparent) transparent;
+    }
+
+    .quote:global(.is-scrolling)::-webkit-scrollbar-thumb,
+    .quote:focus-visible::-webkit-scrollbar-thumb {
+        background: color-mix(in srgb, var(--border) 50%, transparent);
+    }
+
+    .quote:global(.is-scrolling)::-webkit-scrollbar-thumb:hover {
+        background: color-mix(in srgb, var(--border) 75%, transparent);
     }
 
     .quote p {
@@ -256,6 +291,7 @@
         color: var(--text-tertiary);
         flex-shrink: 0;
         margin-top: 0;
+        padding: 0 var(--space-sm);
     }
 
     .author {
@@ -307,24 +343,36 @@
     .pagination-dots {
         display: flex;
         justify-content: center;
-        gap: 8px;
+        gap: 4px;
         margin-top: var(--space-md);
+        align-items: center;
     }
 
     .dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: var(--surface-muted);
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
         border: none;
         padding: 0;
         cursor: pointer;
-        transition:
-            background 200ms ease,
-            transform 200ms ease,
-            width 200ms ease;
 
-        &.active {
+        &::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--text-disabled);
+            transition:
+                background 200ms ease,
+                transform 200ms ease,
+                width 200ms ease,
+                border-radius 200ms ease;
+        }
+
+        &.active::after {
             background: var(--brand);
             width: 22px;
             border-radius: 4px;
@@ -338,23 +386,39 @@
         outline-offset: 4px;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 960px) {
+        .testimonial-card-container {
+            grid-template-columns: minmax(0, 1fr);
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .side-card {
+            display: none;
+        }
+
+        .testimonial-card.featured {
+            height: 340px;
+            padding: var(--space-xl) var(--space-md) var(--space-lg);
+        }
+
+        .quote {
+            padding: 4px 16px 20px;
+        }
+    }
+
+    @media (max-width: 640px) {
         .testimonials-wrapper {
             gap: var(--space-xs);
         }
 
-        .testimonial-card-container {
-            gap: 12px;
-            grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
-        }
-
-        .testimonial-card {
-            padding: var(--space-sm);
-        }
-
         .testimonial-card.featured {
-            padding: var(--space-lg);
-            height: 380px;
+            height: 360px;
+            padding: var(--space-lg) var(--space-sm) var(--space-md);
+        }
+
+        .quote {
+            padding: 4px 10px 18px;
         }
 
         .arrow-btn {
@@ -363,19 +427,6 @@
         }
     }
 
-    @media (max-width: 700px) {
-        .testimonial-card-container {
-            grid-template-columns: minmax(0, 1fr);
-        }
-
-        .side-card {
-            display: none;
-        }
-
-        .testimonial-card.featured {
-            padding: var(--space-lg);
-        }
-    }
     @media (prefers-reduced-motion: reduce) {
         .arrow-btn,
         .dot {

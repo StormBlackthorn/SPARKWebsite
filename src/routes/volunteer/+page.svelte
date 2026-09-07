@@ -1,4 +1,5 @@
 <script lang="ts">
+    import Carousel from '$lib/components/Carousel.svelte';
     import VolunteerTabs from '$lib/components/VolunteerTabs.svelte';
 </script>
 
@@ -30,10 +31,7 @@
             </div>
         </div>
         <div class="volunteer-hero-media">
-            <img
-                src="/assets/classroom_images/3.png"
-                alt="High school volunteers guiding elementary students through a STEM project"
-            />
+            <Carousel />
         </div>
     </section>
 
@@ -65,7 +63,7 @@
     .volunteer-hero {
         display: grid;
         grid-template-columns: 1.2fr 1fr;
-        gap: var(--space-2xl);
+        gap: var(--space-lg);
         align-items: center;
         margin-bottom: var(--space-3xl);
     }
@@ -90,7 +88,7 @@
         font-size: 1.125rem;
         line-height: 1.7;
         color: var(--text-secondary);
-        margin-bottom: var(--space-xl);
+        margin-bottom: var(--space-lg);
     }
 
     .hero-actions {
@@ -100,22 +98,14 @@
     }
 
     .volunteer-hero-media {
-        border-radius: var(--radius-xl);
-        overflow: hidden;
-        border: 1px solid var(--color-border);
-        box-shadow: var(--shadow-md);
+        min-height: 380px;
         height: 100%;
-        min-height: 320px;
-
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        width: 100%;
     }
 
     .volunteer-callout {
-        margin-bottom: var(--space-xl);
+        margin-bottom: var(--space-lg);
+        width: 100%;
     }
 
     .callout-card {
@@ -124,8 +114,8 @@
         border-radius: var(--radius-xl);
         padding: var(--space-xl) var(--space-2xl);
         text-align: center;
-        max-width: 860px;
-        margin: 0 auto;
+        width: 100%;
+        margin: 0;
 
         h2 {
             font-size: clamp(1.5rem, 2.5vw, 1.9rem);
@@ -133,7 +123,7 @@
         }
 
         p {
-            max-width: 640px;
+            max-width: 720px;
             margin: 0 auto var(--space-xs);
             font-size: 1.05rem;
         }
@@ -149,10 +139,11 @@
     @media (max-width: 860px) {
         .volunteer-hero {
             grid-template-columns: 1fr;
+            gap: var(--space-lg);
         }
 
         .volunteer-hero-media {
-            min-height: 260px;
+            min-height: 300px;
         }
     }
 </style>

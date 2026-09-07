@@ -189,8 +189,8 @@
 
 <style>
     .volunteer-tabs-container {
-        max-width: 860px;
-        margin: var(--space-xl) auto;
+        width: 100%;
+        margin: var(--space-lg) auto 0;
     }
 
     .tabs-header {
