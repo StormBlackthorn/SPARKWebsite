@@ -1,5 +1,6 @@
 {
   "hosting": {
+<<<<<<< HEAD
     "public": "public",
     "cleanUrls": true,
     "trailingSlash": false,
@@ -9,6 +10,12 @@
       "*.md",
       ".github/"
     ],
+=======
+    "public": "build",
+    "cleanUrls": true,
+    "trailingSlash": false,
+    "ignore": ["firebase.json", "**/.*", "*.md", ".github/"],
+>>>>>>> refactor
     "redirects": [
       {
         "source": "/pages/index.html",
@@ -48,6 +55,7 @@
     ],
     "rewrites": [
       {
+<<<<<<< HEAD
         "source": "/",
         "destination": "/pages/index.html"
       },
@@ -74,6 +82,10 @@
       {
         "source": "/Xcratch",
         "destination": "/pages/Xcratch/index.html"
+=======
+        "source": "/Xcratch",
+        "destination": "/Xcratch/index.html"
+>>>>>>> refactor
       }
     ]
   }
