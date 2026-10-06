@@ -190,26 +190,30 @@
 <style>
     .volunteer-tabs-container {
         width: 100%;
-        margin: var(--space-lg) auto 0;
+        margin: 0 auto;
     }
 
     .tabs-header {
         display: flex;
-        gap: 8px;
-        border-bottom: 2px solid var(--border);
-        padding-bottom: 2px;
-        margin-bottom: var(--space-xl);
-        overflow-x: auto;
+        gap: 0;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+        background: #edf3f0;
+        border: 1px solid var(--border);
+        border-bottom: none;
+        border-radius: var(--radius-xl) var(--radius-xl) 0 0;
     }
 
     .tab-btn {
         background: transparent;
         border: none;
+        border-right: 1px solid var(--border);
         color: var(--text-secondary);
         font-size: 15px;
         font-weight: 600;
-        padding: 12px 20px;
-        border-radius: var(--radius-md) var(--radius-md) 0 0;
+        padding: 18px 20px;
+        border-radius: 0;
         cursor: pointer;
         position: relative;
         white-space: nowrap;
@@ -217,26 +221,31 @@
         transition:
             color 150ms ease,
             background 150ms ease;
+        flex: 1 1 0;
+        min-width: 0;
+
+        &:last-child {
+            border-right: none;
+        }
 
         &:hover {
             color: var(--brand);
-            background: var(--brand-tint);
+            background: rgba(20, 100, 89, 0.06);
         }
 
         &.active {
             color: var(--brand);
             background: var(--color-surface);
-            border: 1px solid var(--border);
-            border-bottom: 2px solid var(--color-surface);
-            margin-bottom: -4px;
-            box-shadow: var(--shadow-xs);
+            border-right-color: var(--border);
+            box-shadow: inset 0 0 0 1px rgba(20, 100, 89, 0.15);
         }
     }
 
     .tab-panel-wrapper {
         background: var(--color-surface);
         border: 1px solid var(--color-border);
-        border-radius: var(--radius-xl);
+        border-top: none;
+        border-radius: 0 0 var(--radius-xl) var(--radius-xl);
         padding: var(--space-2xl);
         box-shadow: var(--shadow-sm);
     }

@@ -75,3 +75,5 @@ node_modules/
 # SvelteKit & Vite
 .svelte-kit/
 build/
+
+.github/*.md
