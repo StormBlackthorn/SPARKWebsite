@@ -45,18 +45,18 @@
         <p>
             SPARK introduces STEM through fun, engaging lessons and hands-on
             projects. We want every student to see themselves as an
-            imaginative creator—not merely a consumer of technology.
+            imaginative creator and consumer of technology.
         </p>
         <p>
-            Our high school volunteers tailor lessons to each classroom so
-            every kid can build, experiment, and ask questions with genuine
-            confidence and enthusiasm.
+            Our high school volunteers tailor lessons to each classroom, so
+            every kid can experiment and ask questions to explore
+            technology and its interactions with the world around them.
         </p>
     </SplitCard>
 
     <SplitCard
         reverse={true}
-        kicker="Grassroots Leadership"
+        kicker="Our Leadership"
         title="Fully Ran by Students"
         imageSrc="/assets/classroom_images/3.png"
         imageAlt="High school volunteer mentor working with small student group"
@@ -65,14 +65,14 @@
         actionVariant="secondary"
     >
         <p>
-            We design curriculums, organize clubs, and mentor students
+            We design curriculums and mentor students
             ourselves. Every session is built by high school volunteers who
-            care deeply about educational equity and opportunity.
+            care sincerely about educational equity and opportunity.
         </p>
         <p>
-            Students plan activities, iterate on technical lessons, and
+            High school volunteers plan activitie and
             continually improve each session so elementary kids stay
-            thrilled to explore science and computer programming.
+            thrilled to explore various aspects of STEM.
         </p>
     </SplitCard>
 </div>

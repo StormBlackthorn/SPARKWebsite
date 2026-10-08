@@ -6,6 +6,7 @@
     const tabs = [
         { title: 'Join an Existing Chapter', id: 'join' },
         { title: 'Start a New Chapter', id: 'start' },
+        { title: 'Remote Education', id: 'remote-education' },
         { title: 'Parents & Guardians', id: 'parents' },
     ];
 </script>
@@ -148,6 +149,31 @@
                 </div>
             </div>
         {:else if activeTab === 2}
+            <div
+                class="tab-panel"
+                id="panel-remote-education"
+                role="tabpanel"
+                aria-labelledby="tab-remote-education"
+                transition:fade={{ duration: 180 }}
+            >
+                <div class="chaperone-info">
+                    <h3>Help us create engaging remote learning experiences</h3>
+                    <p>
+                        We are looking for volunteers who are interested in
+                        scriptwriting and video production to help create
+                        educational content for our remote learning programs.
+                    </p>
+                    <div class="info-callout">
+                        <p>
+                            If you would like to contribute, please email
+                            <a href="mailto:officialsparkstem@gmail.com"
+                                >officialsparkstem@gmail.com</a
+                            >.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {:else if activeTab === 3}
             <div
                 class="tab-panel"
                 id="panel-parents"

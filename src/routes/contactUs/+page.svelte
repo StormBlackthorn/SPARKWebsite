@@ -25,8 +25,8 @@
                     <h3>SPARK Leadership</h3>
                     <p>
                         General inquiries & club partnerships:<br />
-                        <a href="mailto:2025238@apps.nsd.org" class="email-link"
-                            >2025238@apps.nsd.org</a
+                        <a href="mailto:officialsparkstem@gmail.com" class="email-link"
+                            >officialsparkstem@gmail.com</a
                         >
                     </p>
                 </div>
